@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<flash_parameters>
+    <preferences>
+        <golbal>
+            <basic_property movieWidth="793" movieHeight="120" decoration="jumping_line_1.swf" html_title="Title" loadStyle="Pie" hideAdobeMenu="true" anvsoftMenu="false" photoDynamicShow="true" enableURL="true" transitionArray="10,11,12,14,26,55,56"/>
+            <title_property photoTitle="false" photoTitleX="5" photoTitleY="5" photoTitleSize="15" photoTitleFont="Verdana" photoTitleColor="0xffffff"/>
+            <music_property path="" stream="true" loop="true"/>
+            <photo_property topPadding="0" bottomPadding="0" leftPadding="0" rightPadding="0"/>
+            <properties enable="true" backgroundColor="0xffffff" backgroundAlpha="30" cssText="a:link{text-decoration: underline;} a:hover{color:#ff0000; text-decoration: none;} a:active{color:#0000ff;text-decoration: none;} .blue {color:#0000ff; font-size:15px; font-style:italic; text-decoration: underline;} .body{color:#ff5500;font-size:20px;}" align="top" />
+        </golbal>
+
+        <thumbnail>
+            <basic_property showPrview="false" prviewWidth="100" prviewHeight="75" lineColor="0xc0ff00" numberColor="0xff0000" hovrColor="0xffff57" prviewBorderColor="0xffffff"/>
+        </thumbnail>
+    </preferences>
+    <album>
+	<slide jpegURL="" d_URL="banner2.png" transition="0" panzoom="1" URLTarget="0" phototime="2" url="" title="" width="793" height="120"/>
+<slide jpegURL="" d_URL="banner1.png" transition="0" panzoom="1" URLTarget="0" phototime="2" url="" title="" width="793" height="120"/>
+      <slide jpegURL="" d_URL="banner3.png" transition="0" panzoom="1" URLTarget="0" phototime="2" url="" title="" width="793" height="120"/>
+   </album>
+</flash_parameters>

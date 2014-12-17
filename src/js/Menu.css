@@ -1,0 +1,97 @@
+ul {
+	margin:0px;
+	padding:0px;
+}
+
+.arrowlistmenu{
+	width: 180px; /*width of accordion menu*/
+	float:left;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	margin: 0px;
+}
+
+.arrowlistmenu .menuheader{ /*CSS class for menu headers in general (expanding or not!)*/
+	color: #FFFF00;
+	margin: 1px; /*bottom spacing between header and rest of content*/
+	text-transform: capitalize;
+	cursor: hand;
+	cursor:pointer;
+	text-align:left;
+	display:block;
+	font-family: tahoma;
+	font-size: 12px;
+}
+.menuheader a:link {
+	color: #000000;
+	padding:0px;
+	text-decoration:none;
+	padding: 5px 0px 5px 5px;
+	display:block;
+	font-weight: bold;
+}
+.menuheader a:visited {
+	color: #000000;
+	padding:0px;
+	text-decoration:none;
+	padding: 5px 0px 5px 5px;
+	display:block;
+	font-weight: bold;
+}
+.menuheader a:hover {
+	color: #009933;
+	text-decoration:none;
+	display:block;
+	padding: 5px 0px 5px 5px;
+	font-weight: bold;
+}
+.arrowlistmenu .openheader{ /*CSS class to apply to expandable header when it's expanded*/
+	font-size:12px;
+	color:#FFFFFF;
+}
+
+.arrowlistmenu ul{ /*CSS for UL of each sub menu*/
+list-style-type: none;
+margin: 0;
+padding: 0;
+margin-bottom: 0px; /*bottom spacing between each UL and rest of content*/
+}
+
+.arrowlistmenu ul li{
+padding: 0px; /*bottom spacing between menu items*/
+}
+
+.arrowlistmenu ul li a{
+	color: #666666; /*custom bullet list image*/
+	display: block;
+	padding-left: 25px; /*link text is indented 19px*/
+	text-decoration: none;
+	font-weight: normal;
+	/* border-bottom: 1px solid #dadada;*/
+	font-size: 12px;
+	text-align:left;
+	font-size:12px;
+	padding-top: 2px;
+	padding-right: 0;
+	padding-bottom: 2px;
+	background-image: url(../images/icon_muiten.gif);
+	background-repeat: no-repeat;
+	background-position: 17px center;
+}
+
+.arrowlistmenu ul li a:visited{
+color: #666666;
+font-size:12px;
+padding-left:none;
+}
+
+.arrowlistmenu ul li a:hover{ /*hover state CSS*/
+	color: #30751c;
+	text-decoration:none;
+	font-size:12px;
+	background-image: url(../images/icon_muiten_h.gif);
+	background-repeat: no-repeat;
+	background-position: 17px center;
+}

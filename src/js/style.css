@@ -1,0 +1,643 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body{
+    
+    /*background-image:url("http://image.yaymicro.com/rz_1210x1210/1/869/blue-victorian-seamless-background-1869b64.jpg");*/
+    /*background-position: center; background-repeat:no-repeat; background-attachment: fixed;*/
+	font-family: Arial, Helvetica, sans-serif;
+    background-image:url("../images/bg.gif");
+
+
+	font-weight:normal;
+	
+	background-color: #CDCDCD; 
+
+	TEXT-ALIGN: center; 
+
+	color:#666666;
+
+	margin: 0px;
+
+	padding: 0px;
+}
+
+
+TABLE, tr, td, div {
+
+	FONT-SIZE: 12px; 
+
+	color:#666666;
+
+	FONT-FAMILY: Arial, Helvetica, sans-serif; 
+
+}
+
+
+A {
+
+	CURSOR: pointer; COLOR: #003399; TEXT-DECORATION: none
+
+}
+
+A:hover {
+
+	COLOR: #003399; TEXT-DECORATION: underline
+
+}
+
+IMG {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+INPUT {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, arial, sans-serif
+}
+SELECT {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, arial, sans-serif
+}
+p {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight:normal; color:#666666;}
+
+
+UNKNOWN {
+	margin: 0px;	padding: 0px;
+}
+.clearfix:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: '[DO NOT LEAVE IT IS NOT REAL]'
+}
+.clearfix {
+	DISPLAY: inline; POSITION: relative
+}
+.clearfix {
+	DISPLAY: block
+}
+#container {
+	WIDTH: 793px;
+	BACKGROUND-COLOR: #fff;
+	TEXT-ALIGN: left;
+	margin: 0px auto;    -moz-box-shadow: 0px 1px 3px #afafaf;
+ -webkit-box-shadow: 0px 1px 3px #afafaf;
+ box-shadow: 0px 1px 3px #afafaf;
+}
+#header { 	width: 793px;	height: 100px;	background-image: url(../images/banner.png);	background-repeat: repeat-x;	}
+.logo {    
+	float: left;	
+	width: 350px;		padding-left: 25px;		/*BACKGROUND-COLOR: #fcffff;*/		
+	/*background-image: url(../images/bg_header2.gif);*/
+
+	background-repeat: repeat-x;
+
+	text-align: left;
+}
+#container_intro {
+	WIDTH: 1004px;
+	BACKGROUND-COLOR: #0093dd;
+	TEXT-ALIGN: left;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+#header_intro {
+	POSITION: relative; HEIGHT: 95px
+}
+.logo_intro {
+	float: left;
+	width: 1004px;
+	background-image: url(../images/intro_04.jpg);
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+#body_intro {
+	padding: 0px;
+	float: left;
+	width: 1004px;
+	background-color: #FFFFFF;
+}
+
+#footer_intro {
+	text-align: left;
+	width: 793px;
+	float: left;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	height: 109px;
+}
+#copyright_intro {
+	background-image: url(../images/intro_06.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding-bottom: 0px;
+	padding-left: 259px;
+	height: 109px;
+}
+#copyright_intro ul {
+	margin-top: 30px;
+}
+#copyright_intro li {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #C4C4C4;
+	text-decoration: none;
+	text-align: center;
+}
+
+
+#menu_top {	float: right;    margin-top: 5px;    	}
+#menu_top_ {
+	float: right;
+	margin-top: 76px;
+}
+
+#menu_top ul {
+	display: inline;
+}
+#menu_top li {
+	display: inline;
+}
+
+#body {
+	padding: 0px;
+	float: left;
+	width: 793px;
+	background-color: #FFFFFF;
+}
+
+
+#about_left {
+	float: left;
+	width: 348px;
+}
+.img_left_aboutus{
+ 	float: right;
+	padding: 25px 20px 0px 0px;
+}
+#body_top {
+	float: left;
+	width: 793px;
+}
+#body_middle {
+	float: left;
+	width: 793px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#about_content {
+	float: left;
+	width: 411px;
+	padding: 25px 0px 0px 0px;
+	text-align: justify;
+}
+#menu_left {
+	float: left;
+	width: 253px;
+	margin: 0px;
+	padding-top: 9px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+#product_content {
+	float: left;
+	width: 510px;
+	padding-top: 9px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin: 0px;
+	text-align: left;
+}
+
+#product_content_top{
+	float:left; 
+	width: 500px;
+	height:30px; 	
+	margin-bottom:15px; 
+}
+#product_content_top ul{
+	list-style:none;
+	display:inline; 
+}
+#product_content_top ul li{
+	text-align:left;
+	display:inline; 
+}
+.img_title_product{
+ 	float:left;     text-shadow: 1px 1px 2px #C2C2C2;
+    color:#0093DD;
+	    font:bold 2.3em/1.33em Arial,Helvetica,sans-serif;}.img_title_aboutus{ 	float:left;	width:130px;  }.img_title_support{ 	float:left;	width:120px;  }
+.line_title_product{
+    float:left; 
+	width:340px;
+	height:30px;  
+	background-image:url(../images/line_title_product.gif); 
+	background-repeat:repeat-x;
+}
+#footer {
+	height: 68px;
+	background-image: url(../images/bg_footer.gif);
+	background-repeat: repeat-x;
+	text-align: left;
+	width: 793px;
+	float: left;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+.counter {
+	float: left;
+	width: 150px;
+
+	background-repeat: no-repeat;
+	margin-top:25px;
+	margin-left:20px;
+	padding-left:2px;
+	padding-top:1px;
+	height:20px;
+	font-size:11px;
+	color:#fff;
+	}
+.contactus_intro{
+
+	margin-left:200px;
+
+	padding-left:200px;
+
+
+}
+
+
+.contactus{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+}
+.copyright {
+	width: 570px;
+	float: left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	margin-top: 22px;
+	padding-left: 30px;
+}
+/*Left Button*/
+.left_button         { font-family: tahoma; font-size: 12px; font-weight: bold; color: #666666; text-decoration:none; }
+.left_button:hover   { color: #0093dd; text-decoration:none;} 
+
+.left_button_down         { font-family: tahoma; font-size: 12px; font-weight: bold; color: #666666; text-decoration:none; }
+
+.left_button_down:hover   { color: #0093dd; text-decoration:none;} 
+.left_button_down_active         { font-family: tahoma; font-size: 12px; font-weight: bold; color: #0093dd; text-decoration:none; }
+.left_button_down_active:hover   { color: #0093dd; text-decoration:none;} 
+
+.left_button_down_sub         {
+	font-family: tahoma;
+	font-size: 11px;
+	
+	color: #666666;
+	text-decoration:none;
+	background-image: url(../images/icon_muiten.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 10px;
+}
+.left_button_down_sub:hover   { color: #0093dd; text-decoration:none;
+background-image: url(../images/icon_muiten_h.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 10px;
+} 
+
+
+.left_button_down_sub_active         { font-family: tahoma; font-size: 11px;  color: #0093dd; text-decoration:none; 
+	background-image: url(../images/icon_muiten_h.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 10px;
+}
+.left_button_down_sub_active:hover   { color: #0093dd; text-decoration:none;
+	background-image: url(../images/icon_muiten_h.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 10px;
+} 
+/*End Left Button*/
+
+#title_about {
+	float: left;
+	margin-top: 50px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 20px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #C0C0C0;
+	width: 420px;
+}
+#title_contact {
+	float: left;
+	margin-top: 38px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 15px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #C0C0C0;
+	width: 675px;
+}
+
+
+/*Product */
+
+.img_product{
+	padding: 2px;
+	
+	margin-right: 5px;
+}
+.title_cat_product{
+	font-size:15px;
+	font-family: Tahoma, arial, sans-serif 
+	color: #333333;
+	text-decoration: none;
+	background-image: url(../images/icon_title_pro.png);
+	background-repeat: no-repeat;
+	background-position: 5px center;
+	padding-left: 25px;
+	font-weight: bold;
+	height: 30px;
+}
+.title_cat_product a{
+	color: #000000;
+	text-decoration: none;
+}
+.title_cat_product a:hover{
+	color: #8C8C8C;
+	text-decoration: none;
+}
+.content_product {
+ 	font-size:12px;
+}
+.detail{
+	font-family: Tahoma;		font-size:11px;				color:#c88c05;
+	text-align:right;
+	padding-top: 10px;
+	padding-right: 5px;
+}
+
+.detail a{
+ color:#c88c05;
+}
+
+.detail a:hover{
+ color:#FBCC60;
+ text-decoration:none;
+}
+.title_product_home{
+	float: left;
+	width: 500px;
+	
+	margin-top: 15px;
+}
+.title_product_home ul{
+ 	list-style:none; 
+	text-decoration:none;
+}
+.title_product_home ul li{
+	font-family:Verdana, Arial, Helvetica, sans-serif; 
+	text-decoration:none;
+	color:#333333;
+	font-size:12px;
+}
+.title_product_home a{
+	background-image:url(../images/muiten_tieude_sp.gif); 
+	background-repeat:no-repeat;
+	background-position: 5px center;
+	padding-left:25px; 
+	text-decoration:none;
+	color:#333333;
+	font-size:12px;
+	FONT-FAMILY: Tahoma, arial, sans-serif 
+}
+.title_product_home a:hover{
+	background-image:url(../images/muiten_tieude_sp_h.gif); 
+	background-repeat:no-repeat;
+	background-position: 5px center;
+	padding-left:25px;
+	text-decoration:none; 
+	color:#0093dd;
+	font-size:12px;
+	FONT-FAMILY: Tahoma, arial, sans-serif 
+}
+.title_product{
+  font-family:Tahoma, arial, sans-serif
+  font-size:16px; 
+  color:#3a75b9;
+}.title_product ul li{  font-family:Tahoma, arial, sans-serif  font-size:16px;   color:#3a75b9;}
+.title_product a{
+
+  font-family:Tahoma, arial, sans-serif
+
+  font-size:16px; 
+
+  color:#3a75b9;
+
+}
+
+.title_product_sub{
+  font-family:Tahoma, arial, sans-serif
+  font-size:14px;
+  font-weight:bold ;
+  color:#b66d32;
+} 
+.title_product_sub a{
+
+  font-family:Tahoma, arial, sans-serif
+
+  font-size:14px;
+
+  font-weight:bold ;
+
+  color:#b66d32;
+
+} 
+
+.main_bold         { font-family: tahoma; font-size: 12px; font-weight: bold; color: #474747; text-decoration:none; word-spacing: 1px; padding-bottom:12px;}
+.main_bold:hover         { font-family: tahoma; font-size: 11px; font-weight: bold; color: #707070; text-decoration:none; word-spacing: 1px;}
+.td_lien_he         { font-family: tahoma; font-size: 17px; font-weight: bold; color: #C21205; text-decoration:none; padding-bottom:19px;}
+.td_lien_he:hover   { font-family: tahoma; font-size: 11px; font-weight: bold; color: #FE5C50; text-decoration:none;}
+
+.spec {
+	font-family: Tahoma, arial, sans-serif
+	background-image: url(../images/bg_pec.gif);
+	background-repeat: no-repeat;
+	font-size: 13px;
+	color: #4C4C4C;
+	text-decoration: none;
+	padding-left: 10px;
+	height:30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/*End Product*/
+
+.name_bar {
+
+	font-family: Arial, Helvetica, sans-serif;
+
+	font-size: 12px;
+
+	font-weight:bold;
+
+	color: #b66d32;
+
+	text-decoration: none;
+
+}
+
+.name_bar a {
+
+	font-family: Arial, Helvetica, sans-serif;
+
+	font-size: 10px;
+
+	font-weight:bold;
+
+	color: #b66d32;
+
+	text-decoration: none;
+
+}
+
+
+
+.name_bar a:hover {
+
+	color: #3a75b9;
+
+	text-decoration: none;
+
+}
+
+.name_bar_current {
+
+	font-family: Arial, Helvetica, sans-serif;
+
+	font-size: 12px;
+
+	color: #3a75b9;
+
+	font-weight:bold;
+
+	text-decoration: none;
+
+}
+
+.bold{
+
+   font-family:Arial, Helvetica, sans-serif;
+
+   color:#666666;
+
+   font-size:12;
+
+ }
+
+/*Page Tin Tuc*/
+
+.tieude_tin         {  font-family:Tahoma; font-size: 12px; font-weight: bold; color: #0067ab; text-decoration:none; word-spacing: 1px;}
+
+.tieude_tin a        {  font-family:Tahoma; font-size: 12px; font-weight: bold; color: #0067ab; text-decoration:none; word-spacing: 1px;}
+
+.tieude_tin a:hover         {  font-family:Tahoma; font-size: 12px; font-weight: bold; color:#37AFFF; text-decoration:none; word-spacing: 1px;}
+
+
+
+.lead_tin        {
+
+	font-size: 12px;
+
+	font-weight: normal;
+
+	color: #5e5e5e;
+
+	text-decoration:none;
+
+	word-spacing: 1px;
+
+	padding-bottom: 7px;
+
+}
+
+
+.date_tintuc         {  font-size: 9px; font-weight: normal; color: #4F4F4F; text-decoration:none; }
+
+.date_tintuc:hover   {  font-size: 9px; font-weight: normal; color: #FFA200; text-decoration:underline;}
+
+
+
+.td_tin_da_dang         {
+
+	font-size: 12px;
+
+	font-weight: bold;
+
+	color: #0067ab;
+
+	text-decoration:none;
+
+	height: 20px;
+
+	
+
+}
+
+.tin_da_dang a         {  font-size: 12px; font-weight: normal; color: #474747; text-decoration:none; }
+
+.tin_da_dang a:hover   {  font-size: 12px; font-weight: normal; color: #0093dd; text-decoration:none;}
+
+
+/*Tin Tuc*/
+
+.date         { font-family: tahoma; font-size: 11px; font-weight: bold; color: #4190D0; text-decoration:none; word-spacing: 1px;}
+
+.date:hover         { font-family: tahoma; font-size: 11px; font-weight: bold; color: #66BBFF; text-decoration:none; word-spacing: 1px;}
+
+
+
+.chi_tiet a         {
+
+	font-family: tahoma;
+
+	font-size: 11px;
+
+	color: #FF8A00;
+
+	text-decoration:none;
+
+	word-spacing: 1px;
+
+	text-align: right;
+
+}
+
+.chi_tiet a:hover         { font-family: tahoma; font-size: 11px; color: #0067ab; text-decoration:underline; word-spacing: 1px;}
+
+/*Language*/
+.language {
+	font-family: Verdana;
+	font-size: 8pt;
+	font-weight: normal;
+	color: #646464;
+	text-decoration:none;
+
+}
+.language a{
+	font-family: Verdana;
+	font-size: 8pt;
+	font-weight: normal;
+	color: #646464;
+	text-decoration:none;
+	
+.language a:hover   { font-family: Verdana; font-size: 8pt; font-weight: normal; color: #FFA200; text-decoration:none;} 

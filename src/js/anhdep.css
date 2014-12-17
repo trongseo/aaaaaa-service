@@ -1,0 +1,32 @@
+* {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+
+#container_product {
+	WIDTH: 500px;
+	padding: 0px;
+	float:left; 
+	margin-top: 2px;
+	margin-right: auto;
+	margin-bottom: 2px;
+	margin-left: auto;
+}
+
+.clearthis {
+	CLEAR: both; FONT-SIZE: 0px; FLOAT: none; LINE-HEIGHT: 0px; HEIGHT: 0px
+}
+.small_pic {
+
+}
+.small_pic .left {
+	FLOAT: left; WIDTH: 4%
+}
+.img {
+	MARGIN: 60px 0px
+}
+.small_pic .middle {
+	FLOAT: left; WIDTH: 90%
+}
+.small_pic .right {
+	FLOAT: right; WIDTH: 4%
+}

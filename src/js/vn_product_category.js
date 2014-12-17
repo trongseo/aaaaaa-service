@@ -1,0 +1,20 @@
+var Tree = new Array();
+	Tree[0] = "1|0|Vớ|2008-10/vo_cat.png";
+		Tree[1] = "2|1|Vớ sơ sinh|2008-10/vososinh_cat(2).png";
+		Tree[2] = "6|3|Vớ chống trượt|2008-10/vochongtruot_cat(1).png";
+		Tree[3] = "10|9|Quần|2008-10/quan_cat(1).png";
+		Tree[4] = "12|0|Băng đô|2008-12/cimg1872_web1.png";
+		Tree[5] = "13|0|Quần nữ|2009-07/quan_nu_cat.png";
+		Tree[6] = "14|0|Vớ Quần Nữ|2011-04/tight_zappy1_s.jpg";
+		Tree[7] = "16|0|Quần đạp gót|2011-04/legging_zappy1_s.jpg";
+		Tree[8] = "17|3|Vớ hình nổi (3D) và Vớ xù|2012-05/vo_3d_3.jpg";
+		Tree[9] = "19|0|Ống tay thời trang|2012-06/7889ng_tay_hinh_nn(1).jpg";
+		Tree[10] = "20|0|Giày Vớ|2012-11/giay_vo_hinh_nn(1).jpg";
+		Tree[11] = "3|1|Vớ trẻ em|2008-10/votreem_cat(1).png";
+		Tree[12] = "7|3|Vớ hoa văn|2008-10/vohoavan_cat(1).png";
+		Tree[13] = "9|0|Quần dệt kim|2008-10/quandetkim_cat(1).png";
+		Tree[14] = "11|9|Vớ quần|2008-10/voquan_cat(1).png";
+		Tree[15] = "4|1|Vớ nữ|2008-10/vonu_cat(1).png";
+		Tree[16] = "8|3|Vớ ren và hiphop|2008-10/voren_cat(1).png";
+		Tree[17] = "5|1|Vớ nam|2008-10/vonam_cat(1).png";
+		
