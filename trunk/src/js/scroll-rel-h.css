@@ -1,0 +1,33 @@
+DIV#hold {
+	
+	OVERFLOW: hidden;
+	WIDTH: 450px;
+	POSITION: relative;
+	HEIGHT: 78px;
+}
+DIV#wn {
+	
+	LEFT: 0px;
+	OVERFLOW: hidden;
+	WIDTH: 450px;
+	POSITION: absolute;
+	TOP: 0px;
+	HEIGHT: 78px
+}
+DIV#lyr1 {
+	
+	LEFT: 0px;
+	VISIBILITY: hidden;
+	POSITION: absolute;
+	padding-top: 0px;
+}
+.transOFF {
+	BACKGROUND-COLOR: silver
+}
+.transON {
+	BACKGROUND-COLOR: silver;
+	/*opacity: .80;
+	FILTER: alpha(opacity=80);
+-moz-opacity: 0.80;
+*/ 	
+}
