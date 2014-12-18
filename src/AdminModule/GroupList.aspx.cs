@@ -31,11 +31,11 @@ public partial class AdminModule_GroupList : CommonPageFree
         if (Request["add"] != null)
         {
 
-            myUti.InsertDataReturnID("insert into CateType(title,type) values('nhom moi'," + mytype + ") ", null);
+            myUti.InsertDataReturnID("insert into CateType(title,type,acuahangid) values('nhom moi'," + mytype + "," + MySession.Current.SSCuaHangId + ") ", null);
             Response.Redirect("GroupList.aspx");
             return;
         }
-
+      
 
         //  Paginater1.PageSize = 6;
         int pz = 10;
@@ -60,7 +60,7 @@ public partial class AdminModule_GroupList : CommonPageFree
         // data: "name="+name+"&group_id="+group_id,
         Hashtable hs = new Hashtable();
 
-        string where_ = "where 1=1 and type=" + mytype + " ";
+        string where_ = "where 1=1 and   acuahangid=" + MySession.Current.SSCuaHangId;
         if (Request["user_name"] != null)
             if (Request["user_name"] != "")
             {

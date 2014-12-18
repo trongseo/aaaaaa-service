@@ -62,7 +62,12 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3Price"
                                             Display="Dynamic" CssClass="help-block" ErrorMessage="Vui lòng nhập!" ValidationGroup="xxx">Vui lòng nhập!</asp:RequiredFieldValidator>
                                         </div>
-                                        
+                                         <div class="form-group">
+                                           <label>Số lượng (có thể tự động tăng khi thêm phiếu nhập kho)</label>
+                                           <asp:TextBox ID="TextBoxQuantity" runat="server"  CssClass="form-control"></asp:TextBox>&nbsp;
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBoxQuantity"
+                                            Display="Dynamic" CssClass="help-block" ErrorMessage="Vui lòng nhập!" ValidationGroup="xxx">Vui lòng nhập!</asp:RequiredFieldValidator>
+                                        </div>
                                        
                                    <asp:Button ID="SaveButton" Text="Cập nhật" OnClick="SaveButton_Click" runat="server" Width="94px" />
                                 &nbsp;&nbsp;

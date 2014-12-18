@@ -60,7 +60,7 @@
                                             <th>Tên danh mục</th>
                                             <th style="display:none">Platform(s)</th>
                                             <th>Giá</th>
-                                            <th style="display:none">CSS grade</th>
+                                            <th >Số lượng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,7 +85,7 @@
                                             <td>  <a href="ItemUpdate.aspx?Id=<%=dr["Id"]%>"> <%=dr["Title"]%>[SỬA]</a></td>
                                             <td style="display:none">  </td>
                                             <td class="center"><%=dr["PriceSale"]%></td>
-                                            <td class="center" style="display:none">X</td>
+                                            <td class="center" ><%=dr["Quantity"]%></td>
                                         </tr>
 
 	

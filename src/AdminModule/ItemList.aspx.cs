@@ -18,7 +18,7 @@ public partial class AdminModule_ItemList : CommonPageFree
     {
 
         if (IsPostBack) return;
-        DataTable dtc = myUti.GetDataTable("Select title=N'...Tất cả',id='0' union Select title,id from catetype where type=1");
+        DataTable dtc = myUti.GetDataTable("Select title=N'...Tất cả',id='0' union Select title,id from catetype where acuahangid="+MySession.Current.SSCuaHangId);
         DropDownList1.DataSource = dtc;
         DropDownList1.DataTextField = "title";
         DropDownList1.DataValueField = "id";
@@ -47,8 +47,8 @@ public partial class AdminModule_ItemList : CommonPageFree
         // data: "name="+name+"&group_id="+group_id,
         Hashtable hs = new Hashtable();
 
-        string where_ = "where 1=1 and IsDelete=0 ";
-
+        string where_ = "where 1=1 and IsDelete=0  and acuahangid="+MySession.Current.SSCuaHangId;
+   
         if (Request["CateId"] != null)
             if (Request["CateId"] != "")
                 if (Request["CateId"] != "0")

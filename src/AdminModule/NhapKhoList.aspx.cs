@@ -16,9 +16,9 @@ public partial class AdminModule_NhapKhoList : CommonPageFree
     public DataTable dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+         
         if (IsPostBack) return;
-        DataTable dtc = myUti.GetDataTable("Select title=N'...Chọn...',id='0' union Select title,id from SPweb");
+        DataTable dtc = myUti.GetDataTable("Select title=N'...Chọn...',id='0' union Select title,id from SPweb where [acuahangid] = " +MySession.Current.SSCuaHangId);
         DropDownList1.DataSource = dtc;
         DropDownList1.DataTextField = "title";
         DropDownList1.DataValueField = "id";
@@ -47,7 +47,7 @@ public partial class AdminModule_NhapKhoList : CommonPageFree
         // data: "name="+name+"&group_id="+group_id,
         Hashtable hs = new Hashtable();
 
-        string where_ = "where 1=1 ";
+        string where_ = "where 1=1 and [acuahangid] = " +MySession.Current.SSCuaHangId;
 
         if (Request["CateId"] != null)
             if (Request["CateId"] != "")

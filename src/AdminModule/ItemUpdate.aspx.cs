@@ -15,7 +15,7 @@ public partial class AdminModule_ItemUpdate : CommonPageFree
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack) return;
-        DataTable dtc = myUti.GetDataTable("Select title AS title,id AS id from catetype where type=1");
+        DataTable dtc = myUti.GetDataTable("Select title AS title,id AS id from catetype where acuahangid=" + MySession.Current.SSCuaHangId);
         DropDownList1.DataSource = dtc;
         DropDownList1.DataTextField = "title";
         DropDownList1.DataValueField = "id";
@@ -43,6 +43,7 @@ public partial class AdminModule_ItemUpdate : CommonPageFree
             TextBox3Price.Text = dr["PriceSale"].ToString();
             TextBox2.Text = dr["Shortdescription"].ToString();
             DescriptionTextBox.Text = dr["Description"].ToString();
+            TextBoxQuantity.Text = dr["Quantity"].ToString();
             DropDownList1.SelectedValue = dr["CateId"].ToString();
             EnCheckBox1.Checked = dr["En"].ToString() == "1" ? true : false;
             if (dr["ImageNews"].ToString() != "")
@@ -73,7 +74,7 @@ public partial class AdminModule_ItemUpdate : CommonPageFree
         }
         System.Collections.Hashtable hs = new Hashtable();
         string checkno = EnCheckBox1.Checked == true ? "1" : "0";
-
+       
         hs["Title"] = TextBox1.Text;
         hs["Shortdescription"] = TextBox2.Text;
         hs["Description"] = DescriptionTextBox.Text;
@@ -81,6 +82,8 @@ public partial class AdminModule_ItemUpdate : CommonPageFree
         " SET [Title] =@Title" +
         ",En=" + checkno + ",[Shortdescription] =@Shortdescription " +
         " ,[Description] =@Description " +
+         " ,[acuahangid] = " +MySession.Current.SSCuaHangId+
+          " ,[Quantity] = " + TextBoxQuantity.Text.Trim() +
          " ,[PriceSale] =" + TextBox3Price.Text.Trim() +
         ",[CateId] = " + DropDownList1.SelectedValue +
         " WHERE id=" + myid;

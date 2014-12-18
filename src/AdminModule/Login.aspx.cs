@@ -9,16 +9,26 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-public partial class AdminModule_Login : CommonPageFree
+public partial class AdminModule_Login : CommonPageN
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (IsPostBack)
+        {
+            return;
+        }
+        DataTable dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id from ACuaHang ");
+        DropDownList1.DataSource = dtc;
+        DropDownList1.DataTextField = "title";
+        DropDownList1.DataValueField = "id";
+        DropDownList1.DataBind();
+        
         if (GetPara("from") == "logout")
         {
             Session.Clear();
         }
         Label1.Visible = false;
+
     }
     protected void SaveButton_Click(object sender, EventArgs e)
     {
@@ -36,6 +46,8 @@ public partial class AdminModule_Login : CommonPageFree
             if (UserTextBox.Text != "admin") return;
              MySession.Current.SSUsername = dt.Rows[0]["Username"].ToString();
              MySession.Current.SSUserId = dt.Rows[0]["Id"].ToString();
+             MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
+             MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
             Response.Redirect("ItemList.aspx");
         }
     }

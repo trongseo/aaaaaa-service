@@ -7,7 +7,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"> Admin </a>
+              <%--  <a class="navbar-brand" href="index.html"> Admin </a>--%>
+      <a class="navbar-brand" href="Default.aspx"> <%= MySession.Current.SSTenCuaHang%> </a>
             </div>
 <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
@@ -210,7 +211,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logxxxout</a>
+                        <li><a href="login.aspx?from=logout"><i class="fa fa-sign-out fa-fw"></i> Logxxxout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
