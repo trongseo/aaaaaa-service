@@ -45,14 +45,18 @@
                     </div>
                     <div class="panel-body">
                         
-                            <fieldset>
+                            <fieldset> <div class="form-group">
+                                            <label>Cửa hàng</label>
+                                            <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" Width="178px">
+                                        </asp:DropDownList>
+                                        </div>
                                 <div class="form-group">
-                                    <asp:TextBox ID="UserTextBox" CssClass="form-control" runat="server"  ></asp:TextBox>
+                                    <asp:TextBox ID="UserTextBox" placeholder="Tên đăng nhập" CssClass="form-control" runat="server"  ></asp:TextBox>
                                     
                                 </div>
                                 <div class="form-group">
                                    
-                                     <asp:TextBox TextMode="Password"  ID="PassTextBox" CssClass="form-control" runat="server"  ></asp:TextBox>
+                                     <asp:TextBox TextMode="Password" placeholder="Mật khẩu"  ID="PassTextBox" CssClass="form-control" runat="server"  ></asp:TextBox>
                                 </div>
                                 <%--<div class="checkbox">
                                     <label>

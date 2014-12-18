@@ -14,7 +14,7 @@ using System.Data;
 /// <summary>
 /// Summary description for MyPage
 /// </summary>
-public class CommonPageFree : System.Web.UI.Page
+public class CommonPageN : System.Web.UI.Page
 {
     public Logs logger = null;
     public MyLange myLange = new MyLange();
@@ -28,7 +28,7 @@ public class CommonPageFree : System.Web.UI.Page
     public string imagePathRoot = "http://admin.congtydetvothenguyen.com/ItemImage/";
     public Hashtable MY_HASTABLE = new Hashtable();
     public DataTable MY_DATATABLE = new DataTable();
-    public CommonPageFree()
+    public CommonPageN()
     {
         //
         // TODO: Add constructor logic here
@@ -61,10 +61,7 @@ public class CommonPageFree : System.Web.UI.Page
             imagePathRoot = "http://localhost:22222/anhthesockscode/ItemImage/";
         }
        
-            if (MySession.Current.SSUsername != "admin")
-            {
-                Response.Redirect("Login.aspx");
-            }
+          
        
        
         string pageName = MySession.Current.ScreenId;

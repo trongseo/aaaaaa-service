@@ -15,7 +15,7 @@ public partial class AdminModule_NhapKho : CommonPageFree
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack) return;
-        DataTable dtc = myUti.GetDataTable("Select N'Chọn' AS title,0 AS id union  Select title AS title,id AS id from catetype where type=1");
+        DataTable dtc = myUti.GetDataTable("Select N'..Chọn' AS title,0 AS id union  Select title AS title,id AS id from catetype where [acuahangid] = " + MySession.Current.SSCuaHangId);
         DropDownList1.DataSource = dtc;
         DropDownList1.DataTextField = "title";
         DropDownList1.DataValueField = "id";
@@ -50,9 +50,9 @@ public partial class AdminModule_NhapKho : CommonPageFree
             TextBox3Price.Text = dr["PriceBuy"].ToString();
 
             //combobox 
-            DataRow drxx = myUti.GetDataRow("select * from SpWeb where id =" + dr["SpWebId"].ToString());
+            DataRow drxx = myUti.GetDataRow("select * from SpWeb where id =" + dr["SpWebId"].ToString()); 
 
-            DataTable dtcs = myUti.GetDataTable("Select N'Chọn' AS title,0 AS id union Select title AS title,id AS id from SpWeb where CateId=" + drxx["CateId"].ToString());
+            DataTable dtcs = myUti.GetDataTable("Select N'..Chọn' AS title,0 AS id union Select title AS title,id AS id from SpWeb where acuahangid="+ MySession.Current.SSCuaHangId+" and CateId=" + drxx["CateId"].ToString());
             DropDownList2TenSP.DataSource = dtcs;
             DropDownList2TenSP.DataTextField = "title";
             DropDownList2TenSP.DataValueField = "id";
@@ -77,7 +77,8 @@ public partial class AdminModule_NhapKho : CommonPageFree
         {
             return;
         }
-        string sql = " insert into APhieuNhapKho(Note) values('') ";
+       
+        string sql = " insert into APhieuNhapKho(Note,acuahangid) values('',"+MySession.Current.SSCuaHangId +") ";
         string myid = "";
         if (Request["Id"] == null)
         {
@@ -101,6 +102,13 @@ public partial class AdminModule_NhapKho : CommonPageFree
         ",[SPwebId] = " + DropDownList2TenSP.SelectedValue +
         " WHERE id=" + myid;
         myUti.UpdateData(sql, hs);
+
+
+       string sql2 = "UPDATE [SPweb] " +
+      " SET [Quantity] =Quantity+" +TextBox1Quantity.Text.Trim() +
+      " WHERE id=" + DropDownList2TenSP.SelectedValue ;
+
+       myUti.UpdateData(sql2,null);
     }
     protected void SaveButton_Click(object sender, EventArgs e)
     {
@@ -176,7 +184,7 @@ public partial class AdminModule_NhapKho : CommonPageFree
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DataTable dtc = myUti.GetDataTable("Select N'Chọn' AS title,0 AS id union Select title AS title,id AS id from SpWeb where CateId=" + DropDownList1.SelectedValue);
+        DataTable dtc = myUti.GetDataTable("Select N'..Chọn' AS title,0 AS id union Select title AS title,id AS id from SpWeb where CateId=" + DropDownList1.SelectedValue +" and acuahangid="+MySession.Current.SSCuaHangId);
         DropDownList2TenSP.DataSource = dtc;
         DropDownList2TenSP.DataTextField = "title";
         DropDownList2TenSP.DataValueField = "id";

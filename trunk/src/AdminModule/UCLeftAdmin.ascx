@@ -58,6 +58,22 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+                         <li >
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý nhân viên<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="NhanVien.aspx" >Thêm nhân viên</a>
+                                </li>
+                                  <li>
+                                    <a href="NhanVienList.aspx" >DS nhân viên </a>
+                                </li>
+                                
+                               
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
                         <li>
                             <a  href="tables.html"><i class="fa fa-table fa-fw"></i> TabDanh mục sản phẩm les</a>
                         </li>

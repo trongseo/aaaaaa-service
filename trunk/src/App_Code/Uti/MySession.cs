@@ -37,7 +37,8 @@ public class MySession
     public string ssCultureInfo { get; set; }
     public string SSUsername { get; set; }
     public string SSUserId { get; set; }
-    
+    public string SSCuaHangId { get; set; }
+    public string SSTenCuaHang { get; set; }
     public DateTime MyDate { get; set; }
     //Gan quyen cho page con như userupdate,usergroupupdate .Gia tri = 0:Khong co quyen,=1:insert,=2 update
     public int PermissionPartPage { get; set; }
