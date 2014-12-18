@@ -45,8 +45,15 @@ public class CommonPageFree : System.Web.UI.Page
        
     }
 
-   
-   
+
+    public string GetPara(string paraName)
+    {
+        if (Request[paraName]!=null)
+        {
+            return Request[paraName];
+        }
+        return "";
+    }
     private void CommonPage_Load(object sender, EventArgs e)
     {
         if (Request.Url.ToString().IndexOf("localhost") > -1)

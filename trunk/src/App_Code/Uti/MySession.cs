@@ -35,6 +35,9 @@ public class MySession
 
     // **** add your session properties here, e.g like this:
     public string ssCultureInfo { get; set; }
+    public string SSUsername { get; set; }
+    public string SSUserId { get; set; }
+    
     public DateTime MyDate { get; set; }
     //Gan quyen cho page con như userupdate,usergroupupdate .Gia tri = 0:Khong co quyen,=1:insert,=2 update
     public int PermissionPartPage { get; set; }
