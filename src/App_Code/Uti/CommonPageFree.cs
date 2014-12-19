@@ -50,7 +50,7 @@ public class CommonPageFree : System.Web.UI.Page
     {
         if (Request[paraName]!=null)
         {
-            return Request[paraName];
+            return Request[paraName].Trim();
         }
         return "";
     }

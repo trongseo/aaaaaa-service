@@ -35,10 +35,60 @@ public partial class AdminModule_NhanVien : CommonPageFree
         DropDownListALoaiThanhVienId.DataBind();
 
 
+        DataTable dtcquan = myUti.GetDataTable(" Select TenQuan AS title,Id AS id from AQuan order by stt ");
+        DropDownListQuan.DataSource = dtcquan;
+        
+        DropDownListQuan.DataTextField = "title";
+        DropDownListQuan.DataValueField = "id";
+        DropDownListQuan.DataBind();
+        DropDownListQuan.Items.Insert(0, new ListItem(String.Empty, ""));
+        DropDownListQuan.SelectedIndex = 0;
+        string idget  =   GetPara("Id");
+        HiddenFieldId.Value=idget;
+        if (idget!="")
+        {
+            DataRow drone = myUti.GetDataRow("Select * from Anhanvien where id=" + idget);
+            DropDownListALoaiThanhVienId.SelectedValue = drone["ALoaiThanhVienId"].ToString();
+            DropDownListAPhanCapId.SelectedValue = drone["APhanCapId"].ToString();
+            DropDownListQuan.SelectedValue = drone["QuanId"].ToString();
+            TextBoxCMND.Text = drone["APhanCapId"].ToString();
+            TextBoxTenDangNhap.Text = drone["TenDangNhap"].ToString();
+            TextBoxMatKhau.Text = drone["MatKhau"].ToString();
+            TextBoxSDT.Text = drone["SDT"].ToString();
+            TextBoxEmail.Text = drone["Email"].ToString();
+            TextBoxHoTen.Text = drone["HoTen"].ToString();
+            TextBoxThauChi.Text = drone["ThauChi"].ToString();
+            TextBoxCMND.Text = drone["CMND"].ToString();
+            TextBoxCongViec.Text = drone["CongViec"].ToString();
+            TextBoxDiaChi.Text = drone["DiaChi"].ToString();
+            string dateSinh = drone["NgaySinh"].ToString();
+            if (dateSinh != "")
+            {
+               dateSinh = ((DateTime)drone["NgaySinh"]) .ToString("dd-MM-yyyy");
+            }
+            TextBoxNgaySinh.Text = dateSinh;
+            string isgioitinh = drone["GioiTinh"].ToString();
+            if (isgioitinh == "1")
+            {
+                RadioButtonNam.Checked = true;
+                RadioButtonNu.Checked = false;
+            }
+            else
+            {
+                RadioButtonNam.Checked = false;
+                RadioButtonNu.Checked = true;
+            }
+          
+           // hs["MaVach"] = "11";
+            //TextBoxNgaySinh.Text = drone["DiaChi"].ToString();
+
+          //  DropDownListQuan.SelectedValue = drone["QuanId"].ToString();
+        }
+
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Label1.Text = "";
+      
         string email = TextBoxEmail.Text.Trim();
         if (!kiemTraDuLieu())
         {
@@ -67,7 +117,42 @@ public partial class AdminModule_NhanVien : CommonPageFree
             hs["CongViec"] = TextBoxCongViec.Text.Trim();
             hs["DiaChi"] = TextBoxDiaChi.Text.Trim();
             hs["MaVach"] = "11";
-            hs["NgaySinh"] = "2014-12-12";
+            string nsinh = "";
+            if (TextBoxNgaySinh.Text.Trim() != "")
+            {
+                hs["NgaySinh"] = nsinh;
+                nsinh = SystemUti.ConverDDMMYYYYtoYYYYMMDD(TextBoxNgaySinh.Text.Trim());
+                sql = "UPDATE [ANhanVien] " +
+            "SET NgaySinh = '" + nsinh + "'" +
+            " WHERE id=" + myid;
+                myUti.UpdateData(sql, hs);
+
+            }
+            else
+            {
+                sql = "UPDATE [ANhanVien] " +
+               "SET NgaySinh = null "  +
+               " WHERE id=" + myid;
+                myUti.UpdateData(sql, hs);
+            }
+
+            if (DropDownListQuan.SelectedValue != "")
+            {
+                sql = "UPDATE [ANhanVien] " +
+            "SET QuanId = " + DropDownListQuan.SelectedValue +
+            " WHERE id=" + myid;
+                myUti.UpdateData(sql, hs);
+
+            }
+            else
+            {
+                sql = "UPDATE [ANhanVien] " +
+          "SET QuanId =null " + 
+          " WHERE id=" + myid;
+                myUti.UpdateData(sql, hs);
+            }
+
+           
             int isgioitinh = 0;
             if (RadioButtonNam.Checked)
             {
@@ -88,11 +173,10 @@ public partial class AdminModule_NhanVien : CommonPageFree
                       " ,[GioiTinh] =" + isgioitinh +
                " ,[APhanCapId] =" + DropDownListAPhanCapId.SelectedValue +
                  " ,[ALoaiThanhVienId] =" + DropDownListALoaiThanhVienId.SelectedValue +
-            ",NgaySinh =@NgaySinh " +
             " WHERE id=" + myid;
             myUti.UpdateData(sql, hs);
 
-            return;
+            Response.Redirect("NhanVienList.aspx");
         
 
     }
