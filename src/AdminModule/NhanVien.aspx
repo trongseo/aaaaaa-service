@@ -99,7 +99,7 @@
                                         </div>
                                      <div class="form-group">
                                             <label>Thấu chi</label>
-                                            <asp:TextBox ID="TextBoxThauChi" onkeyup="formatNumerNew(this)" onfocus="formatNumerNew(this)"  data-validation="number"  runat="server"  CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="TextBoxThauChi" onkeyup="formatNumerNew(this)" Text="0" onfocus="formatNumerNew(this)"  data-validation="number"  runat="server"  CssClass="form-control"></asp:TextBox>
                                         </div>
                                     
                                         <fieldset >

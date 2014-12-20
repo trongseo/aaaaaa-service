@@ -16,7 +16,15 @@ public partial class AdminModule_NhanVienList : CommonPageFree
     public DataTable dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
+        Hashtable hsdd = new Hashtable();
+        //for (int i = 0; i < 1000000; i++)
+        //    {
+               
+        //        hsdd[myUti.GetGuid_Id()] = "s";
+        //    }
+        //Response.Write(hsdd.Count.ToString() + "<br/>");
 
+        
         if (IsPostBack) return;
        
         //  Paginater1.PageSize = 6;
