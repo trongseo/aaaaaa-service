@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -22,6 +23,17 @@ public class ws : System.Web.Services.WebService {
     [WebMethod]
     public string HelloWorld() {
         return "Hello World";
+    }
+     
+    [WebMethod]
+    public System.Data.DataSet GiveMeADataSet()
+    {
+        MyUtilities myi = new MyUtilities();
+       DataTable dt =   myi.GetDataTable("Select * from aconst");
+
+       DataSet ds = new DataSet("ds1");
+       ds.Tables.Add(dt.Copy());
+        return ds;
     }
     
 }
