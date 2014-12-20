@@ -47,6 +47,7 @@ public partial class AdminModule_NapTien : CommonPageFree
     }
     void updateNaptien()
     {
+        //Giaodich nap tien, con  don tien vao tai khoan ataikhoan
         if (!Page.IsValid)
         {
             return;
@@ -72,6 +73,17 @@ public partial class AdminModule_NapTien : CommonPageFree
             " ,[ACuaHangId] = " + MySession.Current.SSCuaHangId +
         " WHERE id=" + myid;
         myUti.UpdateData(sql, hs);
+        ArrayList ArrayListSQL = new ArrayList();
+        ArrayListSQL.Add(sql);
+         ArrayList ArrayListSQLHashTable = new ArrayList();
+        ArrayListSQLHashTable.Add(hs);
+
+        string sql2 = " insert into ATaiKhoan(guid_id) values('" + guid + "') ";
+        var hs2 = new Hashtable();
+
+
+
+        myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "naptien");
     }
     protected void SaveButton_Click(object sender, EventArgs e)
     {
