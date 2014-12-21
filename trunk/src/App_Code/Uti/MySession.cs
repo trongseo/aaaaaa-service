@@ -36,6 +36,7 @@ public class MySession
     // **** add your session properties here, e.g like this:
     public string ssCultureInfo { get; set; }
     public string SSUsername { get; set; }
+    public string SSGuidGioHang{ get; set; }
     public string SSUserId { get; set; }
     public string SSCuaHangId { get; set; }
     public string SSTenCuaHang { get; set; }
@@ -52,6 +53,7 @@ public class MySession
     public string OprIdMap { get; set; }
     public string UserGroupId { get; set; }
     public string UserFullName { get; set; }
+    public string SSUserFullName { get; set; }
     public DataTable DT_AcessRights { get; set; }
     public string ScreenId { get; set; }
     public Hashtable WhereData { get; set; }

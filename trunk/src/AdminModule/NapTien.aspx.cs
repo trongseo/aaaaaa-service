@@ -66,7 +66,7 @@ public partial class AdminModule_NapTien : CommonPageFree
 
         System.Collections.Hashtable hs = new Hashtable();
         hs["Ghichu"] = TextBoxGhiChu.Text == "" ? "admin" : TextBoxGhiChu.Text;
-        sql = "UPDATE [SPWeb] " +
+        sql = "UPDATE [AGiaoDichNapTien] " +
         " SET [Ghichu] =@Ghichu" +
          " ,[Sotien] = " + TextBox3Price.Text.Trim() +
           " ,[Athanhvienid] = " + DropDownList1.SelectedValue.Trim() +
@@ -78,11 +78,14 @@ public partial class AdminModule_NapTien : CommonPageFree
          ArrayList ArrayListSQLHashTable = new ArrayList();
         ArrayListSQLHashTable.Add(hs);
 
-        string sql2 = " insert into ATaiKhoan(guid_id) values('" + guid + "') ";
+        string sql2 = "UPDATE [ATaiKhoan] " +
+        " SET [Sotien] =Sotien+ " + TextBox3Price.Text.Trim() +
+        //  " ,[Athanhvienid] = " + DropDownList1.SelectedValue.Trim() +
+        " WHERE Athanhvienid=" +  DropDownList1.SelectedValue.Trim() ;
         var hs2 = new Hashtable();
 
-
-
+        ArrayListSQL.Add(sql2);
+        ArrayListSQLHashTable.Add(hs2);
         myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "naptien");
     }
     protected void SaveButton_Click(object sender, EventArgs e)

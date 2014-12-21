@@ -101,6 +101,8 @@ public partial class AdminModule_NhanVien : CommonPageFree
             if (myid == "")
             {
                 myid = myUti.InsertData(sql, null);
+                string guidid = myUti.GetGuid_Id();
+                myUti.InsertData("insert into AtaiKhoan(guid_id,athanhvienid) values('" + guidid + "'," + myid + ");");
             }
             
             System.Collections.Hashtable hs = new Hashtable();
@@ -176,6 +178,7 @@ public partial class AdminModule_NhanVien : CommonPageFree
             " WHERE id=" + myid;
             myUti.UpdateData(sql, hs);
 
+        
             Response.Redirect("NhanVienList.aspx");
         
 
