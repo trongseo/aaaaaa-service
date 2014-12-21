@@ -123,6 +123,11 @@ public class SystemUti
         return yy + "-" + mm + "-" + dd;
 
     }
+    /// <summary>
+    /// , REPLACE(CONVERT(varchar(20), (CAST(([giathanh]) AS money)), 1), '.00', '')
+    /// </summary>
+    /// <param name="valueNumber"></param>
+    /// <returns></returns>
     public static string formatNumber(object valueNumber)
     {
         try
@@ -137,6 +142,25 @@ public class SystemUti
             return "0";
         }
     }
+    /// <summary>
+    /// tra ve dd-MM-yyyy
+    /// </summary>
+    /// <param name="valueNumber">Datetime object</param>
+    /// <returns></returns>
+    public static string formatDateShow(object valueNumber)
+    {
+        try
+        {
+            var datevalue = (DateTime)valueNumber;
 
+            return datevalue.ToString("dd-MM-yyyy");
+        }
+        catch (Exception ex)
+        {
+            Logs logger = new Logs();
+            logger.Debug(ex.ToString());
+            return "0";
+        }
+    }
 
 }

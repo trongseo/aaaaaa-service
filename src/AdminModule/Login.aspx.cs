@@ -48,7 +48,14 @@ public partial class AdminModule_Login : CommonPageN
              MySession.Current.SSUserId = dt.Rows[0]["Id"].ToString();
              MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
              MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
-            Response.Redirect("ItemList.aspx");
+             if (Request["href"] != null)
+             {
+                 Response.Redirect(Request["href"]);
+             }
+             else
+                 Response.Redirect("NhanVienlist.aspx");
+
+           
         }
     }
 }
