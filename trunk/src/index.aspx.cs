@@ -19,7 +19,8 @@ public partial class index : CommonPageFree
     {
         if (IsPostBack) return;
 
-        ProcessSearch();
+        Response.Redirect("Login.aspx");
+       // ProcessSearch();
     }
 
     public int RECORDS_COUNT = 0;
