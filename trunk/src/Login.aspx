@@ -100,6 +100,19 @@
     <script src="js/sb-admin-2.js"></script>
     <script>
         $('#TextBoxBarcode').focus();
+        $('#TextBoxBarcode').keypress(function (e) {
+            if (e.which == 13) {
+                event.preventDefault();
+                $("#ButtonLoginBarcode").trigger('click');
+                return false;
+
+                // enter pressed
+               // alert('x');
+                //$('#ButtonLoginBarcode').click();
+               
+                //document.getElementById('ButtonLoginBarcode').click();
+            }
+        });
     </script>
 </body>
 

@@ -119,26 +119,26 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Khung thời gian :</label>
-                                                    <asp:DropDownList ID="DropDownListThoiGian" CssClass="form-control" runat="server">
+                                                    <asp:DropDownList ID="DropDownListThoiGian"  data-validation="required" CssClass="form-control" runat="server">
                                                     </asp:DropDownList>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Chọn ngày giờ:</label>
-                                                    <asp:TextBox ID="TextBoxNgayDV" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBoxNgayDV" data-validation="required" runat="server" CssClass="form-control"></asp:TextBox>
                                                    
 <script >rome(TextBoxNgayDV, options = { "inputFormat": "DD-MM-YYYY HH:mm", });</script>
                                                 </div>
                                                
                                                 <div class="form-group">
                                                     <label>Chọn máy:</label>
-                                                    <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server">
+                                                    <asp:DropDownList ID="DropDownListAport" data-validation="required" CssClass="form-control" runat="server">
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="form-group">
                                                     <br />
-                                                    <asp:Button ID="ButtonChonDV" Text="Chọn dịch vụ" runat="server" Width="150px" Height="50px" />
-
+                                                   <input type="button" onclick="saveDichVu()"  name="ButtonChonDV" value="Chọn dịch vụ" id="ButtonChonDV" style="height:50px;width:150px;">
+                                                     <br /><span style="color:red;display:none" id="spdisable" >Hãy hoàn thành đơn hàng này trước khi chọn thêm dịch vụ.Hoặc xóa dịch vụ đi.</span>
                                                 </div>
 
 
@@ -169,11 +169,31 @@
                                                         LoadDichVu("0");
 
                                                     });
+                                                    //disable nut them dich vu
+                                                    function disablebuttonThemDV() {
+                                                       
+                                                        $.get("ajax.aspx?from=checkdisable&r=" + Math.random(), function (data, status) {
+                                                          
+                                                            if (data == 1) {
+                                                               // $('#ButtonChonDV').attr('disabled', 'disabled');
+                                                                $('#ButtonChonDV').attr('disabled', 'disabled');
+                                                                $('#ButtonChonDV').addClass('btn btn-default disabled');
+                                                                $('#spdisable').show();;
+                                                            } else {
+                                                                $('#ButtonChonDV').removeAttr('disabled', 'disabled');
+                                                                $('#ButtonChonDV').removeClass('btn btn-default disabled');
+                                                                $('#spdisable').hide();;
+                                                            }
+                                                        });
+
+                                                    }
                                                     function loadGrid()
                                                     {
+                                                      
                                                         $.get("ajaxgrid.aspx?from=giohang&r=" + Math.random(), function (data, status) {
                                                             // alert("Data: " + data + "\nStatus: " + status);
                                                             $('#dataTables-example_wrapper').html(data);
+                                                            disablebuttonThemDV();
                                                         });
                                                     }
                                                    
@@ -193,7 +213,7 @@
                                                                 dataType: 'json',
                                                                 error: function (error) {
                                                                     //alert('Server validation failed due to: ' + error.statusText);
-                                                                    alert('javascript:Server failed');
+                                                                    alert('Vui lòng nhập liệu chính xác!');
 
                                                                 },
                                                                 success: function (response) {
@@ -215,7 +235,7 @@
                                                        
                                                         LoadSP(objx.value);
                                                     }
-
+                                                   
                                                     function LoadSP(loaispid)
                                                     {
                                                        
@@ -246,6 +266,13 @@
                                                     }
                                                     function saveSP()
                                                     {
+                                                        if ($('#form1').isValid() == false)
+                                                        {
+                                                            alert("Nhập liệu chưa chính xác!");
+                                                            return;
+                                                        }
+                                                       
+
                                                         // DropDownListLoaiSP DropDownListSP TextBoxNgaySP
                                                        // DropDownListLoaiSP
                                                         var loaisp = $('#DropDownListLoaiSP').val();
@@ -273,6 +300,37 @@
 
                                                     }
 
+                                                    function saveDichVu() {
+                                                        if ($('#form1').isValid() == false) {
+                                                            alert("Nhập liệu chưa chính xác!");
+                                                            return;
+                                                        }
+                                                        var loaidvid = $('#DropDownListLoaiDV').val();
+                                                        var idthoigian = $('#DropDownListThoiGian').val();
+                                                        var ngaydv = $('#TextBoxNgayDV').val();
+                                                        var portid = $('#DropDownListAport').val();
+                                                        //alert(loaisp+ idsp+ngadv);
+                                                        //return;
+                                                        $.ajax({
+                                                            url: 'ajax.aspx?from=savedichvu&r=' + Math.random(),
+                                                            type: 'POST',
+                                                            cache: false,
+                                                            data: 'loaidvid=' + loaidvid + '&idthoigian=' + idthoigian + '&ngaydv=' + ngaydv + '&portid=' + portid,
+                                                            dataType: 'json',
+                                                            error: function (error) {
+                                                                //alert('Server validation failed due to: ' + error.statusText);
+                                                                alert('javascript:Server failed');
+
+                                                            },
+                                                            success: function (response) {
+
+                                                                loadGrid();
+                                                            }
+                                                        });
+
+                                                    }
+
+
                                                    
 </script>
                                                 <div class="form-group">
@@ -287,12 +345,12 @@
 
                                                  <div class="form-group">
                                                     <label>Số lượng:</label>
-                                                    <asp:TextBox ID="TextBoxSoLuong" Text="1" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBoxSoLuong" data-validation="number" Text="1" runat="server" CssClass="form-control"></asp:TextBox>
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Chọn ngày:</label>
-                                                    <asp:TextBox ID="TextBoxNgaySP" runat="server"  CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBoxNgaySP" data-validation="required" runat="server"  CssClass="form-control"></asp:TextBox>
                                                     <script >rome(TextBoxNgaySP, options = { "inputFormat": "DD-MM-YYYY" });</script>
                                                 </div>
 
@@ -357,7 +415,8 @@
                                                 <!-- /.table-responsive -->
                                                 <div class="form-group">
                                                     <br>
-                                                       <asp:Button ID="ButtonHoanThanh" Text="Hoàn thành"  runat="server" Width="94px" />
+                                                    <input type="button" name="ButtonHoanThanh" onclick="javascript:window.location='Ainfo.aspx?from=hoanthanh'" value="Hoàn thành" id="ButtonHoanThanh" style="height:50px;width:150px;">
+                                                       
                                                 </div>
                                             </div>
                                             <!-- /.panel-body -->
@@ -393,7 +452,6 @@
         <!-- Custom Theme JavaScript -->
         <script src="js/sb-admin-2.js"></script>
 
-    </form>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/jquery.form-validator.js"></script>
@@ -518,6 +576,9 @@
         }
 
     </script>
-</body>
+        
+
+    </form>
+    </body>
 
 </html>

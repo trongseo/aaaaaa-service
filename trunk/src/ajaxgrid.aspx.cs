@@ -17,14 +17,12 @@ public partial class ajaxgrid : CommonPageNhanVien
         {
             string guid_giohang = MySession.Current.SSGuidGioHang;
 
-           
-           
-             string sql = @" SELECT     AGioHangTemp.guid_id, AGioHangTemp.ngay, AGioHangTemp.gio, AGioHangTemp.loai, AGioHangTemp.idsp, AGioHangTemp.isdichvu, AGioHangTemp.sttmay, 
-                      AGioHangTemp.soluong, AGioHangTemp.giathanh, AGioHangTemp.acuahangid, AGioHangTemp.anhanvienid, AGioHangTemp.adonhang_guid_id, 
-                      AGioHangTemp.date_create, AGioHangTemp.guid_giohang, SPWeb.Title,AGioHangTemp.soluong * AGioHangTemp.giathanh as thanhtien
-FROM         AGioHangTemp INNER JOIN
-                      SPWeb ON AGioHangTemp.idsp = SPWeb.Id";
-             sql += " where AGioHangTemp.guid_giohang='" + guid_giohang + "'";
+
+
+            string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, aportid AS sttmay, soluong, giathanh, acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
+                         soluong * giathanh AS thanhtien
+FROM            AGioHangTemp ";
+             sql += " where guid_giohang='" + guid_giohang + "'";
             dt= myUti.GetDataTable(sql,null);
             
 
@@ -67,5 +65,24 @@ FROM         AGioHangTemp INNER JOIN
 
        
         
+    }
+    public  string getSPorDV(object oidspdv, object isdichvu)
+    {
+        string idspdv = oidspdv.ToString();
+        string isdv = isdichvu.ToString();
+        if (isdv != "1")
+        {
+
+            return myUti.GetOneField("Select title from spweb where id=" + idspdv);
+        }
+        else
+        {
+            string sqlx = @"
+SELECT        ADanhMucDV.Title + cast( ADichVu.SoPhut as varchar)+N' Phút'
+FROM            ADichVu INNER JOIN
+                         ADanhMucDV ON ADichVu.ADanhMucDVId = ADanhMucDV.Id";
+            sqlx += " where ADichVu.id=" + idspdv;
+            return myUti.GetOneField(sqlx);
+        }
     }
 }
