@@ -1265,7 +1265,7 @@
         */
         LANG : {
             errorTitle : 'Form submission failed!',
-            requiredFields : 'You have not answered all required fields',
+            requiredFields : 'Vui lòng nhập !',
             badTime : 'You have not given a correct time',
             badEmail : 'Email không đúng!',
             badTelephone : 'You have not given a correct phone number',

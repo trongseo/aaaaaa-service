@@ -26,6 +26,53 @@ public partial class ajax : CommonPageNhanVien
             Response.End();
             return;
         }
+         //url: 'ajax.aspx?from=savedichvu& 'loaidvid=' + loaidvid + '&idthoigian=' + idthoigian + '&ngaydv=' + ngaydv + '&portid=' + portid
+          if (Request["from"] == "savedichvu")
+          {
+              string guid_giohang = MySession.Current.SSGuidGioHang;
+
+              //kiem tra xem gio hang da co san pham nay chua
+              string idthoigian = GetPara("idthoigian");
+              string sqlcheck = "select guid_id from agiohangtemp where isdichvu=1 and guid_giohang='" + MySession.Current.SSGuidGioHang + "' and idsp=" + idthoigian;
+              string isexist = myUti.CheckExist(sqlcheck);
+              string guid = isexist;
+              if (isexist != null)
+              {
+                  //update sp len
+              }
+              else
+              {
+                  guid = myUti.GetGuid_Id();
+                  //insert vao
+                  string sqli = " insert into AGioHangTemp(soluong,guid_id,anhanvienid,isdichvu,guid_giohang) values(1,'" + guid + "'," + MySession.Current.SSUserId + ",1,'" + guid_giohang + "') ";
+                  myUti.ExecuteSql(sqli, null);
+              }
+              string loaisp = GetPara("loaidvid");
+              string ngadv = SystemUti.ConverDDMMYYYYtoYYYYMMDD(GetPara("ngaydv"));
+              string portid = GetPara("portid");
+              string giathanh = myUti.GetOneField("Select PriceSale from ADichVu where id=" + idthoigian);
+
+              System.Collections.Hashtable hs = new Hashtable();
+
+              string sql = "UPDATE [AGioHangTemp] " +
+              " SET [ngay] ='" + ngadv + "'" +
+               " ,[idsp] = " + idthoigian +
+                " ,aportid = " + portid +
+                  " ,[giathanh] = " + giathanh +
+              " WHERE guid_id='" + guid + "'";
+              myUti.UpdateData(sql, hs);
+
+
+
+              //   data: 'DropDownListLoaiSP=' + loaisp +'&DropDownListSP=' + idsp +'TextBoxNgaySP=' + ngadv ,
+
+
+              Response.Clear();
+              Response.Write("1");
+              Response.End();
+              return;
+          }
+
         if (Request["from"] == "savesp")
         {
             string guid_giohang = MySession.Current.SSGuidGioHang;
@@ -43,7 +90,7 @@ public partial class ajax : CommonPageNhanVien
              {
                  guid = myUti.GetGuid_Id();
                  //insert vao
-                 string sqli = " insert into AGioHangTemp(guid_id,anhanvienid,isdichvu,guid_giohang) values('" + guid + "',"+ MySession.Current.SSUserId +",0,'" + guid_giohang + "') ";
+                 string sqli = " insert into AGioHangTemp(soluong,guid_id,anhanvienid,isdichvu,guid_giohang) values(0,'" + guid + "'," + MySession.Current.SSUserId + ",0,'" + guid_giohang + "') ";
                  myUti.ExecuteSql(sqli, null);
              }
              string loaisp = GetPara("DropDownListLoaiSP");
@@ -130,8 +177,23 @@ public partial class ajax : CommonPageNhanVien
             Response.End();
             return;
         }
+        //disable button cho dich vu
+        if (Request["from"] == "checkdisable")
+        {
+            string results = "";
+            string sqlex = "SELECT   guid_id FROM   AGioHangTemp  where isdichvu=1 and guid_giohang='" + MySession.Current.SSGuidGioHang+ "'  ";
 
-       
-        
+            string val = myUti.CheckExist(sqlex);
+          
+            results = "0";
+           if (val!=null)
+	        {
+                results = "1";
+	        }
+           Response.Clear();
+            Response.Write(results);
+            Response.End();
+            return;
+        }
     }
 }

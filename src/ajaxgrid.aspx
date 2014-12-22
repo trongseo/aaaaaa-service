@@ -26,7 +26,7 @@
                             %>
   <tr class="gradeA <%=odd%>">
                                                                     <td class="sorting_1"><%= SystemUti.formatDateShow( dr["ngay"])%></td>
-                                                                    <td class=" "><%=dr["title"]%></td>
+                                                                    <td class=" "><%= getSPorDV(dr["title"], dr["isdichvu"] )%></td>
                                                                    
                                                                     <td class="center "><%=dr["sttmay"]%></td>
                                                                     <td class="center "><%=dr["soluong"]%>*<%= SystemUti.formatNumber( dr["giathanh"])%></td>
