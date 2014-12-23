@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AInfo.aspx.cs" Inherits="AInfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AInfo.aspx.cs" EnableEventValidation="false" Inherits="AInfo" %>
 
 <%@ Register Src="UCLeftAdmin.ascx" TagName="UCLeftAdmin" TagPrefix="uc1" %>
 
@@ -58,8 +58,9 @@
                                             </div>
                                             <div class="form-group">
 
-                                                <asp:Button ID="ButtonCapNhatTaiKhoan" Text="Cập nhật" runat="server" Width="150px" Height="50px" />
-
+                                              
+                                                
+                                                <input type="button" name="ButtonCapNhatTaiKhoan" onclick="javascript:window.location='ThanhVien.aspx'" value="Cập nhật" id="ButtonCapNhatTaiKhoan" style="height:50px;width:150px;">
                                             </div>
                                         </div>
 
@@ -73,12 +74,12 @@
                                         <div class="well">
                                             <div class="form-group">
                                                 <label>Mã nạp tiền</label>
-                                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox ID="TextBoxMaNapTien" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
 
                                             <div class="form-group">
 
-                                                <asp:Button ID="ButtonNapTien" Text="Nạp tiền" runat="server" Width="150px" Height="50px" />
+                                                <asp:Button ID="ButtonNapTien" Text="Nạp tiền" runat="server" Width="150px" Height="50px" OnClick="ButtonNapTien_Click" />
                                                 <input type="button" name="ButtonNhanVienw" value="Nhờ nhân viên nạp tiền" onclick="javascript: window.location.href = 'NapTienKhachHang.aspx'" id="ButtonNhanVien" style="height: 50px; width: 250px;">
                                             </div>
                                         </div>

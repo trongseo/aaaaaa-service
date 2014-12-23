@@ -45,7 +45,17 @@ public class CommonPageNhanVien : System.Web.UI.Page
        
     }
 
+    public  float kiemTraTien(string userid)
+    {
+        var myUti1 = new MyUtilities();
+        string guidgiohang = MySession.Current.SSGuidGioHang;
+        string sql1 = " select sum(soluong*giathanh) from agiohangtemp where    guid_giohang='" + guidgiohang + "'";
+        string sumvale = myUti1.GetOneField(sql1);
+        string tientk = myUti1.GetOneField("Select  SoTien from ATaiKhoan where athanhvienid=" + userid);
+        float tiencon = float.Parse(tientk) - float.Parse(sumvale);
+        return tiencon;
 
+    }
     public string GetPara(string paraName)
     {
         if (Request[paraName]!=null)
