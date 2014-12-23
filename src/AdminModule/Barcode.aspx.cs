@@ -103,4 +103,22 @@ public partial class AdminModule_Barcode : CommonPageFree
         updateBarcode();
         Response.Redirect("Barcode.aspx");
     }
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string userid = DropDownList1.SelectedValue;
+        var dtt = myUti.GetDataTable("select id from ATheThanhVien where anhanvienid=" + userid + " and acuahangid=" + MySession.Current.SSCuaHangId);
+        if (dtt.Rows.Count == 1)
+        {
+            string idd = dtt.Rows[0]["id"].ToString();
+            Response.Redirect("barcode.aspx?id=" + idd);
+        }
+        else
+        {
+            CheckBoxIslock.Checked = false;
+            TextBoxBarcode.Text = "";
+
+        }
+        
+        
+    }
 }

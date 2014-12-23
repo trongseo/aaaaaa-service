@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="form-group">
                                             Tên<label> </label>
-&nbsp;<asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" >
+&nbsp;<asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" >
                                         </asp:DropDownList>
                                         </div>
 
