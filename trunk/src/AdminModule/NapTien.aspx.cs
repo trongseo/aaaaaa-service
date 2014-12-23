@@ -20,29 +20,34 @@ public partial class AdminModule_NapTien : CommonPageFree
         DropDownList1.DataTextField = "title";
         DropDownList1.DataValueField = "id";
         DropDownList1.DataBind();
-       
-        if (Request["Id"] != null)
+        if (Request["anhanvienid"] != null)
         {
-
-            string myid = Request["Id"];
-            //        ,[Title]
-            //,[DateCreate]
-            //,[Shortdescription]
-            //,[Description]
-            //,[ImageNews]
-            //,[IsActive]
-            //,[IsDelete]
-            //,[ViewPriority]
-            //,[IsHome]
-            //,[CateId]
-            string sql = " SELECT * " +
-              "  FROM [aGiaodichnaptien]  where id=" + myid;
-            DataRow dr = myUti.GetDataRow(sql);
-
-            TextBox3Price.Text = dr["Sotien"].ToString();
-            TextBoxGhiChu.Text = dr["Ghichu"].ToString();
-            DropDownList1.SelectedValue = dr["Athanhvienid"].ToString();
+          
+            DropDownList1.SelectedValue = Request["anhanvienid"];
+            return;
         }
+        //if (Request["Id"] != null)
+        //{
+
+        //    string myid = Request["Id"];
+        //    //        ,[Title]
+        //    //,[DateCreate]
+        //    //,[Shortdescription]
+        //    //,[Description]
+        //    //,[ImageNews]
+        //    //,[IsActive]
+        //    //,[IsDelete]
+        //    //,[ViewPriority]
+        //    //,[IsHome]
+        //    //,[CateId]
+        //    string sql = " SELECT * " +
+        //      "  FROM [aGiaodichnaptien]  where id=" + myid;
+        //    DataRow dr = myUti.GetDataRow(sql);
+
+        //    TextBox3Price.Text = dr["Sotien"].ToString();
+        //    TextBoxGhiChu.Text = dr["Ghichu"].ToString();
+        //    DropDownList1.SelectedValue = dr["Athanhvienid"].ToString();
+        //}
         //myUti.
     }
     void updateNaptien()
@@ -69,6 +74,7 @@ public partial class AdminModule_NapTien : CommonPageFree
         sql = "UPDATE [AGiaoDichNapTien] " +
         " SET [Ghichu] =@Ghichu" +
          " ,[Sotien] = " + TextBox3Price.Text.Trim() +
+           " ,[loaigiaodich] = " + Constants.GiaoDich_naptien +
           " ,[Athanhvienid] = " + DropDownList1.SelectedValue.Trim() +
             " ,[ACuaHangId] = " + MySession.Current.SSCuaHangId +
         " WHERE id=" + myid;
@@ -91,7 +97,7 @@ public partial class AdminModule_NapTien : CommonPageFree
     protected void SaveButton_Click(object sender, EventArgs e)
     {
         updateNaptien();
-        Response.Redirect("NapTienList.aspx");
+        Response.Redirect("NhanVienList.aspx");
     }
 
    

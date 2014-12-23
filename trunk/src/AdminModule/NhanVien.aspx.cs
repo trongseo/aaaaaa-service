@@ -96,7 +96,7 @@ public partial class AdminModule_NhanVien : CommonPageFree
         }
            
 
-            string sql = " insert into ANhanVien(acuahangid,mavach) values( "+ MySession.Current.SSCuaHangId + ",'') ";
+            string sql = " insert into ANhanVien(acuahangid) values( "+ MySession.Current.SSCuaHangId + ") ";
             string myid = HiddenFieldId.Value;
             if (myid == "")
             {
@@ -171,7 +171,7 @@ public partial class AdminModule_NhanVien : CommonPageFree
                   " ,[CMND] =@CMND" +
                    " ,[CongViec] =@CongViec" +
                     " ,[DiaChi] =@DiaChi" +
-                     " ,[MaVach] =@MaVach" +
+                   
                       " ,[GioiTinh] =" + isgioitinh +
                " ,[APhanCapId] =" + DropDownListAPhanCapId.SelectedValue +
                  " ,[ALoaiThanhVienId] =" + DropDownListALoaiThanhVienId.SelectedValue +

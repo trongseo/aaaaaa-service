@@ -72,7 +72,21 @@ public partial class ajax : CommonPageNhanVien
               Response.End();
               return;
           }
+        
+        //kiem tra tien cua nhanvien con du de mua hang ko
+              if (Request["from"] == "kiemtratien")
+              {
+                  string resultr = "1";
+                  if (ajax.kiemTraTien(MySession.Current.SSUserId) < 0)
+                  {
+                      resultr = "0";
+                  }
+                     Response.Clear();
+                     Response.Write(resultr);
+                    Response.End();
+                    return;
 
+              }
         if (Request["from"] == "savesp")
         {
             string guid_giohang = MySession.Current.SSGuidGioHang;
@@ -195,5 +209,17 @@ public partial class ajax : CommonPageNhanVien
             Response.End();
             return;
         }
+    }
+
+    public static float kiemTraTien(string userid)
+    {
+        var myUti1 = new MyUtilities();
+        string guidgiohang = MySession.Current.SSGuidGioHang;
+        string sql1 = " select sum(soluong*giathanh) from agiohangtemp where    guid_giohang='" + guidgiohang + "'";
+        string sumvale = myUti1.GetOneField(sql1);
+        string tientk = myUti1.GetOneField("Select  REPLACE(CONVERT(varchar(20), (CAST(([SoTien]) AS money)), 1), '.00', '')  from ATaiKhoan where athanhvienid=" + userid);
+        float tiencon = float.Parse(tientk) - float.Parse(sumvale);
+        return tiencon;
+
     }
 }

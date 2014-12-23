@@ -415,8 +415,24 @@
                                                 <!-- /.table-responsive -->
                                                 <div class="form-group">
                                                     <br>
-                                                    <input type="button" name="ButtonHoanThanh" onclick="javascript:window.location='Ainfo.aspx?from=hoanthanh'" value="Hoàn thành" id="ButtonHoanThanh" style="height:50px;width:150px;">
-                                                       
+                                                    <input type="button" name="ButtonHoanThanh" onclick="hoanthanhclick()" value="Hoàn thành" id="ButtonHoanThanh" style="height:50px;width:150px;">
+                                                       <script>
+                                                           function hoanthanhclick()
+                                                           {
+                                                               //javascript:window.location='Ainfo.aspx?from=hoanthanh'
+                                                              
+                                                                   $.get("ajax.aspx?from=kiemtratien&r=" + Math.random(), function (data, status) {
+                                                                       // alert("Data: " + data + "\nStatus: " + status);
+                                                                       if (data == "0")
+                                                                       {
+                                                                           alert("Tài khoản không đủ tiền!Vui lòng nạp thêm tiền.")
+                                                                           return;
+                                                                       }
+                                                                       //disablebuttonThemDV();
+                                                                       window.location = 'Ainfo.aspx?from=hoanthanh';
+                                                                   });
+                                                           }
+                                                       </script> 
                                                 </div>
                                             </div>
                                             <!-- /.panel-body -->
