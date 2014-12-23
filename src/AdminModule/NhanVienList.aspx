@@ -59,7 +59,8 @@
                                             <th>Tên </th>
                                             <th >Loại thành viên</th>
                                             <th>Cấp bậc </th>
-                                            <th >Số lượng</th>
+                                            <th >Tên đăng nhập-Email</th>
+                                             <th >Tài khoản có</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,6 +86,7 @@
                                             <td > <%= getLoaiThanhVien(dr["ALoaiThanhVienId"]) %> </td>
                                             <td class="center"> <%= getLoaiThanhVien(dr["APhanCapId"]) %> </td>
                                             <td class="center" > <%=dr["TenDangNhap"]%> - <%=dr["Email"]%></td>
+                                               <td class="center" > <%=tientkcon(dr["Id"])%>  <a href="Naptien.aspx?anhanvienid=<%=dr["Id"]%>">[ nạp tiền]</a></td>
                                         </tr>
 
 	

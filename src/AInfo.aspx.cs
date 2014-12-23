@@ -81,23 +81,49 @@ public partial class AInfo : CommonPageNhanVien
 
     }
 
-
+   
     protected void ButtonHoanThanh()
     {
+        
+        if (ajax.kiemTraTien(MySession.Current.SSUserId) < 0)
+        {
+            SystemUti.Show("Không còn đủ tiền để hoàn thành đơn hàng này.Vui lòng nạp thêm tiền hoặc bỏ bớt dịch vụ!");
+            return;
+        }
         string guidgiohang = MySession.Current.SSGuidGioHang;
-
+        string userid = MySession.Current.SSUserId;
+        string SSCuaHangId = MySession.Current.SSCuaHangId; 
         string sql1 = " update agiohangtemp set adonhang_guid_id='" + guidgiohang + "'  where guid_giohang='" + guidgiohang + "'";
         string madonhang = DateTime.Now.ToString("yyMMddHHmmss") + MySession.Current.SSUserId;
            
             string sqlxd = "  INSERT INTO [dbo].[ADonHang]( [guid_id] ,[Athanhvienid],[ACuaHangId],[MaDonHang])   VALUES('" + guidgiohang + "'," + MySession.Current.SSUserId + "," + MySession.Current.SSCuaHangId + ",'" + madonhang + "')";
 
+
+            string sql1x = " select sum(soluong*giathanh) from agiohangtemp where    guid_giohang='" + guidgiohang + "'";
+            string SotienMuahang = myUti.GetOneField(sql1x);
+            string sqlinsertgiaodich = "INSERT INTO AGiaoDichNapTien(Adonhang_guid_id,[guid_id],[Athanhvienid],[Sotien],[ACuaHangId],[LoaiGiaoDich]) values('" + guidgiohang + "','" + guidgiohang + "'," + userid + ",-" + SotienMuahang + "," + SSCuaHangId + "," + Constants.GiaoDich_muahang + ")";
+
+          
+            string sqlCapNhatTaiKhoan = "UPDATE [ATaiKhoan] " +
+         " SET [Sotien] =Sotien - " + SotienMuahang +
+         " WHERE Athanhvienid=" + userid;
             ArrayList arsql = new ArrayList();
             arsql.Add(sql1);
             arsql.Add(sqlxd);
+            arsql.Add(sqlinsertgiaodich);
+            arsql.Add(sqlCapNhatTaiKhoan);
+        
+        
             ArrayList arHS = new ArrayList();
             arHS.Add(new Hashtable());
             arHS.Add(new Hashtable());
-            myUti.InsertTrans(arsql, arHS, "commitdonhang");
+            arHS.Add(new Hashtable());
+            arHS.Add(new Hashtable());
+            if (myUti.InsertTrans(arsql, arHS, "commitdonhang") == "0")
+            {
+                SystemUti.Show("Hoàn thành đơn hàng thất bại");
+                return;
+            }
             MySession.Current.SSGuidGioHang = null;
         //tru tien khach hang
             Response.Redirect("Ainfo.aspx");

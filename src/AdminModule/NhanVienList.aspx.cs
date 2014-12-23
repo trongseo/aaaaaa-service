@@ -102,6 +102,12 @@ public partial class AdminModule_NhanVienList : CommonPageFree
         string idloai = idloaio.ToString();
         return myUti.GetOneField("Select Cname from aconst where cid=" + idloai);
     }
+    public string tientkcon(object ouserid)
+    {
+        string userid = ouserid.ToString();
+        string tientk = myUti.GetOneField("Select  REPLACE(CONVERT(varchar(20), (CAST(([SoTien]) AS money)), 1), '.00', '')  from ATaiKhoan where athanhvienid=" + userid);
+        return tientk;
+    }
     public string quesryxx_ = "";
     public string link = "";
     public string end_page = "";
