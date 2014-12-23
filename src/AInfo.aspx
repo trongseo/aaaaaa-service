@@ -90,7 +90,7 @@
                                             </div>
                                             <div class="panel-body">
                                                 <div class="form-group">
-                                                    <asp:Button ID="ButtonDangKyThanhVien" Text="Đăng ký thành viên" runat="server" Width="150px" Height="50px" />
+                                                    
                                                     <asp:Button ID="ButtonGioDiLam" Text="Giờ đi làm" runat="server" Width="150px" Height="50px" />
                                                     <asp:Button ID="ButtonGioTanCa" Text="Giờ tan ca" runat="server" Width="150px" Height="50px" />
 

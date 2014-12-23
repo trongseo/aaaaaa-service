@@ -92,16 +92,7 @@
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                   
-                                    <div class="form-group">
-                                            <label>Cấp bậc</label>
-                                             <asp:DropDownList ID="DropDownListAPhanCapId" CssClass="form-control" runat="server" />
-                                           
-                                        </div>
-                                     <div class="form-group">
-                                            <label>Loại thành viên</label>
-                                             <asp:DropDownList ID="DropDownListALoaiThanhVienId" CssClass="form-control" runat="server" />
-                                           
-                                        </div>
+                  
                                      <div class="form-group">
                                             <label>Thấu chi</label>
                                             <asp:TextBox ID="TextBoxThauChi" onkeyup="formatNumerNew(this)" Text="0" onfocus="formatNumerNew(this)"  data-validation="number"  runat="server"  CssClass="form-control"></asp:TextBox>
@@ -136,7 +127,16 @@
                                         </div>
                                         </div>
                                            
-                                            
+                                                              <div class="form-group" style="display:none">
+                                            <label>Cấp bậc</label>
+         <asp:DropDownList ID="DropDownListAPhanCapId" CssClass="form-control" runat="server" />
+                                           
+                                        </div>
+                                     <div class="form-group"  style="display:none">
+                                            <label>Loại thành viên</label>
+                                             <asp:DropDownList ID="DropDownListALoaiThanhVienId" CssClass="form-control" runat="server" />
+                                           
+                                        </div>
                                             
                                         </fieldset>
                                   <br />

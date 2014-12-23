@@ -75,7 +75,7 @@ public partial class AdminModule_NhanVienList : CommonPageFree
         Session["hs"] = hs;
         //Session["drop"] = DropDownList1.SelectedValue;
 
-        string tblname = "ANhanVien";
+        string tblname = "anhanvien";
         string order_by = "Id";
         string sqlx = " WITH Ordered1 AS " +
         " (SELECT *, ROW_NUMBER() OVER (order by " + order_by + ") as RowNumber " +

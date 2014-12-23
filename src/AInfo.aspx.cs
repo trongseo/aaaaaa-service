@@ -175,7 +175,7 @@ public partial class AInfo : CommonPageNhanVien
         " WHERE Athanhvienid=" + Athanhvienid;
         var hs2 = new Hashtable();
 
-        string sqlAthecao = "UPDATE [ATaiKhoan] " +
+        string sqlAthecao = "UPDATE [Athecao] " +
         " SET [isfinish] =1 " +
              " ,[islock] = 1,NgayNap=getdate()" +
         " WHERE id=" + drgia["id"].ToString();
@@ -186,9 +186,17 @@ public partial class AInfo : CommonPageNhanVien
         ArrayListSQL.Add(sqlAthecao);
         ArrayListSQLHashTable.Add(new Hashtable());
 
-        myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "naptienthe");
+        if (myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "naptienthe") == "0")
+        {
+            SystemUti.Show("Bị lỗi khi nạp tiền");
+        }
+        else
+        {
+            //SystemUti.Show("Đã nạp thành công[" + giatien + "] vào tài khoản.", "window.location.href='Ainfo.aspx'");
+            Response.Redirect("Ainfo.aspx");
+        }
        // Response.Redirect("Ainfo.aspx");
-        SystemUti.Show("Đã nạp thành công["+giatien+"] vào tài khoản.","window.location.href='Ainfo.aspx'");
+      
 
     }
 }
