@@ -17,12 +17,18 @@ public partial class Login : CommonPageN
         {
             return;
         }
+        
         DataTable dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id from ACuaHang ");
         DropDownList1.DataSource = dtc;
         DropDownList1.DataTextField = "title";
         DropDownList1.DataValueField = "id";
         DropDownList1.DataBind();
-        
+
+         if (Request.Cookies["Achuahangid"] != null) {
+             var value = Request.Cookies["Achuahangid"].Value;
+             DropDownList1.SelectedValue = value;
+        } 
+
         if (GetPara("from") == "logout")
         {
             Session.Clear();
@@ -76,6 +82,19 @@ WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
         MySession.Current.SSUserFullName = dtcheck.Rows[0]["HoTen"].ToString();
         MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
         MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
+
+        HttpCookie cookie = new HttpCookie("Achuahangid");
+
+        //Set the cookies value
+        cookie.Value = DropDownList1.SelectedValue;
+
+        //Set the cookie to expire in 1 minute
+       
+        cookie.Expires = new DateTime(2030, 1, 1);
+
+        //Add the cookie
+        Response.Cookies.Add(cookie);
+
         if (Request["href"] != null)
         {
             Response.Redirect(Request["href"]);
