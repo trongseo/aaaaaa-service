@@ -59,8 +59,8 @@ public partial class AInfo : CommonPageNhanVien
         DropDownListAport.DataValueField = "id";
         DropDownListAport.DataBind();
 
-        DropDownListAport.Items.Insert(0, new ListItem("...Chọn..", ""));
-        DropDownListAport.SelectedIndex = 0;
+        //DropDownListAport.Items.Insert(0, new ListItem("...Chọn..", ""));
+        //DropDownListAport.SelectedIndex = 0;
 
 
         //loai dich vu
@@ -85,7 +85,7 @@ public partial class AInfo : CommonPageNhanVien
     protected void ButtonHoanThanh()
     {
         
-        if (ajax.kiemTraTien(MySession.Current.SSUserId) < 0)
+        if (kiemTraTien(MySession.Current.SSUserId) < 0)
         {
             SystemUti.Show("Không còn đủ tiền để hoàn thành đơn hàng này.Vui lòng nạp thêm tiền hoặc bỏ bớt dịch vụ!");
             return;
@@ -127,6 +127,68 @@ public partial class AInfo : CommonPageNhanVien
             MySession.Current.SSGuidGioHang = null;
         //tru tien khach hang
             Response.Redirect("Ainfo.aspx");
+
+    }
+    protected void ButtonNapTien_Click(object sender, EventArgs e)
+    {
+        string manaptien = TextBoxMaNapTien.Text;
+        Hashtable hs22 = new Hashtable();
+        hs22["manaptien"] = manaptien;
+        var drgia = myUti.GetDataRowNull("Select * from Athecao where sothecao=@manaptien and isfinish=0 and islock=0 and ngaybatdau<= getdate() and ngayketthuc >=getdate() ", hs22);
+      if (drgia==null)
+      {
+          SystemUti.Show("Thẻ cào sai hoặc đã hết hạn!Vui lòng kiểm tra lại.");
+          return;
+      }
+      string giatien = drgia["gia"].ToString(); 
+        string Athanhvienid = MySession.Current.SSUserId;
+        string guid = myUti.GetGuid_Id();
+        string sql = " insert into aGiaodichnaptien(guid_id) values('" + guid + "') ";
+        string myid = "";
+        if (Request["Id"] == null)
+        {
+            myid = myUti.InsertData(sql, null);
+        }
+        else
+        {
+            myid = Request["Id"];
+        }
+
+        System.Collections.Hashtable hs = new Hashtable();
+        hs["Ghichu"] = "manaptien:"+manaptien;
+        sql = "UPDATE [AGiaoDichNapTien] " +
+        " SET [Ghichu] =@Ghichu" +
+         " ,[Sotien] = " + giatien +
+           " ,[loaigiaodich] = " + Constants.GiaoDich_napthecao +
+          " ,[Athanhvienid] = " + Athanhvienid +
+            " ,[ACuaHangId] = " + MySession.Current.SSCuaHangId +
+        " WHERE id=" + myid;
+        myUti.UpdateData(sql, hs);
+        ArrayList ArrayListSQL = new ArrayList();
+        ArrayListSQL.Add(sql);
+        ArrayList ArrayListSQLHashTable = new ArrayList();
+        ArrayListSQLHashTable.Add(hs);
+
+        string sql2 = "UPDATE [ATaiKhoan] " +
+        " SET [Sotien] =Sotien+ " +giatien+
+            //  " ,[Athanhvienid] = " + DropDownList1.SelectedValue.Trim() +
+        " WHERE Athanhvienid=" + Athanhvienid;
+        var hs2 = new Hashtable();
+
+        string sqlAthecao = "UPDATE [ATaiKhoan] " +
+        " SET [isfinish] =1 " +
+             " ,[islock] = 1,NgayNap=getdate()" +
+        " WHERE id=" + drgia["id"].ToString();
+
+        ArrayListSQL.Add(sql2);
+        ArrayListSQLHashTable.Add(hs2);
+
+        ArrayListSQL.Add(sqlAthecao);
+        ArrayListSQLHashTable.Add(new Hashtable());
+
+        myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "naptienthe");
+       // Response.Redirect("Ainfo.aspx");
+        SystemUti.Show("Đã nạp thành công["+giatien+"] vào tài khoản.","window.location.href='Ainfo.aspx'");
 
     }
 }
