@@ -11,6 +11,16 @@
     <!--#include file="htexnew.aspx"-->
     <link href='js/calendar/rome.css' rel='stylesheet' type='text/css' />
 <script src='js/calendar/rome.js'></script>
+    <style>
+        .well {
+               padding: 1px;
+margin-bottom: 2px;
+        }
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -48,18 +58,12 @@
                                         <div class="well">
                                             <div class="form-group">
                                                 <label>Xin chào quí khách:</label>
-                                                <asp:TextBox ID="TextBoxTenDangNhap" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
+                                                <asp:Label ID="TextBoxTenDangNhap" runat="server" ></asp:Label> <label>Tài khoản quí khách còn:</label>
+                                                <asp:Label ID="TextBoxTienTrongTK"  ReadOnly="true" runat="server" ></asp:Label>
 
                                             </div>
-                                            <div class="form-group">
-                                                <label>Tài khoản quí khách còn:</label>
-                                                <asp:TextBox ID="TextBoxTienTrongTK"  ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
-
-                                            </div>
+                                           
                                             <div class="panel-heading">
-
-                                              
-                                                
                                                     <a href="ChangePassword.aspx" style="display:inline-block">
                             <div class="panel-footer" style="width:130px;display:inline-block">
                                 <span class="pull-left">Đổi mật khẩu</span>
@@ -69,6 +73,18 @@
                         </a> <a href="ThanhVien.aspx" style="display:inline-block">
                             <div class="panel-footer" style="width:130px;display:inline-block">
                                 <span class="pull-left">Cập nhật</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a> <a href="LichsuList.aspx" style="display:inline-block">
+                            <div class="panel-footer" style="width:130px;display:inline-block">
+                                <span class="pull-left">Ds giao dịch</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a><a href="donhanglist.aspx" style="display:inline-block">
+                            <div class="panel-footer" style="width:130px;display:inline-block">
+                                <span class="pull-left">Ds đơn hàng</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -95,7 +111,7 @@
                                                 <input type="button" name="ButtonNhanVienw" value="Nhờ nhân viên nạp tiền" onclick="javascript: window.location.href = 'NapTienKhachHang.aspx'" id="ButtonNhanVien" style="height: 50px; width: 250px;">
                                             </div>
                                         </div>
-                                        <div class="panel panel-primary">
+                                     <%--   <div class="panel panel-primary">
 
                                             <div class="panel-heading">
                                                 Khu vực nhân viên
@@ -110,7 +126,7 @@
                                             </div>
 
 
-                                        </div>
+                                        </div>--%>
 
 
 
@@ -206,7 +222,7 @@
                                                         $.get("ajaxgrid.aspx?from=giohang&r=" + Math.random(), function (data, status) {
                                                             // alert("Data: " + data + "\nStatus: " + status);
                                                             $('#dataTables-example_wrapper').html(data);
-                                                            disablebuttonThemDV();
+                                                           // disablebuttonThemDV();
                                                         });
                                                     }
                                                    

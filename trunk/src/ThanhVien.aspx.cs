@@ -22,6 +22,7 @@ public partial class ThanhVien : CommonPageNhanVien
  //     ,[CId]
  // FROM  [AConst]
  //where ctype=1
+       
         DataTable dtc = myUti.GetDataTable("Select CName AS title,CId AS id from AConst where ctype=1");
         DropDownListAPhanCapId.DataSource = dtc;
         DropDownListAPhanCapId.DataTextField = "title";
@@ -33,7 +34,7 @@ public partial class ThanhVien : CommonPageNhanVien
         DropDownListALoaiThanhVienId.DataTextField = "title";
         DropDownListALoaiThanhVienId.DataValueField = "id";
         DropDownListALoaiThanhVienId.DataBind();
-
+        
 
         DataTable dtcquan = myUti.GetDataTable(" Select TenQuan AS title,Id AS id from AQuan order by stt ");
         DropDownListQuan.DataSource = dtcquan;
@@ -51,6 +52,11 @@ public partial class ThanhVien : CommonPageNhanVien
             DataRow drone = myUti.GetDataRow("Select * from Anhanvien where id=" + idget);
             DropDownListALoaiThanhVienId.SelectedValue = drone["ALoaiThanhVienId"].ToString();
             DropDownListAPhanCapId.SelectedValue = drone["APhanCapId"].ToString();
+            if (drone["APhanCapId"].ToString() != Constants.PhanCap_Nguoidung)
+            {
+                Button1.Enabled = false;
+            }
+            
             DropDownListQuan.SelectedValue = drone["QuanId"].ToString();
             TextBoxCMND.Text = drone["APhanCapId"].ToString();
             TextBoxTenDangNhap.Text = drone["TenDangNhap"].ToString();
@@ -93,7 +99,10 @@ public partial class ThanhVien : CommonPageNhanVien
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-      
+        //if (DropDownListAPhanCapId. != Constants.PhanCap_Nguoidung)
+        //{
+        //    Button1.Enabled = false;
+        //}
         string email = TextBoxEmail.Text.Trim();
         if (!kiemTraDuLieu())
         {

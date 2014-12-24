@@ -94,15 +94,16 @@ public partial class AInfo : CommonPageNhanVien
         string userid = MySession.Current.SSUserId;
         string SSCuaHangId = MySession.Current.SSCuaHangId; 
         string sql1 = " update agiohangtemp set adonhang_guid_id='" + guidgiohang + "'  where guid_giohang='" + guidgiohang + "'";
-        string madonhang = DateTime.Now.ToString("yyMMddHHmmss") + MySession.Current.SSUserId;
+        string madonhang = DateTime.Now.ToString("MMddHHmmss") + MySession.Current.SSUserId;
            
             string sqlxd = "  INSERT INTO [dbo].[ADonHang]( [guid_id] ,[Athanhvienid],[ACuaHangId],[MaDonHang])   VALUES('" + guidgiohang + "'," + MySession.Current.SSUserId + "," + MySession.Current.SSCuaHangId + ",'" + madonhang + "')";
 
 
             string sql1x = " select sum(soluong*giathanh) from agiohangtemp where    guid_giohang='" + guidgiohang + "'";
             string SotienMuahang = myUti.GetOneField(sql1x);
-            string sqlinsertgiaodich = "INSERT INTO AGiaoDichNapTien(Adonhang_guid_id,[guid_id],[Athanhvienid],[Sotien],[ACuaHangId],[LoaiGiaoDich]) values('" + guidgiohang + "','" + guidgiohang + "'," + userid + ",-" + SotienMuahang + "," + SSCuaHangId + "," + Constants.GiaoDich_muahang + ")";
-
+            string sqlinsertgiaodich = "INSERT INTO AGiaoDichNapTien(Ghichu,Adonhang_guid_id,[guid_id],[Athanhvienid],[Sotien],[ACuaHangId],[LoaiGiaoDich]) values(@Ghichu,'" + guidgiohang + "','" + guidgiohang + "'," + userid + ",-" + SotienMuahang + "," + SSCuaHangId + "," + Constants.GiaoDich_muahang + ")";
+            System.Collections.Hashtable hsgiaodich = new Hashtable();
+            hsgiaodich["Ghichu"] = "Mã đơn hàng:" + madonhang;
           
             string sqlCapNhatTaiKhoan = "UPDATE [ATaiKhoan] " +
          " SET [Sotien] =Sotien - " + SotienMuahang +
@@ -117,7 +118,7 @@ public partial class AInfo : CommonPageNhanVien
             ArrayList arHS = new ArrayList();
             arHS.Add(new Hashtable());
             arHS.Add(new Hashtable());
-            arHS.Add(new Hashtable());
+            arHS.Add(hsgiaodich);
             arHS.Add(new Hashtable());
             if (myUti.InsertTrans(arsql, arHS, "commitdonhang") == "0")
             {
@@ -126,7 +127,7 @@ public partial class AInfo : CommonPageNhanVien
             }
             MySession.Current.SSGuidGioHang = null;
         //tru tien khach hang
-            Response.Redirect("Ainfo.aspx");
+            Response.Redirect("chitiethd.aspx?guid_id="+guidgiohang);
 
     }
     protected void ButtonNapTien_Click(object sender, EventArgs e)
@@ -155,7 +156,7 @@ public partial class AInfo : CommonPageNhanVien
         }
 
         System.Collections.Hashtable hs = new Hashtable();
-        hs["Ghichu"] = "manaptien:"+manaptien;
+        hs["Ghichu"] = "Nap tien:"+manaptien;
         sql = "UPDATE [AGiaoDichNapTien] " +
         " SET [Ghichu] =@Ghichu" +
          " ,[Sotien] = " + giatien +

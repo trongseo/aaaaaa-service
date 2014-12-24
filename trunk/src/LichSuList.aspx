@@ -29,16 +29,11 @@
             <!-- /.navbar-top-links -->
 
            
-            <uc1:UCLeftAdmin ID="UCLeftAdmin1" runat="server" />
+          
         </nav>
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Danh sách lịch sử giao dịch</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+        <div id="page-wrappersss">
+          
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -47,12 +42,12 @@
                              <div class="well">
                           
                         </div>--%><div class="form-group">
-                                            <button type="button" onclick="javascript:window.location='NhanVien.aspx?add=1'" class="btn btn-default">Thêm mới </button>
+                                         Danh sách lịch sử giao dịch 
                                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <div class="table-responsive" style="width:400px" >
+                                <table class="table table-striped table-bordered table-hover" style="width:400px" id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>STT</th>
@@ -96,14 +91,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.table-responsive -->
-                            <div class="well">
-                               
-                                <asp:Button ID="Button1" runat="server" CssClass="btn btn-default" OnClick="btn_Delete_Click" Text="Xóa" Width="66px" />
-                               
-                                <asp:Button ID="Button2" Visible="false" CssClass="btn btn-default" runat="server" OnClick="Button2_Click" Text="Cập nhật" />
-                               
-                            </div>
+                            <!-- /.table-responsive --> <input type="button" name="ButtonLoginBarcodeaa" onclick="window.location = 'Ainfo.aspx'" value="Quay về" id="ButtonLoginBarcodeaa" class="form-control" style="height:50px;width:94px;display:inline-block">
+                           
                         </div>
                         <!-- /.panel-body -->
                     </div>
