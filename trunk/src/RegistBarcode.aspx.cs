@@ -103,7 +103,7 @@ WHERE        (ATheThanhVien.Islock = 0) AND ANhanVien.aphancapid <>4 and (ATheTh
             SystemUti.Show("Đăng ký thất bại!");
             return;
         }
-       
+        Response.Redirect("Login.aspx");
 
 
 //        MySession.Current.SSUsername = dtcheck.Rows[0]["Tendangnhap"].ToString();

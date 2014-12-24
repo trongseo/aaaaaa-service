@@ -56,11 +56,23 @@
                                                 <asp:TextBox ID="TextBoxTienTrongTK"  ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
 
                                             </div>
-                                            <div class="form-group">
+                                            <div class="panel-heading">
 
                                               
                                                 
-                                                <input type="button" name="ButtonCapNhatTaiKhoan" onclick="javascript:window.location='ThanhVien.aspx'" value="Cập nhật" id="ButtonCapNhatTaiKhoan" style="height:50px;width:150px;">
+                                                    <a href="ChangePassword.aspx" style="display:inline-block">
+                            <div class="panel-footer" style="width:130px;display:inline-block">
+                                <span class="pull-left">Đổi mật khẩu</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a> <a href="ThanhVien.aspx" style="display:inline-block">
+                            <div class="panel-footer" style="width:130px;display:inline-block">
+                                <span class="pull-left">Cập nhật</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
                                             </div>
                                         </div>
 

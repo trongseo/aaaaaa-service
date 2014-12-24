@@ -54,11 +54,15 @@ public partial class ThanhVien : CommonPageNhanVien
             DropDownListQuan.SelectedValue = drone["QuanId"].ToString();
             TextBoxCMND.Text = drone["APhanCapId"].ToString();
             TextBoxTenDangNhap.Text = drone["TenDangNhap"].ToString();
+            if (drone["TenDangNhap"].ToString()=="")
+            {
+                HiddenField1.Value = "1";
+            }
             //TextBoxMatKhau.Text = drone["MatKhau"].ToString();
             TextBoxSDT.Text = drone["SDT"].ToString();
             TextBoxEmail.Text = drone["Email"].ToString();
             TextBoxHoTen.Text = drone["HoTen"].ToString();
-            TextBoxThauChi.Text = drone["ThauChi"].ToString();
+            TextBoxThauChi.Text = drone["ThauChi"].ToString() == "" ? "0" : drone["ThauChi"].ToString();
             TextBoxCMND.Text = drone["CMND"].ToString();
             TextBoxCongViec.Text = drone["CongViec"].ToString();
             TextBoxDiaChi.Text = drone["DiaChi"].ToString();
@@ -109,7 +113,16 @@ public partial class ThanhVien : CommonPageNhanVien
             System.Collections.Hashtable hs = new Hashtable();
 
 
-
+            if (Request["TextBoxMatKhau"] != null)
+            {
+                var hsmk = new Hashtable();
+                hsmk["MatKhau"] = TextBoxMatKhau.Text;
+               
+                sql = "UPDATE [ANhanVien] " +
+            "SET MatKhau =@MatKhau" +
+            " WHERE id=" + myid;
+                myUti.UpdateData(sql, hsmk);
+            }
             hs["TenDangNhap"] = TextBoxTenDangNhap.Text.Trim();
             //hs["MatKhau"] = TextBoxMatKhau.Text.Trim();
             hs["SDT"] = TextBoxSDT.Text.Trim();

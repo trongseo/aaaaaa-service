@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ThanhVien.aspx.cs" Inherits="ThanhVien" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ChangePassword.aspx.cs" Inherits="ChangePassword" %>
 <%@ Register src="UCLeftAdmin.ascx" tagname="UCLeftAdmin" tagprefix="uc1" %>
 
 <%@ Register src="UCTopAdmin.ascx" tagname="UCTopAdmin" tagprefix="uc2" %>
@@ -54,47 +54,24 @@
                                         <div class="form-group">
                                             <label>Tên đăng nhập</label>
                                             <asp:TextBox ID="TextBoxTenDangNhap"  data-validation="required" runat="server"   CssClass="form-control"></asp:TextBox>
-                                            <asp:HiddenField ID="HiddenField1" Value="" runat="server" />
+                                           
                                         </div>
-                                    <%
-                                        if (HiddenField1.Value == "1")
-                                        {
-                                            %>
-                                     <div class="form-group">
+                                      <div class="form-group">
                                             <label>Mật khẩu</label>
                                             <asp:TextBox ID="TextBoxMatKhau"  TextMode="Password"  data-validation="required" runat="server"  CssClass="form-control"></asp:TextBox>
                                             
                                         </div>
-                                    
-                                    <%
+                                    <div class="form-group">
+                                            <label>Mật khẩu mới</label>
+                                            <asp:TextBox ID="TextBoxNewPass"  TextMode="Password"  data-validation="required" runat="server"  CssClass="form-control"></asp:TextBox>
+                                            
+                                        </div>
+                                    <div class="form-group">
+                                            <label>Nhập lại mật khẩu mới</label>
+                                            <asp:TextBox ID="TextBox2" data-validation="confirmation" data-validation-confirm="TextBoxNewPass" TextMode="Password"   runat="server"  CssClass="form-control"></asp:TextBox>
+                                            
+                                        </div>
 
-                                        }
-                                         %>
-                                      
-                                         <div class="form-group">
-                                            <label>Số điện thoại </label>
-                                            <asp:TextBox ID="TextBoxSDT"  runat="server" data-validation="required" CssClass="form-control"></asp:TextBox>
-                                           
-                                        </div>
-                                         <div class="form-group">
-                                            <label>Email </label>
-                                            <asp:TextBox ID="TextBoxEmail"  data-validation="email" runat="server"  CssClass="form-control"></asp:TextBox>
-                                           
-                                        </div>
-                                     <div class="form-group">
-                                            <label>Tên đầy đủ </label>
-                                            <asp:TextBox ID="TextBoxHoTen"  data-validation="required" runat="server"  CssClass="form-control"></asp:TextBox>
-                                           
-                                        </div>
-                                    
-                                        <div class="form-group">
-                                            <label>CMND</label>
-                                            <asp:TextBox ID="TextBoxCMND"   runat="server"  CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                         <div class="form-group">
-                                            <label>Công việc</label>
-                                            <asp:TextBox ID="TextBoxCongViec"   runat="server"  CssClass="form-control"></asp:TextBox>
-                                        </div>
                                           
                                        
                                     
@@ -103,52 +80,7 @@
                                 <div class="col-lg-6">
                                   
                   
-                                     <div class="form-group" style="display:none">
-                                            <label>Thấu chi</label>
-                                            <asp:TextBox ID="TextBoxThauChi" onkeyup="formatNumerNew(this)" Text="0" onfocus="formatNumerNew(this)"  data-validation="number"  runat="server"  CssClass="form-control"></asp:TextBox>
-                                        </div>
                                     
-                                        <fieldset >
-                                          <div class="form-group">
-                                            <label>Ngày Sinh (dd-mm-yyyy)</label><asp:HiddenField ID="HiddenFieldId" runat="server" />
-                                            <asp:TextBox ID="TextBoxNgaySinh"    data-validation="dateno"
-                    runat="server"  CssClass="form-control"></asp:TextBox>
-                                              <script >rome(TextBoxNgaySinh, options = { "inputFormat": "DD-MM-YYYY", });</script>
-                                        </div>
-                                            <div class="form-group">
-                                            <label>Giới tính</label>
-                                            <div class="radio-inline">
-                                                <label>
-                                                    <asp:RadioButton ID="RadioButtonNam"  GroupName="gioitinh" Checked="true" runat="server" />Nam
-                                                </label>
-                                            </div>
-                                            <div class="radio-inline">
-                                                <label>
-                                                    <asp:RadioButton ID="RadioButtonNu" GroupName="gioitinh" runat="server" />Nữ
-                                                </label>
-                                            </div>
-                                            <div class="form-group">
-                                            <label>Địa chỉ</label>
-                                            <asp:TextBox ID="TextBoxDiaChi"   runat="server"  CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                             <div class="form-group">
-                                            <label>Quận</label>
-                                            <asp:DropDownList ID="DropDownListQuan"   runat="server"  CssClass="form-control"></asp:DropDownList>
-                                        </div>
-                                        </div>
-                                           
-                                                              <div class="form-group" style="display:none">
-                                            <label>Cấp bậc</label>
-         <asp:DropDownList ID="DropDownListAPhanCapId" CssClass="form-control" runat="server" />
-                                           
-                                        </div>
-                                     <div class="form-group"  style="display:none">
-                                            <label>Loại thành viên</label>
-                                             <asp:DropDownList ID="DropDownListALoaiThanhVienId" CssClass="form-control" runat="server" />
-                                           
-                                        </div>
-                                            
-                                        </fieldset>
                                   <br />
                                    <input type="button" class="btn btn-default" name="ButtonCapNhatTaiKhoan" onclick="javascript: window.location = 'AInfo.aspx'" value="Quay về" id="ButtonCapNhatTaiKhoan" style="height:50px;width:150px;">
                                     <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="Cập nhật" OnClick="Button1_Click" Width="150px" Height="50px" />
