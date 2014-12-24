@@ -70,9 +70,11 @@
                                       <!-- Change this to a button or input when using this as a form -->
                              
                                 </div>
-                              
-                               <asp:Button   ID="ButtonLoginBarcode" Text="Đăng ký thành viên " CssClass="form-control" runat="server"  Height="50px" Width="194px"  OnClick="ButtonLoginBarcode_Click" />
-
+                                 <div class="form-group" style="display:inline-block">
+                                   
+                              <input type="button" name="ButtonLoginBarcodeaa" onclick="window.location='login.aspx'" value="Quay về" id="ButtonLoginBarcodeaa" class="form-control" style="height:50px;width:94px;display:inline-block">
+                               <asp:Button   ID="ButtonLoginBarcode" style="height:50px;width:94px;display:inline-block" Text="Đăng ký" CssClass="form-control" runat="server"  Height="50px" Width="194px"  OnClick="ButtonLoginBarcode_Click" />
+                                  </div>
 
                             </fieldset>
                        <asp:Label ID="Label1" runat="server"  ></asp:Label> 

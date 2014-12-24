@@ -76,7 +76,7 @@ public partial class LichSuList : CommonPageNhanVien
         //Session["drop"] = DropDownList1.SelectedValue;
 
         string tblname = "AGiaoDichNapTien";
-        string order_by = "Id";
+        string order_by = "Id desc";
         string sqlx = " WITH Ordered1 AS " +
         " (SELECT *, ROW_NUMBER() OVER (order by " + order_by + ") as RowNumber " +
         " FROM " + tblname + "  " + where_ + ")" +

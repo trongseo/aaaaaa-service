@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="quenmatkhau.aspx.cs" Inherits="quenmatkhau" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,50 +40,28 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Màn hình đăng nhập
+                        <h3 class="panel-title">Màn hình quên mật khẩu
                         </h3>
                     </div>
                     <div class="panel-body">
                         
-                            <fieldset> <div class="form-group">
-                                            <label>Cửa hàng</label>
-                                            <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" Width="178px">
-                                        </asp:DropDownList>
-                                        </div>
-                                <div class="form-group">
-                                    <asp:TextBox ID="UserTextBox" placeholder="Tên đăng nhập" CssClass="form-control" runat="server"  ></asp:TextBox>
+                            <fieldset> 
+                                <div class="form-group"><label>Email </label>
+                                    <asp:TextBox ID="UserTextBox" placeholder="" CssClass="form-control" runat="server"  ></asp:TextBox>
                                     
                                 </div>
                                 <div class="form-group">
                                    
-                                     <asp:TextBox TextMode="Password" placeholder="Mật khẩu"  ID="PassTextBox" CssClass="form-control" runat="server"  ></asp:TextBox>
                                 </div>
-                                <%--<div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>--%>
+                           
                                 <!-- Change this to a button or input when using this as a form -->
                                   <div class="form-group form-inline">
-                               <asp:Button ID="SaveButton" Text="Đăng nhập"  CssClass="form-control"  runat="server" Height="50px" Width="94px" OnClick="SaveButton_Click" /> <a href="quenmatkhau.aspx" class="">Quên mật khẩu</a> </div>
-                                <%--<a href="javascript:document.getElementById('SaveButton').click();" class="btn btn-lg btn-success btn-block">Đăng nhập</a>--%>
+                                      <input type="button" name="SaveButt22on" onclick="window.location.href='login.aspx'"     value="Quay về" id="SaveButt22on" class="form-control" style="height:50px;width:94px;">
 
-                                <br />
+                               <asp:Button ID="SaveButton" Text="Gửi mật khẩu về email!"  CssClass="form-control"  runat="server" Height="50px" Width="124px" OnClick="SaveButton_Click" /> </div>
+                              
 
-                                 <div class="form-group form-inline">
-                                   
-                            <asp:TextBox  TextMode="Password"  placeholder="Barcode"  Width="100px"  ID="TextBoxBarcode" CssClass="form-control" runat="server"  ></asp:TextBox>   <!-- Change this to a button or input when using this as a form -->
-                              <asp:Button   ID="ButtonLoginBarcode" Text="Đăng nhập barcode" CssClass="form-control" runat="server"  Height="50px" Width="194px"  OnClick="ButtonLoginBarcode_Click" />
-                                     </div>
-                             <hr />
-                                 <div class="form-group">
-                                     
-                             <input type="button" name="ButtonDangKyThanhVien" value="Đăng ký thành viên" id="ButtonDangKyThanhVien" onclick="window.location='Registbarcode.aspx'" style="height:50px;width:150px;">
-                                </div>
-
-                            </fieldset>
-                       <asp:Label ID="Label1" runat="server"  ></asp:Label> 
-                    </div>
+                            </fieldset></div>
                 </div>
             </div>
         </div>

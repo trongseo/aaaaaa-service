@@ -10,5 +10,6 @@
        public const string GiaoDich_muahang = "1";
        public const string GiaoDich_naptien = "2";
        public const string GiaoDich_napthecao = "3";
-        
+       public const string PhanCap_Nguoidung= "4";
+       public const string PhanCap_nhanvien = "2";
     }

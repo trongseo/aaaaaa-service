@@ -217,4 +217,4 @@
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
-            </ul>--%> <br /><a href="login.aspx?from=logout"><i class="fa fa-sign-out fa-fw"></i> Thoát</a>
+            </ul>--%> <br /><a href="login.aspx?from=logout" style="height:120px;background-color:red;font-size:20px"><i class="fa fa-sign-out fa-fw"></i> Thoát</a>

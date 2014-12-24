@@ -5,6 +5,9 @@ using System.Web;
 using System.Data;
 using System.Globalization;
 using System.Web.UI;
+using System.Net.Mail;
+using System.Text;
+using System.Net;
 
 /// <summary>
 /// Summary description for MyLange
@@ -141,6 +144,56 @@ public class SystemUti
             logger.Debug(ex.ToString());
             return "0";
         }
+    }
+    public static bool SendMailToGood(string emailTo, string Content, string subject)
+    {
+
+        SmtpClient smtpClient = new SmtpClient();
+        MailMessage message = new MailMessage();
+
+
+        MailAddress fromAddress = new MailAddress("info@easywash.vn");
+        smtpClient.Host = "localhost";
+        smtpClient.Port = 25;
+
+
+        message.From = fromAddress;
+        message.To.Add(emailTo);
+        // message.CC.Add(MyContext.EmailFrom1);
+        message.Subject = subject;
+
+        message.IsBodyHtml = true;
+
+        // Message body content
+        message.Body = Content;
+
+        message.BodyEncoding = Encoding.UTF8;
+        // Send SMTP mail
+        smtpClient.Send(message);
+
+        return true;
+
+    }
+    static void Authenticate()
+    {
+        //create the mail message
+        MailMessage mail = new MailMessage();
+
+        //set the addresses
+        mail.From = new MailAddress("info@easywash.vn");
+        mail.To.Add("trongtayninh@gmail.com");
+
+        //set the content
+        mail.Subject = "This is an email";
+        mail.Body = "this is the body content of the email.";
+
+        //send the message
+        SmtpClient smtp = new SmtpClient("127.0.0.1");
+
+        //to authenticate we set the username and password properites on the SmtpClient
+        smtp.Credentials = new NetworkCredential("info@easywash.vn", "zaq123!@#");
+        smtp.Send(mail);
+
     }
     /// <summary>
     /// tra ve dd-MM-yyyy
