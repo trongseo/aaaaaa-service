@@ -10,7 +10,7 @@
               <%--  <a class="navbar-brand" href="index.html"> Admin </a>--%>
       <a class="navbar-brand" href="Default.aspx"> <%= MySession.Current.SSTenCuaHang%> </a>
             </div>
-<ul class="nav navbar-top-links navbar-right">
+<%--<ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -217,4 +217,4 @@
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
-            </ul>
+            </ul>--%> <br /><a href="login.aspx?from=logout"><i class="fa fa-sign-out fa-fw"></i> Thoát</a>
