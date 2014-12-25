@@ -99,7 +99,7 @@ margin-bottom: 2px;
                                     <!-- /.col-lg-6 (nested) -->
                                     <div class="col-lg-6">
 
-                                        <div class="well">
+                                        <div class="well" style="<%=isShow("well1")%>" id="well1">
                                             <div class="form-group">
                                                 <label>Mã nạp tiền</label>
                                                 <asp:TextBox ID="TextBoxMaNapTien" runat="server" CssClass="form-control"></asp:TextBox>
@@ -110,6 +110,18 @@ margin-bottom: 2px;
                                                 <asp:Button ID="ButtonNapTien" Text="Nạp tiền" runat="server" Width="150px" Height="50px" OnClick="ButtonNapTien_Click" />
                                                 <input type="button" name="ButtonNhanVienw" value="Nhờ nhân viên nạp tiền" onclick="javascript: window.location.href = 'NapTienKhachHang.aspx'" id="ButtonNhanVien" style="height: 50px; width: 250px;">
                                             </div>
+                                        </div>
+                                         <div class="well" style="<%=isShow("well1nhanvien")%>" id="well1nhanvien">
+                                             
+                                            <div class="form-group" style="display:inline-block">
+                                                <label>Gửi đồ</label>
+                                                <asp:TextBox ID="TextBoxmadonhang_guitra" runat="server" placeholder="Mã đơn hàng" CssClass="form-control" style="display:inline-block" ></asp:TextBox>  
+                                                <asp:Button ID="ButtonGuiDo" Text="Gửi đồ" runat="server" style="display:inline-block" Width="150px" Height="50px" OnClick="ButtonGuiDo_Click" />
+                                              <asp:Button ID="ButtonTraDo" Text="Trả đồ" runat="server" style="display:inline-block" Width="150px" Height="50px" OnClick="ButtonTraDo_Click" />
+                                       
+                                                 </div>
+
+                                            
                                         </div>
                                      <%--   <div class="panel panel-primary">
 
