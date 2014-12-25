@@ -1,9 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="chitiethd.aspx.cs" Inherits="chitiethd" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="chitiethdgui.aspx.cs" Inherits="chitiethd" %>
 <%@ Register TagPrefix="nbc" Namespace="NBarCodes.WebUI" Assembly="NBarCodes" %>
-<%=MySession.Current.SSTenCuaHang %> EASYWASH.VN<br />
-------------------------------------------------------------------------<br />
-<nbc:BarCodeControl id="BarCodeControl1" BarHeight="0.2" runat="server" 
-  Data="" Type="Code128" Dpi="100" Font="Verdana, 8pt"></nbc:BarCodeControl>
+
+
 
 <table >
                                                             <thead>
@@ -63,19 +61,5 @@
                                                         </table>
 ------------------------------------------------------------------------<br />
 Tổng tiền:<%= SystemUti.formatNumber( tongtien) %><br /><br />
-<input type="button" value="IN" onclick="inra(this)" style="width:50px;height:50px"/> 
-<input type="button" id="btnthoat" value="Thoát" onclick="thoat(this)" style="width:50px;height:50px"/> 
-<script>
-    function inra(obj)
-    {
-        obj.style.display = 'none';
-        document.getElementById('btnthoat').style.display = 'none';
-        window.print();
-        window.location = 'Login.aspx';
-    }
-    function thoat(objx)
-    {
-        window.location = 'Login.aspx';
-    }
-</script>
+
                                                               

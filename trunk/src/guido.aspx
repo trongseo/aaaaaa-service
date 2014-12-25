@@ -1,12 +1,54 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="chitiethd.aspx.cs" Inherits="chitiethd" %>
-<%@ Register TagPrefix="nbc" Namespace="NBarCodes.WebUI" Assembly="NBarCodes" %>
-<%=MySession.Current.SSTenCuaHang %> EASYWASH.VN<br />
-------------------------------------------------------------------------<br />
-<nbc:BarCodeControl id="BarCodeControl1" BarHeight="0.2" runat="server" 
-  Data="" Type="Code128" Dpi="100" Font="Verdana, 8pt"></nbc:BarCodeControl>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="guido.aspx.cs" Inherits="guido" %>
 
-<table >
-                                                            <thead>
+<%@ Register src="UCLeftAdmin.ascx" tagname="UCLeftAdmin" tagprefix="uc1" %>
+
+<%@ Register src="UCTopAdmin.ascx" tagname="UCTopAdmin" tagprefix="uc2" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--#include file="htexnew.aspx"-->
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+           
+            <!-- /.navbar-header -->
+             <uc2:UCTopAdmin ID="UCTopAdmin1" runat="server" />
+
+            
+            <!-- /.navbar-top-links -->
+
+           
+          
+        </nav>
+
+        <div id="page-wrappersss">
+          
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <%--<div class="panel-heading">
+                             <div class="well">
+                          
+                        </div>--%><div class="form-group">
+                                         Chi tiết đơn hàng
+                                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive" style="width:800px" >
+                                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-examples" aria-describedby="dataTables-example_info">
+                                                         <thead>
                                                                 <tr role="row" style="background-color:#337ab7;color:white">
                                                                     <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending">TG</th>
                                                                     <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">SP</th>
@@ -16,7 +58,7 @@
                                                                     
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
+                                                              <tbody>
                                                                 
  <%
      float tongtien = 0;
@@ -61,21 +103,60 @@
                                                                
                                                             </tbody>
                                                         </table>
-------------------------------------------------------------------------<br />
-Tổng tiền:<%= SystemUti.formatNumber( tongtien) %><br /><br />
-<input type="button" value="IN" onclick="inra(this)" style="width:50px;height:50px"/> 
-<input type="button" id="btnthoat" value="Thoát" onclick="thoat(this)" style="width:50px;height:50px"/> 
-<script>
-    function inra(obj)
-    {
-        obj.style.display = 'none';
-        document.getElementById('btnthoat').style.display = 'none';
-        window.print();
-        window.location = 'Login.aspx';
-    }
-    function thoat(objx)
-    {
-        window.location = 'Login.aspx';
-    }
-</script>
-                                                              
+
+                                Ghi chú:<asp:TextBox ID="TextBoxGhichu" runat="server"></asp:TextBox>
+                            </div>
+                            <!-- /.table-responsive --> 
+                            <input type="button" name="ButtonLoginBarcodeaa" onclick="window.location = 'Ainfo.aspx'" value="Quay về" id="ButtonLoginBarcodeaa" class="form-control" style="height:50px;width:94px;display:inline-block">
+                            <asp:Button ID="Button1" runat="server" Text="Nhận đồ" class="form-control" style="height:50px;width:94px;display:inline-block" OnClick="Button1_Click" />
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+          
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        $(document).ready(function () {
+
+            // For this specific table we are going to enable ordering
+            // (searching is still disabled)
+            $('#dataTables-example').DataTable({
+                ordering: false
+            });
+
+           
+        });
+    </script>
+
+    </form>
+
+</body>
+
+</html>
+
+

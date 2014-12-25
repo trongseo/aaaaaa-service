@@ -1,0 +1,2 @@
+D:\project\mysvn\WindowsService\WindowsService\obj\Debug\SMS_GSM.exe
+D:\project\mysvn\WindowsService\WindowsService\obj\Debug\SMS_GSM.pdb

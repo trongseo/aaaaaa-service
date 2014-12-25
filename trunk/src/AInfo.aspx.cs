@@ -12,6 +12,37 @@ using ImageResizer;
 
 public partial class AInfo : CommonPageNhanVien
 {
+    public string isShow(string pannelid)
+    {
+        if (pannelid == "well1")
+        {
+            if (MySession.Current.SSAPhanCapId == Constants.PhanCap_nhanvien)
+            {
+                return "display:none";
+
+            }
+            else
+            {
+                return "";
+            }
+
+        }
+        if (pannelid == "well1nhanvien")
+        {
+            if (MySession.Current.SSAPhanCapId == Constants.PhanCap_nhanvien)
+            {
+                return "";
+
+            }
+            else
+            {
+                return "display:none";
+            }
+
+        }
+        
+        return "";
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack) return;
@@ -20,6 +51,7 @@ public partial class AInfo : CommonPageNhanVien
             ButtonHoanThanh();
             return;
         }
+        
         TextBoxTenDangNhap.Text = MySession.Current.SSUserFullName;
         TextBoxTienTrongTK.Text = myUti.GetOneField("Select  REPLACE(CONVERT(varchar(20), (CAST(([SoTien]) AS money)), 1), '.00', '')  from ATaiKhoan where athanhvienid=" + MySession.Current.SSUserId);
         //dau tien vao man hinh nay se co 1 gio hang cho user do
@@ -199,5 +231,19 @@ public partial class AInfo : CommonPageNhanVien
        // Response.Redirect("Ainfo.aspx");
       
 
+    }
+    protected void ButtonGuiDo_Click(object sender, EventArgs e)
+    {
+        MY_HASTABLE["madonhang"] = TextBoxmadonhang_guitra.Text;
+         var guid_id = myUti.GetOneField("Select guid_id from adonhang where madonhang=@madonhang",MY_HASTABLE);
+         MySession.Current.SSguid_id_donhang = guid_id;
+         Response.Redirect("guido.aspx");
+    }
+    protected void ButtonTraDo_Click(object sender, EventArgs e)
+    {
+        MY_HASTABLE["madonhang"] = TextBoxmadonhang_guitra.Text;
+        var guid_id = myUti.GetOneField("Select guid_id from adonhang where madonhang=@madonhang", MY_HASTABLE);
+        MySession.Current.SSguid_id_donhang = guid_id;
+        Response.Redirect("trado.aspx");
     }
 }

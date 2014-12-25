@@ -215,7 +215,26 @@ public class SystemUti
             return "0";
         }
     }
+    /// <summary>
+    /// tra ve HH:mm dd-MM-yyyy 
+    /// </summary>
+    /// <param name="valueNumber">Datetime object</param>
+    /// <returns></returns>
+    public static string formatDateShowHHmm(object valueNumber)
+    {
+        try
+        {
+            var datevalue = (DateTime)valueNumber;
 
+            return datevalue.ToString("HH:mm dd-MM-yyyy ");
+        }
+        catch (Exception ex)
+        {
+            Logs logger = new Logs();
+            logger.Debug(ex.ToString());
+            return "0";
+        }
+    }
 
 
 
