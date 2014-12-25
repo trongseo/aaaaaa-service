@@ -12,6 +12,7 @@
     <link href='js/calendar/rome.css' rel='stylesheet' type='text/css' />
 <script src='js/calendar/rome.js'></script>
     <style>
+
         .well {
                padding: 1px;
 margin-bottom: 2px;
@@ -100,16 +101,36 @@ margin-bottom: 2px;
                                     <div class="col-lg-6">
 
                                         <div class="well" style="<%=isShow("well1")%>" id="well1">
-                                            <div class="form-group">
+                                            <div class="row">
+
+                                                <div class="col-lg-8" style="width:50%;">
+                    <div class="panel panel-default">
+                        <div class="form-group">
                                                 <label>Mã nạp tiền</label>
-                                                <asp:TextBox ID="TextBoxMaNapTien" runat="server" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox ID="TextBoxMaNapTien" runat="server" CssClass="form-control"></asp:TextBox> <asp:Button ID="ButtonNapTien" Text="Nạp tiền" runat="server" Width="150px" Height="50px" OnClick="ButtonNapTien_Click" />
+                                            </div>
+                    </div>
+
+                                                </div> <div class="col-lg-8" style="width:50%;">
+                    <div class="panel panel-default">
+                        <div class="form-group">
+                                                <label>Nhờ  nạp tiền</label><br />
+                                                <asp:TextBox ID="TextBoxSoTienNap" style="display:inline-block" autocomplete="off" placeholder="Số tiền" runat="server" Width="100px" CssClass="form-control"></asp:TextBox>   <asp:TextBox ID="TextBoxbarcodenhanvien"  autocomplete="off" TextMode="Password" style="display:inline-block" placeholder="Mã barcode" runat="server" Width="100px" CssClass="form-control"></asp:TextBox>  <asp:Button ID="ButtonNhanViennaptien" style="height: 50px; width: 250px;"  runat="server" Text="Nhân viên nạp tiền" OnClick="ButtonNhanViennaptien_Click" />
+                                                
+                                            </div>
+                         <div class="form-group">
+
+                                             
                                             </div>
 
-                                            <div class="form-group">
+                    </div>
 
-                                                <asp:Button ID="ButtonNapTien" Text="Nạp tiền" runat="server" Width="150px" Height="50px" OnClick="ButtonNapTien_Click" />
-                                                <input type="button" name="ButtonNhanVienw" value="Nhờ nhân viên nạp tiền" onclick="javascript: window.location.href = 'NapTienKhachHang.aspx'" id="ButtonNhanVien" style="height: 50px; width: 250px;">
+                                                </div>
+                                               
                                             </div>
+                                            
+
+                                           
                                         </div>
                                          <div class="well" style="<%=isShow("well1nhanvien")%>" id="well1nhanvien">
                                              
@@ -123,7 +144,7 @@ margin-bottom: 2px;
 
                                             
                                         </div>
-                                     <%--   <div class="panel panel-primary">
+                                        <%--   <div class="panel panel-primary">
 
                                             <div class="panel-heading">
                                                 Khu vực nhân viên
@@ -460,6 +481,10 @@ margin-bottom: 2px;
                                                        <script>
                                                            function hoanthanhclick()
                                                            {
+                                                               if (!confirm("Bạn có chắc là muốn hoàn thành đơn hàng này!"))
+                                                               {
+                                                                   return;
+                                                               }
                                                                //javascript:window.location='Ainfo.aspx?from=hoanthanh'
                                                               
                                                                    $.get("ajax.aspx?from=kiemtratien&r=" + Math.random(), function (data, status) {
@@ -630,6 +655,35 @@ margin-bottom: 2px;
             $('#' + objc.id + '_html').remove();
             // $( '<span id='+objc.id +'_html'>'+x1x2+'</span>' ).insertAfter('#'+objc.id );
             $('<span id="' + objc.id + '_html" >' + x1x2 + '</span>').insertAfter('#' + objc.id);
+        }
+        $(document).ready(function () {
+
+            
+            $("#TextBoxSoTien").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+
+        if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0 || navigator.userAgent.toLowerCase().indexOf("safari") >= 0) {
+            window.setInterval(function () {
+                $('input:-webkit-autofill').each(function () {
+                    var clone = $(this).clone(true, true);
+                    $(this).after(clone).remove();
+                });
+            }, 20);
         }
 
     </script>

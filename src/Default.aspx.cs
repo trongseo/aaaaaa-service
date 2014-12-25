@@ -13,7 +13,7 @@ public partial class _Default : System.Web.UI.Page
     {
       //  Authenticate();
 
-        Response.Redirect("Ainfo.aspx");
+       // Response.Redirect("Ainfo.aspx");
     }
     static void Authenticate()
     {

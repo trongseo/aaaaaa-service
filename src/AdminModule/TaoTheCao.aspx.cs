@@ -13,12 +13,20 @@ using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ClosedXML.Excel;
 public partial class AdminModule_TaoTheCao : CommonPageFree
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack) return;
-        
+       // Response.Write(SystemUti.md5("1"));
+        //var dt = myUti.GetDataTable("select sothecao,id as soserial   from athecao ");
+
+        //foreach (DataRow row in dt.Rows)
+        //{
+        //    string sqlx = "update athecao set so12='" + SystemUti.md5(row["sothecao"].ToString()) + "' where id=" + row["soserial"].ToString();
+        //    myUti.ExecuteSQL(sqlx);
+        //}
     }
 
 
@@ -46,7 +54,7 @@ public partial class AdminModule_TaoTheCao : CommonPageFree
             {
                 if (ij==0)
                 {
-                     sotaoduoc += RandomNumber(0, 9).ToString();
+                     sotaoduoc += RandomNumber(1, 9).ToString();
                 }else
                 sotaoduoc += RandomNumber(0, 9).ToString();
                
@@ -59,9 +67,12 @@ public partial class AdminModule_TaoTheCao : CommonPageFree
     protected void btnExport(object sender, EventArgs e)
     {
         StringBuilder sb = new StringBuilder();
-        var dt = myUti.GetDataTable("select '=\"'+sothecao +'\"' from athecao where block=" + TextBoxBlock.Text);
-     
+        var dt = myUti.GetDataTable("select sothecao,id as soserial   from athecao where block=" + TextBoxBlock.Text);
 
+        XLWorkbook wb = new XLWorkbook();
+       
+        wb.Worksheets.Add(dt, "WorksheetName");
+        wb.SaveAs("d:\\soft\\block" + TextBoxBlock.Text + ".xlsx");
         string[] columnNames = dt.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
         sb.AppendLine(string.Join(",", columnNames));
 
