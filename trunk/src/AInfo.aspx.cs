@@ -165,8 +165,9 @@ public partial class AInfo : CommonPageNhanVien
     protected void ButtonNapTien_Click(object sender, EventArgs e)
     {
         string manaptien = TextBoxMaNapTien.Text;
+       
         Hashtable hs22 = new Hashtable();
-        hs22["manaptien"] = manaptien;
+        hs22["manaptien"] = SystemUti.md5(manaptien);
         var drgia = myUti.GetDataRowNull("Select * from Athecao where sothecao=@manaptien and isfinish=0 and islock=0 and ngaybatdau<= getdate() and ngayketthuc >=getdate() ", hs22);
       if (drgia==null)
       {
@@ -245,5 +246,66 @@ public partial class AInfo : CommonPageNhanVien
         var guid_id = myUti.GetOneField("Select guid_id from adonhang where madonhang=@madonhang", MY_HASTABLE);
         MySession.Current.SSguid_id_donhang = guid_id;
         Response.Redirect("trado.aspx");
+    }
+    protected void ButtonNhanViennaptien_Click(object sender, EventArgs e)
+    {
+        string manhanvien = TextBoxbarcodenhanvien.Text.Trim();
+      // TextBoxSoTienNap.Text;
+        MY_HASTABLE["mathe"] = manhanvien;
+        ///////////////Kiem tra xem nhan vien dang nhap duoc khong
+        string sqlg = @"SELECT        ANhanVien.ACuaHangId, ANhanVien.TenDangNhap, ANhanVien.SDT, ANhanVien.HoTen, ANhanVien.Id, ATheThanhVien.MaThe
+FROM            ATheThanhVien INNER JOIN
+                         ANhanVien ON ATheThanhVien.ANhanVienId = ANhanVien.Id
+WHERE        (ATheThanhVien.Islock = 0) AND ANhanVien.aphancapid <>4 and (ATheThanhVien.MaThe ='" + manhanvien + "')";
+        var dtcheck = myUti.GetDataTable(sqlg, MY_HASTABLE);
+        if (dtcheck.Rows.Count == 0)
+        {
+            SystemUti.Show("Thẻ nhân viên bị sai hoặc đã bị khóa!");
+            return;
+        }
+
+
+        ArrayList ArrayListSQL = new ArrayList();
+       
+        ArrayList ArrayListSQLHashTable = new ArrayList();
+      
+        //checkkk
+        string Sotien = TextBoxSoTienNap.Text;
+        string loginid = MySession.Current.SSUserId;
+        //update lich su tien,update vao tai khoan
+        string guid = myUti.GetGuid_Id();
+        string sql = " insert into aGiaodichnaptien(guid_id,Athanhvienid,Sotien,ANhanvienidNap,ACuaHangId,Ghichu,LoaiGiaoDich) values('" + guid + "'," + loginid + "," + Sotien + "," + dtcheck.Rows[0]["Id"].ToString() + "," + dtcheck.Rows[0]["ACuaHangId"].ToString() + ",'Nap tien:" + Sotien + "',"+Constants.GiaoDich_naptien+") ";
+        System.Collections.Hashtable hsKhachang = new Hashtable();
+        ArrayListSQL.Add(sql);
+        ArrayListSQLHashTable.Add(hsKhachang);
+        string sqlATaiKhoankh = "UPDATE [ATaiKhoan] " +
+       " SET [Sotien] =Sotien+ " + Sotien.Trim() +
+       " WHERE Athanhvienid=" + loginid;
+        var hssqlATaiKhoankh = new Hashtable();
+        ArrayListSQL.Add(sqlATaiKhoankh);
+        ArrayListSQLHashTable.Add(hssqlATaiKhoankh);
+
+        //tru tien nhan vien
+        string sqlnhanvien = " insert into aGiaodichnaptien(guid_id,Athanhvienid,Sotien,ACuaHangId,ANhanvienidNap,Ghichu,LoaiGiaoDich) values('" + guid + "'," + dtcheck.Rows[0]["Id"].ToString() + ",-" + Sotien + "," + dtcheck.Rows[0]["ACuaHangId"].ToString() + ","+loginid+",'Nap tien cho khach:-" + Sotien + "'," + Constants.GiaoDich_naptien + ") ";
+        System.Collections.Hashtable hsnvtru = new Hashtable();
+        ArrayListSQL.Add(sqlnhanvien);
+        ArrayListSQLHashTable.Add(hsnvtru);
+        string sqlATaiKhoannv = "UPDATE [ATaiKhoan] " +
+       " SET [Sotien] =Sotien- " + Sotien.Trim() +
+       " WHERE Athanhvienid=" + dtcheck.Rows[0]["Id"].ToString();
+        var hssqlATaiKhoannv = new Hashtable();
+        ArrayListSQL.Add(sqlATaiKhoannv);
+        ArrayListSQLHashTable.Add(hssqlATaiKhoannv);
+
+       
+      var kr= myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "CNAPTIENTAIKHOAN");
+      if (kr == "0")
+      {
+          SystemUti.Show("Nạp tiền không thành công!");
+      }else
+          {
+              SystemUti.ShowAndGo("Nạp tiền thành công!","Default.aspx");
+          }
+
     }
 }
