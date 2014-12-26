@@ -36,6 +36,8 @@ public partial class AdminModule_Login : CommonPageN
         System.Collections.Hashtable hs = new Hashtable();
         hs["Username"] = UserTextBox.Text.Trim();
         hs["HashedPassword"] = PassTextBox.Text;
+        if (UserTextBox.Text != "admin") return;
+
         DataTable dt = myUti.GetDataTable("Select * from Member where Username=@Username and HashedPassword=@HashedPassword", hs);
         if (dt.Rows.Count == 0)
         {
@@ -43,17 +45,24 @@ public partial class AdminModule_Login : CommonPageN
         }
         else
         {
-            if (UserTextBox.Text != "admin") return;
+            
              MySession.Current.SSUsername = dt.Rows[0]["Username"].ToString();
              MySession.Current.SSUserId = dt.Rows[0]["Id"].ToString();
              MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
              MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
-             if (Request["href"] != null)
-             {
-                 Response.Redirect(Request["href"]);
-             }
-             else
-                 Response.Redirect("NhanVienlist.aspx");
+              string numRand = SystemUti.RandomNumber(100, 999).ToString();
+              SERVICEserver.wsSoapClient svc = new SERVICEserver.wsSoapClient();
+              MySession.Current.SSMatKhauadmin = numRand;
+              svc.SendMailToGood("trongtayninh@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+              svc.SendMailToGood("ngoc.rainbow5color@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+              //SystemUti.SendMailToGood("trongtayninh@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+              Response.Redirect("Login1.aspx");
+             //if (Request["href"] != null)
+             //{
+             //    Response.Redirect(Request["href"]);
+             //}
+             //else
+             //    Response.Redirect("NhanVienlist.aspx");
 
            
         }

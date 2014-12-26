@@ -92,6 +92,9 @@ public partial class Login : CommonPageN
              MySession.Current.SSUserFullName = dt.Rows[0]["HoTen"].ToString();
              MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
              MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
+             string guidid = myUti.GetGuid_Id();
+             string sqlinsert = " insert into ALichSuVaoRa([guid_id],[Athanhvienid],[date_login],[ip],[Iscard],[date_create],[ACuaHangId]) values('" + guidid + "'," + MySession.Current.SSUserId + ",getdate(),'" + GetUser_IP() + "',11,getdate()," + MySession.Current.SSCuaHangId + ")";
+
              if (Request["href"] != null) 
              {
                  Response.Redirect(Request["href"]);

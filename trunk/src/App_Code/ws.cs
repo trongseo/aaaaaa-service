@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 
@@ -24,6 +27,31 @@ public class ws : System.Web.Services.WebService {
     public string HelloWorld() {
         return "Hello World";
     }
+
+     [WebMethod]
+    public string SendMailToGood(string emailTo, string Content, string subject)
+    {
+        //create the mail message
+        MailMessage mail = new MailMessage();
+
+        //set the addresses
+        mail.From = new MailAddress("info@easywash.vn");
+        mail.To.Add(emailTo);
+
+        //set the content
+        mail.Subject = subject;
+        mail.Body = Content;
+
+        //send the message
+        SmtpClient smtp = new SmtpClient("127.0.0.1");
+
+        //to authenticate we set the username and password properites on the SmtpClient
+        smtp.Credentials = new NetworkCredential("info@easywash.vn", "zaq123!@#");
+        smtp.Send(mail);
+
+        return "1";
+    }
+
      
     [WebMethod]
     public System.Data.DataSet GiveMeADataSet()
