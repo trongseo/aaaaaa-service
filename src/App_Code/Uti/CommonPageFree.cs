@@ -60,11 +60,19 @@ public class CommonPageFree : System.Web.UI.Page
         {
             imagePathRoot = "http://localhost:22222/anhthesockscode/ItemImage/";
         }
-       
-            if (MySession.Current.SSUsername != "admin")
+
+        if (MySession.Current.SSUsername != "admin")
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+            //dang nhap nhung chua xac thuc mail
+            if (MySession.Current.SSMatKhauadmin != "")
             {
                 Response.Redirect("Login.aspx");
             }
+        }
        
        
         string pageName = MySession.Current.ScreenId;

@@ -44,6 +44,7 @@ public class MySession
     /// </summary>
     public string SSAPhanCapId { get; set; }
     public string SSTenCuaHang { get; set; }
+    public string SSMatKhauadmin { get; set; }
     public string SSguid_id_donhang { get; set; }
     
     public DateTime MyDate { get; set; }
