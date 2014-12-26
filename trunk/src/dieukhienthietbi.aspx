@@ -91,7 +91,7 @@
                             string isdichvu = dr["isdichvu"].ToString();
                             if (isdichvu=="1")
                             {
-                                %><input type="button" name="btndieukhien" onclick="window.location = 'Ainfo.aspx'" value="Điều khiển" id="btndieukhien" class="form-control" style="height:50px;width:94px;display:inline-block" />
+                                %><input type="button" name="btndieukhien" onclick="window.location = 'dieukhien.aspx?guid_dichvu=<%=dr["guid_id"]%>'" value="Điều khiển" id="btndieukhien" class="form-control" style="height:50px;width:94px;display:inline-block" />
                                                                         <%}  %>
                                                                         
 

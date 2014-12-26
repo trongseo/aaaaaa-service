@@ -38,6 +38,7 @@ public class MySession
     public string SSUsername { get; set; }
     public string SSGuidGioHang{ get; set; }
     public string SSUserId { get; set; }
+
     public string SSCuaHangId { get; set; }
     public string SSCuaHangIp { get; set; } 
     /// <summary>
