@@ -137,9 +137,11 @@ margin-bottom: 2px;
                                             <div class="form-group" style="display:inline-block">
                                                 <label>Gửi đồ</label>
                                                 <asp:TextBox ID="TextBoxmadonhang_guitra" runat="server" placeholder="Mã đơn hàng" CssClass="form-control" style="display:inline-block" ></asp:TextBox>  
-                                                <asp:Button ID="ButtonGuiDo" Text="Gửi đồ" runat="server" style="display:inline-block" Width="150px" Height="50px" OnClick="ButtonGuiDo_Click" />
-                                              <asp:Button ID="ButtonTraDo" Text="Trả đồ" runat="server" style="display:inline-block" Width="150px" Height="50px" OnClick="ButtonTraDo_Click" />
-                                       
+                                                <asp:Button ID="ButtonGuiDo" Text="Gửi đồ" runat="server" style="display:inline-block" Width="80px" Height="50px" OnClick="ButtonGuiDo_Click" />
+                                              <asp:Button ID="ButtonTraDo" Text="Trả đồ" runat="server" style="display:inline-block" Width="80px" Height="50px" OnClick="ButtonTraDo_Click" />
+                                              <br />  <asp:Label ID="LabelGioVao" runat="server" Text="Label"></asp:Label>  <asp:Label ID="LabelTanca" runat="server" Text=""></asp:Label>
+                                                 <asp:Button ID="ButtonTanCa" Text="Tan ca" runat="server" style="display:inline-block" Width="80px" Height="50px" OnClick="ButtonTanCa_Click"/>
+                                       <asp:Button ID="ButtonDKthietbi" OnClientClick="window.location='DieuKhienThietBi.aspx';return false" Text="Điều khiển" runat="server" style="display:inline-block" Width="80px" Height="50px" OnClick="ButtonTanCa_Click" UseSubmitBehavior="False"/>
                                                  </div>
 
                                             

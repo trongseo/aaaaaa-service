@@ -43,6 +43,7 @@ public partial class AInfo : CommonPageNhanVien
         
         return "";
     }
+    public string nhanvienVaoca = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack) return;
@@ -51,7 +52,8 @@ public partial class AInfo : CommonPageNhanVien
             ButtonHoanThanh();
             return;
         }
-        
+        showVaoCaTanCa();
+
         TextBoxTenDangNhap.Text = MySession.Current.SSUserFullName;
         TextBoxTienTrongTK.Text = myUti.GetOneField("Select  REPLACE(CONVERT(varchar(20), (CAST(([SoTien]) AS money)), 1), '.00', '')  from ATaiKhoan where athanhvienid=" + MySession.Current.SSUserId);
         //dau tien vao man hinh nay se co 1 gio hang cho user do
@@ -106,10 +108,45 @@ public partial class AInfo : CommonPageNhanVien
         DropDownListLoaiDV.Items.Insert(0, new ListItem("...Chọn..", "0"));
         DropDownListLoaiDV.SelectedIndex = 0;
     }
+
+    public void showVaoCaTanCa()
+    {
+        if (MySession.Current.SSAPhanCapId != Constants.PhanCap_nhanvien)
+        {
+            return;
+        }
+        //[YYYY.MM.DD]
+        string checktoday = "select Id from ALichSuVaoRaNV where Athanhvienid='" + MySession.Current.SSUserId + "' and CONVERT(VARCHAR(10), getdate(), 102) = CONVERT(VARCHAR(10), date_login, 102) ";
+        var drd = myUti.GetDataRowNull(checktoday);
+        var guidid = myUti.GetGuid_Id();
+        if (drd == null)
+        {
+            string sqlinsert = " insert into ALichSuVaoRaNV([guid_id],[Athanhvienid],[date_login],[ip],[Iscard],[date_create],[ACuaHangId]) values('" + guidid + "'," + MySession.Current.SSUserId + ",getdate(),'" + SystemUti.GetUser_IP() + "',11,getdate()," + MySession.Current.SSCuaHangId + ")";
+            myUti.ExecuteSql(sqlinsert);
+        }
+        else {
+            //string sqlupdate = " update ALichSuVaoRa set  date_logout=getdate(),ip='" + SystemUti.GetUser_IP() + "' where id=" + drd["Id"].ToString();
+            //myUti.ExecuteSql(sqlupdate);
+        }
+        var drgg = myUti.GetDataRow("Select date_login,date_logout from ALichSuVaoRaNV where Athanhvienid='" + MySession.Current.SSUserId + "' and CONVERT(VARCHAR(10), getdate(), 102) = CONVERT(VARCHAR(10), date_login, 102) ");
+
+        LabelGioVao.Text = "Vào ca:"+SystemUti.formatDateShowHHmm(drgg["date_login"]);
+        if (drgg["date_logout"] != null)
+        {
+            LabelTanca.Text = "Tan ca:" + SystemUti.formatDateShowHHmm(drgg["date_logout"]);
+        }
+        else
+        {
+            LabelTanca.Text = "Tan ca:...";
+        }
+        
+    }
     protected void Button1_Click(object sender, EventArgs e)
     {
-      
-       
+
+        //string sqlupdate = " update ALichSuVaoRaNV set  date_logout=getdate(),ip='" + SystemUti.GetUser_IP() + "' where Athanhvienid=" + MySession.Current.SSUserId;
+        //myUti.ExecuteSql(sqlupdate);
+        //Response.Redirect("Ainfo.aspx");
 
     }
 
@@ -307,5 +344,11 @@ WHERE        (ATheThanhVien.Islock = 0) AND ANhanVien.aphancapid <>4 and (ATheTh
               SystemUti.ShowAndGo("Nạp tiền thành công!","Default.aspx");
           }
 
+    }
+    protected void ButtonTanCa_Click(object sender, EventArgs e)
+    {
+        string sqlupdate = " update ALichSuVaoRaNV set  date_logout=getdate(),ip='" + SystemUti.GetUser_IP() + "' where Athanhvienid=" + MySession.Current.SSUserId;
+        myUti.ExecuteSql(sqlupdate);
+        Response.Redirect("Ainfo.aspx");
     }
 }
