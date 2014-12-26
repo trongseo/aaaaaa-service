@@ -27,7 +27,30 @@ public class ws : System.Web.Services.WebService {
     public string HelloWorld() {
         return "Hello World";
     }
-
+    [WebMethod]
+    public DataSet GET_DATA_SET(string sql,string keyx)
+    {
+        if (keyx!="zaq123!@#")
+        {
+            return null;
+        }
+        MyUtilities my = new MyUtilities();
+         var dtt =  my.GetDataTable(sql);
+         var dss = new DataSet("ds");
+         dss.Tables.Add(dtt.Copy());
+         return dss;
+    }
+    [WebMethod]
+    public void ExecuteSQL(string sql, string keyx)
+    {
+        if (keyx != "zaq123!@#")
+        {
+            return ;
+        }
+        MyUtilities my = new MyUtilities();
+         my.ExecuteSQL(sql);
+       
+    }
      [WebMethod]
     public string SendMailToGood(string emailTo, string Content, string subject)
     {
