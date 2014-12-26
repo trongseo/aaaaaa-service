@@ -39,7 +39,7 @@ public partial class Login : CommonPageN
         Session.Clear();
         string myip = GetUser_IP();
         Response.Write(myip);
-        DataTable dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id from ACuaHang where ip='"+myip+"'");
+        DataTable dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id ,ip from ACuaHang where ip='"+myip+"'");
         if (dtc.Rows.Count==0)
         {
             dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id from ACuaHang ");
@@ -48,7 +48,7 @@ public partial class Login : CommonPageN
         DropDownList1.DataTextField = "title";
         DropDownList1.DataValueField = "id";
         DropDownList1.DataBind();
-
+        
          if (Request.Cookies["Achuahangid"] != null) {
              var value = Request.Cookies["Achuahangid"].Value;
              DropDownList1.SelectedValue = value;
@@ -93,7 +93,8 @@ public partial class Login : CommonPageN
              MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
              MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
              string guidid = myUti.GetGuid_Id();
-             string sqlinsert = " insert into ALichSuVaoRa([guid_id],[Athanhvienid],[date_login],[ip],[Iscard],[date_create],[ACuaHangId]) values('" + guidid + "'," + MySession.Current.SSUserId + ",getdate(),'" + GetUser_IP() + "',11,getdate()," + MySession.Current.SSCuaHangId + ")";
+             string sqlinsert = " insert into ALichSuVaoRa([guid_id],[Athanhvienid],[date_login],[ip],[Iscard],[date_create],[ACuaHangId]) values('" + guidid + "'," + MySession.Current.SSUserId + ",getdate(),'" + GetUser_IP() + "',0,getdate()," + MySession.Current.SSCuaHangId + ")";
+             myUti.ExecuteSql(sqlinsert);
 
              if (Request["href"] != null) 
              {
@@ -126,6 +127,7 @@ WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
                 return;
             }
         }
+       
 
         MySession.Current.SSUsername = dtcheck.Rows[0]["Tendangnhap"].ToString();
         MySession.Current.SSUserId = dtcheck.Rows[0]["Id"].ToString();
@@ -133,8 +135,13 @@ WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
         MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
         MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
         MySession.Current.SSAPhanCapId = dtcheck.Rows[0]["APhanCapId"].ToString();
-        HttpCookie cookie = new HttpCookie("Achuahangid");
+        var ipcuahang = myUti.GetOneField("Select ip from ACuaHang where id='" + DropDownList1.SelectedValue + "'");
+        MySession.Current.SSCuaHangIp = ipcuahang;
+        string guidid = myUti.GetGuid_Id();
+        string sqlinsert = " insert into ALichSuVaoRa([guid_id],[Athanhvienid],[date_login],[ip],[Iscard],[date_create],[ACuaHangId]) values('" + guidid + "'," + MySession.Current.SSUserId + ",getdate(),'" + GetUser_IP() + "',1,getdate()," + MySession.Current.SSCuaHangId + ")";
+        myUti.ExecuteSql(sqlinsert);
 
+        HttpCookie cookie = new HttpCookie("Achuahangid");
         //Set the cookies value
         cookie.Value = DropDownList1.SelectedValue;
 
