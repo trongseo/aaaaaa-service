@@ -1,0 +1,41 @@
+USE [DB_AUTO]
+GO
+
+/****** Object:  Table [dbo].[AHisPort]    Script Date: 12/27/2014 12:05:44 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AHisPort](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[guid_id] [nvarchar](50) NULL,
+	[date_on] [datetime] NULL,
+	[date_off] [datetime] NULL,
+	[port_number] [int] NULL,
+	[acuahangid] [int] NULL,
+	[anhanvienid] [int] NULL,
+	[guid_id_dichvu_giohang] [nvarchar](50) NULL,
+	[date_create] [datetime] NULL,
+	[date_update] [datetime] NULL,
+	[isget] [int] NULL,
+	[isfinish] [int] NULL,
+ CONSTRAINT [PK_AHisPort] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[AHisPort] ADD  CONSTRAINT [DF_AHisPort_date_create]  DEFAULT (getdate()) FOR [date_create]
+GO
+
+ALTER TABLE [dbo].[AHisPort] ADD  CONSTRAINT [DF_AHisPort_date_update]  DEFAULT (getdate()) FOR [date_update]
+GO
+
+ALTER TABLE [dbo].[AHisPort] ADD  CONSTRAINT [DF_AHisPort_isfinish]  DEFAULT ((0)) FOR [isfinish]
+GO
+
+
