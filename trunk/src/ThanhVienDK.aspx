@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ThanhVien.aspx.cs" Inherits="ThanhVien" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ThanhVienDK.aspx.cs" Inherits="ThanhVien" %>
 <%@ Register src="UCLeftAdmin.ascx" tagname="UCLeftAdmin" tagprefix="uc1" %>
 
-<%@ Register src="UCTopAdmin.ascx" tagname="UCTopAdmin" tagprefix="uc2" %>
+<%@ Register src="UCTopFree.ascx" tagname="UCTopAdmin" tagprefix="uc2" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,32 +44,28 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                          Cập nhật thông tin thành viên
+                          Đăng ký mới
                         </div>
                         <div class="panel-body" style="width:700px">
                             <div class="row">
                                 <div class="col-lg-6">
                                   
-
+                                    <div class="form-group">
+                                            <label>Cửa hàng</label>
+                                            <asp:DropDownList ID="DropDownListCuaHang" CssClass="form-control" runat="server" Width="178px">
+                                        </asp:DropDownList>
+                                        </div>
                                         <div class="form-group">
                                             <label>Tên đăng nhập</label>
                                             <asp:TextBox ID="TextBoxTenDangNhap"  data-validation="required" runat="server"   CssClass="form-control"></asp:TextBox>
                                             <asp:HiddenField ID="HiddenField1" Value="" runat="server" />
                                         </div>
-                                    <%
-                                        if (HiddenField1.Value == "1")
-                                        {
-                                            %>
+                                  
                                      <div class="form-group">
                                             <label>Mật khẩu</label>
                                             <asp:TextBox ID="TextBoxMatKhau"  TextMode="Password"  data-validation="required" runat="server"  CssClass="form-control"></asp:TextBox>
                                             
                                         </div>
-                                    
-                                    <%
-
-                                        }
-                                         %>
                                       
                                          <div class="form-group">
                                             <label>Số điện thoại </label>
@@ -87,14 +83,7 @@
                                            
                                         </div>
                                     
-                                        <div class="form-group">
-                                            <label>CMND</label>
-                                            <asp:TextBox ID="TextBoxCMND"   runat="server"  CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                         <div class="form-group">
-                                            <label>Công việc</label>
-                                            <asp:TextBox ID="TextBoxCongViec"   runat="server"  CssClass="form-control"></asp:TextBox>
-                                        </div>
+                                        
                                           
                                        
                                     
@@ -109,6 +98,14 @@
                                         </div>
                                     
                                         <fieldset >
+                                            <div class="form-group">
+                                            <label>CMND</label>
+                                            <asp:TextBox ID="TextBoxCMND"   runat="server"  CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Công việc</label>
+                                            <asp:TextBox ID="TextBoxCongViec"   runat="server"  CssClass="form-control"></asp:TextBox>
+                                        </div>
                                           <div class="form-group">
                                             <label>Ngày Sinh (dd-mm-yyyy)</label><asp:HiddenField ID="HiddenFieldId" runat="server" />
                                             <asp:TextBox ID="TextBoxNgaySinh"    data-validation="dateno"

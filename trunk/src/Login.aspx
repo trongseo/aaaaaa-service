@@ -77,8 +77,8 @@
                                      </div>
                              <hr />
                                  <div class="form-group">
-                                     
-                             <input type="button" name="ButtonDangKyThanhVien" value="Đăng ký thành viên" id="ButtonDangKyThanhVien" onclick="window.location='Registbarcode.aspx'" style="height:50px;width:150px;">
+                                     <input type="button" name="ButtonDangKyThanhVien" value="Đăng ký thành viên" id="ButtonDangKyThanhVien" onclick="window.location = 'ThanhVienDK.aspx'" style="height:50px;width:150px;">
+                             <input type="button" name="ButtonDangKyThanhVien1" value="Đăng ký barcode" id="ButtonDangKyThanhVien1" onclick="window.location='Registbarcode.aspx'" style="height:50px;width:150px;">
                                 </div>
 
                             </fieldset>

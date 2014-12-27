@@ -28,6 +28,9 @@ public class CommonPageNhanVien : System.Web.UI.Page
     public string imagePathRoot = "http://admin.congtydetvothenguyen.com/ItemImage/";
     public Hashtable MY_HASTABLE = new Hashtable();
     public DataTable MY_DATATABLE = new DataTable();
+
+    public Hashtable MYHASTABLE = new Hashtable();
+    public DataTable MYDATATABLE = new DataTable();
     public CommonPageNhanVien()
     {
         //

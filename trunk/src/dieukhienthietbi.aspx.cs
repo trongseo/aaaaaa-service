@@ -34,11 +34,11 @@ public partial class dieukhienthietbi : CommonPageNhanVien
         //    return;
         //}
 
-        
-        string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, aportid AS sttmay, soluong, giathanh, acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
+
+        string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, aportid AS sttmay, soluong, giathanh, (select adonhang.acuahangid from adonhang where adonhang.guid_id=AGioHangTemp.adonhang_guid_id) as acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
                          soluong * giathanh AS thanhtien
 FROM            AGioHangTemp ";
-        sql += " where anhanvienid=" + MySession.Current.SSUserId + " order by date_create desc";
+        sql += " where isdichvu=1 and ((select adonhang.acuahangid from adonhang where adonhang.guid_id=AGioHangTemp.adonhang_guid_id))=" + MySession.Current.SSCuaHangId + " order by ngay desc";
         dt = myUti.GetDataTable(sql, null);
 
     }
