@@ -42,7 +42,7 @@
                              <div class="well">
                           
                         </div>--%><div class="form-group">
-                                         Danh sách lịch sử đơn hàng 
+                                        Điều khiển thiết bị cho dịch vụ
                                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -85,13 +85,13 @@
                                                                                           %></td>
                                                                     <td class=" "><%= getSPorDV(dr["title"], dr["isdichvu"] )%></td>
                                                                    
-                                                                    <td class="center "><%=dr["sttmay"]%> 
+                                                                    <td class="center "><%=dr["port_dieukhien"]==null?"":"Port on:"+dr["port_dieukhien"]%> 
 
                                                                         <%
                             string isdichvu = dr["isdichvu"].ToString();
                             if (isdichvu=="1")
                             {
-                                %><input type="button" name="btndieukhien" onclick="window.location = 'dieukhien.aspx?guid_dichvu=<%=dr["guid_id"]%>'" value="Điều khiển" id="btndieukhien" class="form-control" style="height:50px;width:94px;display:inline-block" />
+                                %><input type="button" name="btndieukhien" onclick="window.location = 'dieukhienend.aspx?guid_dichvu=<%=dr["guid_id"]%>'" value="Điều khiển" id="btndieukhien" class="form-control" style="height:50px;width:94px;display:inline-block" />
                                                                         <%}  %>
                                                                         
 

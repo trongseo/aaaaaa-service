@@ -71,18 +71,18 @@
                                             </table>
                                           
                                         </div>
+                                        <input type="button" name="ButtonLoginBarcodeaa" onclick="window.location = 'dieukhienthietbi.aspx'" value="Quay về" id="ButtonLoginBarcodeaa" class="form-control" style="height:50px;width:94px;display:inline-block">  
+                                       
                                         
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
-                                        <asp:Button ID="Button1" runat="server" Height="49px" OnClick="Button1_Click" Text="Button" Width="102px" />
+                                        <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Height="49px" OnClick="Button1_Click" Text="Mở port" Width="102px" />
+                           
                                     </div>
                             </div>
 
                         </div>
 
                            </div>
-                            <!-- /.table-responsive --> <input type="button" name="ButtonLoginBarcodeaa" onclick="window.location = 'Ainfo.aspx'" value="Quay về" id="ButtonLoginBarcodeaa" class="form-control" style="height:50px;width:94px;display:inline-block">
-                           
+                            <!-- /.table-responsive --> 
                         </div>
                         <!-- /.panel-body -->
                     </div>

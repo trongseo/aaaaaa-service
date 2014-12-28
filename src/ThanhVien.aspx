@@ -147,7 +147,11 @@
                                              <asp:DropDownList ID="DropDownListALoaiThanhVienId" CssClass="form-control" runat="server" />
                                            
                                         </div>
-                                            
+                                              <div class="form-group"  >
+                                            <label>Mật khẩu/thẻ thành viên xác nhận</label>
+                                           <asp:TextBox ID="TextBoxNewPass"   runat="server"  CssClass="form-control"></asp:TextBox>
+                                           
+                                        </div>
                                         </fieldset>
                                   <br />
                                    <input type="button" class="btn btn-default" name="ButtonCapNhatTaiKhoan" onclick="javascript: window.location = 'AInfo.aspx'" value="Quay về" id="ButtonCapNhatTaiKhoan" style="height:50px;width:150px;">

@@ -53,36 +53,36 @@
                            <div class="panel panel-default">
                         <div class="panel-heading">
                            Điều khiển port
+                            <asp:HiddenField ID="HiddenField1" runat="server" />
+                             <asp:HiddenField ID="HiddenFieldguid_histport" runat="server" />
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div role="form">
                                         <div class="form-group">
                                             <table>
-                                                <tr><td>  <label>Chọn port</label>
+                                                <tr><td>  
+                                                    <label>&nbsp;por
+                                                    t&nbsp;  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></label>
                                            
-                                            <asp:ListBox ID="ListBox1" CssClass="form-control" runat="server" Font-Size="X-Large" Height="386px" Width="227px">
-                                               
-                                            </asp:ListBox> </td>
+                                            &nbsp;</td>
 
-                                                    <td> <label>Trạng thái hiện tại:</label></td>
+                                                    <td> <label>Trạng thái hiện tại: Mở</label></td>
 
                                                 </tr>
                                             </table>
                                           
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
-                                        <asp:Button ID="Button1" runat="server" Height="49px" OnClick="Button1_Click" Text="Button" Width="102px" />
+                                      
                                     </div>
                             </div>
 
                         </div>
 
                            </div>
-                            <!-- /.table-responsive --> <input type="button" name="ButtonLoginBarcodeaa" onclick="window.location = 'Ainfo.aspx'" value="Quay về" id="ButtonLoginBarcodeaa" class="form-control" style="height:50px;width:94px;display:inline-block">
-                           
+                            <!-- /.table-responsive --> <input type="button" name="ButtonLoginBarcodeaa" onclick="window.location = 'dieukhienthietbi.aspx'" value="Quay về" id="ButtonLoginBarcodeaa" class="btn btn-default" style="height:50px;width:94px;display:inline-block" />
+                             <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Height="49px" OnClick="Button1_Click" Text="Tắt" Width="102px" />
                         </div>
                         <!-- /.panel-body -->
                     </div>

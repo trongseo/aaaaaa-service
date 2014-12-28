@@ -233,6 +233,29 @@ public partial class ThanhVien : CommonPageNhanVien
         }
         else
         {
+            string passxanhan = TextBoxNewPass.Text;
+            string barcodestr = passxanhan;
+            MY_HASTABLE["mathe"] = barcodestr;
+            string sqlg = @"SELECT        ANhanVien.ACuaHangId,APhanCapId, ANhanVien.TenDangNhap, ANhanVien.SDT, ANhanVien.HoTen, ANhanVien.Id, ATheThanhVien.MaThe
+FROM            ATheThanhVien INNER JOIN
+                         ANhanVien ON ATheThanhVien.ANhanVienId = ANhanVien.Id
+WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
+            var dtcheck = myUti.GetDataTable(sqlg, MY_HASTABLE);
+            if (dtcheck.Rows.Count == 0)
+            {
+                System.Collections.Hashtable hs = new Hashtable();
+                hs["Username"] = MySession.Current.SSUsername;
+                hs["HashedPassword"] = barcodestr;
+                DataTable dt11 = myUti.GetDataTable("Select * from Anhanvien where Tendangnhap=@Username and MatKhau=@HashedPassword", hs);
+
+                if (dt11.Rows.Count == 0)
+                {
+                    SystemUti.Show("Barcode hoặc mật khẩu bị sai!");
+                    return false;
+                }
+
+
+            }
             bool emailis = myUti.CheckExistKhachId("TenDangNhap", "ANhanVien", TextBoxTenDangNhap.Text.Trim(), idmember);
             if (emailis)
             {

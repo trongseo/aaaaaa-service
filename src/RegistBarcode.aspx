@@ -61,7 +61,7 @@
                             <asp:TextBox  TextMode="Password"    Width="50px"  ID="TextBoxBarcode" CssClass="form-control" runat="server"  ></asp:TextBox>  
                                      
                                       <!-- Change this to a button or input when using this as a form -->
-                            
+                           
                                 </div>
                                <div class="form-group">
                                    <label>Thẻ đăng ký</label>
@@ -96,11 +96,13 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
     <script>
+ 
+
         $('#TextBoxBarcode').focus();
         $('#TextBoxBarcode').keypress(function (e) {
             if (e.which == 13) {
                 event.preventDefault();
-                $("#ButtonLoginBarcode").trigger('click');
+               // $("#ButtonLoginBarcode").trigger('click');
                 return false;
 
                 // enter pressed
