@@ -77,10 +77,33 @@ public partial class ajax : CommonPageNhanVien
               if (Request["from"] == "kiemtratien")
               {
                   string resultr = "1";
+
                   if (kiemTraTien(MySession.Current.SSUserId) < 0)
                   {
                       resultr = "0";
                   }
+                  string barcodestr = GetPara("mathe");
+                  MY_HASTABLE["mathe"] = barcodestr;
+                  string sqlg = @"SELECT        ANhanVien.ACuaHangId,APhanCapId, ANhanVien.TenDangNhap, ANhanVien.SDT, ANhanVien.HoTen, ANhanVien.Id, ATheThanhVien.MaThe
+FROM            ATheThanhVien INNER JOIN
+                         ANhanVien ON ATheThanhVien.ANhanVienId = ANhanVien.Id
+WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
+                  var dtcheck = myUti.GetDataTable(sqlg, MY_HASTABLE);
+                  if (dtcheck.Rows.Count == 0)
+                  {
+                       System.Collections.Hashtable hs = new Hashtable();
+                       hs["Username"] = MySession.Current.SSUsername;
+                       hs["HashedPassword"] = barcodestr;
+                        DataTable dt11 = myUti.GetDataTable("Select * from Anhanvien where Tendangnhap=@Username and MatKhau=@HashedPassword", hs);
+
+                        if (dt11.Rows.Count == 0)
+                        {
+                            resultr = "-1";
+                        }
+                     
+                     
+                  }
+
                      Response.Clear();
                      Response.Write(resultr);
                     Response.End();

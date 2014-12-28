@@ -22,19 +22,8 @@ public partial class dieukhienend : CommonPageNhanVien
         {
             return;
         }
-      //  CASE WHEN isoff< 1 THEN N'Đang mở' ELSE N'Đang tắt' END AS ColumnName
-     string sqlget= @"   SELECT [Id]
-                  , 'Port ' + cast([portnumber] as varchar)+' ' +CASE WHEN isoff< 1 THEN N'Đang mở' ELSE N'Đang tắt' END  as sttext
-                  ,[portnumber] 
-                  ,[MoTa]
-                  ,[date_create]
-                  ,[acuahangid]
-              FROM  [aport]   where acuahangid="+MySession.Current.SSCuaHangId;
-      var dtports = myUti.GetDataTable(sqlget);
-      ListBox1.DataSource = dtports;
-      ListBox1.DataTextField = "sttext";
-      ListBox1.DataValueField = "portnumber";
-      ListBox1.DataBind();
+     
+     
                     //kiem tra nhan vien xem co dang o cua hang khong
         if (MySession.Current.SSAPhanCapId != Constants.PhanCap_nhanvien)
         {
@@ -56,12 +45,17 @@ public partial class dieukhienend : CommonPageNhanVien
         string guid_hisport = myUti.GetGuid_Id();
         if (drhisport==null)
         {
-            string sqlinserthisport = " INSERT INTO AHisPort(guid_id,guid_id_dichvu_giohang,isfinish) VALUES('" + guid_hisport + "','" + getguid + "',0);";
+            string sqlinserthisport = " INSERT INTO AHisPort(guid_id,acuahangid,anhanvienid,guid_id_dichvu_giohang,isfinish) VALUES('" + guid_hisport + "',"+MySession.Current.SSCuaHangId+","+MySession.Current.SSUserId+",'" + getguid + "',0);";
             myUti.ExecuteSql(sqlinserthisport);
-            Response.Redirect("dieukhien.aspx?guid_dichvu="+getguid);
+            Response.Redirect("dieukhien.aspx?guid_hisport=" + guid_hisport + "&guid_dichvu=" + getguid);
             return;
         }
         //
+        Label1.Text =  drhisport["port_number"].ToString();
+        HiddenField1.Value = drhisport["port_number"].ToString();
+        HiddenFieldguid_histport.Value = drhisport["guid_id"].ToString(); 
+        //  CASE WHEN isoff< 1 THEN N'Đang mở' ELSE N'Đang tắt' END AS ColumnName
+       
 
         string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, aportid AS sttmay, soluong, giathanh, acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
                          soluong * giathanh AS thanhtien
@@ -100,17 +94,15 @@ FROM            ADichVu INNER JOIN
     protected void Button1_Click(object sender, EventArgs e)
     {
 
-        if (ListBox1.SelectedValue != "")
-        {
-            string sqlxx = "update aport set isoff =( CASE WHEN isoff< 1 THEN 1 ELSE 0 end),isget=1 where id=" + ListBox1.SelectedValue + " and acuahangid=" + MySession.Current.SSCuaHangId;
+        
+            string sqlxx = "update aport set isoff =1,isget=1 where id=" + HiddenField1.Value + " and acuahangid=" + MySession.Current.SSCuaHangId;
            // Response.Write(sqlxx);
            myUti.ExecuteSql(sqlxx);
-            Response.Redirect("dieukhienthietbi.aspx?mess=Đã điều khiển chuyển trạng thái!");
+
+           string sqlx = "update AHisPort set date_off=getdate(),isget=1,isfinish=1   where guid_id='" + HiddenFieldguid_histport.Value + "'";
+           myUti.ExecuteSql(sqlx);   
+        Response.Redirect("dieukhienthietbi.aspx?mess=Đã điều khiển chuyển trạng thái!");
            
-        }
-        else
-        {
-            SystemUti.Show("Hãy chọn port để đổi trạng thái!");
-        }
+       
     }
 }

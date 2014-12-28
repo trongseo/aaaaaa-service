@@ -1,0 +1,15 @@
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\bin\Debug\Arduino_SerialInterface.exe.config
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\bin\Debug\Arduino_SerialInterface.exe
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\bin\Debug\Arduino_SerialInterface.pdb
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\bin\Debug\3DChart.exe
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\bin\Debug\3DChart.pdb
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\Arduino_SerialInterface.csprojResolveAssemblyReference.cache
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\MainWindow.baml
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\MainWindow.g.cs
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\App.g.cs
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\Arduino_SerialInterface_MarkupCompile.cache
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\Arduino_SerialInterface.g.resources
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\Arduino_SerialInterface.Properties.Resources.resources
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\Arduino_SerialInterface.csproj.GenerateResource.Cache
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\Arduino_SerialInterface.exe
+D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\Arduino_SerialInterface\obj\Debug\Arduino_SerialInterface.pdb

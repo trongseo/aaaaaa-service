@@ -202,15 +202,36 @@ public partial class AInfo : CommonPageNhanVien
     protected void ButtonNapTien_Click(object sender, EventArgs e)
     {
         string manaptien = TextBoxMaNapTien.Text;
-       
+       /// kiem tra nhap qua nhieu
+        string sqlchecklan = "Select date_live from anhanvien where id="+ MySession.Current.SSUserId +" and date_live<getdate()";
+        var drchecklive = myUti.GetDataRowNull(sqlchecklan);
+        if (drchecklive==null)
+        {
+             SystemUti.Show("Chức năng nhập thẻ cáo bị khóa trong 15 phút.Vì bạn đã nhập sai quá 5 lần.");
+
+              return;
+        }
+
         Hashtable hs22 = new Hashtable();
         hs22["manaptien"] = SystemUti.md5(manaptien);
         var drgia = myUti.GetDataRowNull("Select * from Athecao where sothecao=@manaptien and isfinish=0 and islock=0 and ngaybatdau<= getdate() and ngayketthuc >=getdate() ", hs22);
       if (drgia==null)
       {
-          SystemUti.Show("Thẻ cào sai hoặc đã hết hạn!Vui lòng kiểm tra lại.");
+          MySession.Current.SSSoLanSai = MySession.Current.SSSoLanSai+1;
+          if (MySession.Current.SSSoLanSai > 5)
+          {
+              string sqlupdateliveupdate = "update anhanvien set date_live=DATEADD(minute,15,GETDATE()) where id=" + MySession.Current.SSUserId + "";
+              myUti.ExecuteSql(sqlupdateliveupdate);
+              SystemUti.Show("Chức năng nhập thẻ cáo bị khóa trong 15 phút.Vì bạn đã nhập sai quá 5 lần.");
+              MySession.Current.SSSoLanSai = 0;
+              return;
+          }
+          SystemUti.Show("Thẻ cào sai ( lần " + MySession.Current.SSSoLanSai + "/5)hoặc đã hết hạn!Vui lòng kiểm tra lại.");
+          
           return;
       }
+       // date_live
+          
       string giatien = drgia["gia"].ToString(); 
         string Athanhvienid = MySession.Current.SSUserId;
         string guid = myUti.GetGuid_Id();
@@ -273,14 +294,29 @@ public partial class AInfo : CommonPageNhanVien
     protected void ButtonGuiDo_Click(object sender, EventArgs e)
     {
         MY_HASTABLE["madonhang"] = TextBoxmadonhang_guitra.Text;
-         var guid_id = myUti.GetOneField("Select guid_id from adonhang where madonhang=@madonhang",MY_HASTABLE);
+     var drn=   myUti.GetDataRowNull("Select guid_id from adonhang where madonhang=@madonhang", MY_HASTABLE);
+     if (drn== null)
+        {
+            SystemUti.Show("Không tồn tại đơn hàng này!");
+            return;
+        }
+       
+    
+        var guid_id = drn["guid_id"].ToString();
          MySession.Current.SSguid_id_donhang = guid_id;
          Response.Redirect("guido.aspx");
     }
     protected void ButtonTraDo_Click(object sender, EventArgs e)
     {
         MY_HASTABLE["madonhang"] = TextBoxmadonhang_guitra.Text;
-        var guid_id = myUti.GetOneField("Select guid_id from adonhang where madonhang=@madonhang", MY_HASTABLE);
+        var drn = myUti.GetDataRowNull("Select guid_id from adonhang where madonhang=@madonhang", MY_HASTABLE);
+        if (drn == null)
+        {
+            SystemUti.Show("Không tồn tại đơn hàng này!");
+            return;
+        }
+
+        var guid_id = drn["guid_id"].ToString();
         MySession.Current.SSguid_id_donhang = guid_id;
         Response.Redirect("trado.aspx");
     }

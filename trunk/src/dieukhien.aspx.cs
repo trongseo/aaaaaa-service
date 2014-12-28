@@ -29,12 +29,13 @@ public partial class dieukhien : CommonPageNhanVien
                   ,[MoTa]
                   ,[date_create]
                   ,[acuahangid]
-              FROM  [aport]   where acuahangid="+MySession.Current.SSCuaHangId;
+              FROM  [aport]   where isoff=1 and acuahangid=" + MySession.Current.SSCuaHangId;
       var dtports = myUti.GetDataTable(sqlget);
       ListBox1.DataSource = dtports;
       ListBox1.DataTextField = "sttext";
       ListBox1.DataValueField = "portnumber";
       ListBox1.DataBind();
+      Session["guid_hisport"] = GetPara("guid_hisport");
                     //kiem tra nhan vien xem co dang o cua hang khong
         if (MySession.Current.SSAPhanCapId != Constants.PhanCap_nhanvien)
         {
@@ -48,6 +49,7 @@ public partial class dieukhien : CommonPageNhanVien
         //}
 
         string getguid = GetPara("guid_dichvu");
+        Session["guid_dichvu"] = getguid;
         string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, aportid AS sttmay, soluong, giathanh, acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
                          soluong * giathanh AS thanhtien
 FROM            AGioHangTemp ";
@@ -89,7 +91,22 @@ FROM            ADichVu INNER JOIN
         {
             string sqlxx = "update aport set isoff =( CASE WHEN isoff< 1 THEN 1 ELSE 0 end),isget=1 where id=" + ListBox1.SelectedValue + " and acuahangid=" + MySession.Current.SSCuaHangId;
            // Response.Write(sqlxx);
-           myUti.ExecuteSql(sqlxx);
+       //    myUti.ExecuteSql(sqlxx);
+           string sqlx = "update AHisPort set date_on=getdate(),port_number=" + ListBox1.SelectedValue + ", isget=1,isfinish=0   where guid_id='" + Session["guid_hisport"].ToString() + "'";
+         //  myUti.ExecuteSql(sqlx);
+
+           string sqlagiohangtemp = "update agiohangtemp set port_dieukhien=" + ListBox1.SelectedValue + " where guid_id='" + Session["guid_dichvu"].ToString() + "'";
+         //  myUti.ExecuteSql(sqlx);
+           string[] arrc = { sqlxx, sqlx, sqlagiohangtemp };
+           Session["guid_hisport"] = null;
+           Session["guid_dichvu"] = null;
+           if (myUti.InsertTrans(arrc, "sqltrans") == "0")
+           {
+               SystemUti.ShowAndGo("Thất bại!!!", "dieukhienthietbi.aspx");
+               return;
+           }
+
+         
             Response.Redirect("dieukhienthietbi.aspx?mess=Đã điều khiển chuyển trạng thái!");
            
         }

@@ -34,11 +34,11 @@ public partial class dieukhienthietbi : CommonPageNhanVien
         //    return;
         //}
 
-
-        string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, aportid AS sttmay, soluong, giathanh, (select adonhang.acuahangid from adonhang where adonhang.guid_id=AGioHangTemp.adonhang_guid_id) as acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
+        string subsql = "(select guid_id_dichvu_giohang from ahisport where isfinish=1)";
+        string sql = @" SELECT     port_dieukhien,   guid_id, ngay, gio, loai, idsp as title, isdichvu, aportid AS sttmay, soluong, giathanh, (select adonhang.acuahangid from adonhang where adonhang.guid_id=AGioHangTemp.adonhang_guid_id) as acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
                          soluong * giathanh AS thanhtien
 FROM            AGioHangTemp ";
-        sql += " where isdichvu=1 and ((select adonhang.acuahangid from adonhang where adonhang.guid_id=AGioHangTemp.adonhang_guid_id))=" + MySession.Current.SSCuaHangId + " order by ngay desc";
+        sql += " where isdichvu=1 and guid_id not in(select guid_id_dichvu_giohang from ahisport where isfinish=1) and ((select adonhang.acuahangid from adonhang where adonhang.guid_id=AGioHangTemp.adonhang_guid_id))=" + MySession.Current.SSCuaHangId + " order by ngay desc";
         dt = myUti.GetDataTable(sql, null);
 
     }

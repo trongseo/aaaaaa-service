@@ -12,7 +12,9 @@
     <link href='js/calendar/rome.css' rel='stylesheet' type='text/css' />
 <script src='js/calendar/rome.js'></script>
     <style>
-
+        .panel-footer {
+            padding:1px 1px;
+        }
         .well {
                padding: 1px;
 margin-bottom: 2px;
@@ -65,26 +67,33 @@ margin-bottom: 2px;
                                             </div>
                                            
                                             <div class="panel-heading">
-                                                    <a href="ChangePassword.aspx" style="display:inline-block">
-                            <div class="panel-footer" style="width:130px;display:inline-block">
+                                                 <a href="BaoMatThe.aspx" style="display:inline-block">
+                            <div class="panel-footer" style="width:110px;display:inline-block">
+                                <span class="pull-left">Báo mất thẻ</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                          <a href="ChangePassword.aspx" style="display:inline-block">
+                            <div class="panel-footer" style="width:110px;display:inline-block">
                                 <span class="pull-left">Đổi mật khẩu</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a> <a href="ThanhVien.aspx" style="display:inline-block">
-                            <div class="panel-footer" style="width:130px;display:inline-block">
+                            <div class="panel-footer" style="width:110px;display:inline-block">
                                 <span class="pull-left">Cập nhật</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a> <a href="LichsuList.aspx" style="display:inline-block">
-                            <div class="panel-footer" style="width:130px;display:inline-block">
+                            <div class="panel-footer" style="width:110px;display:inline-block">
                                 <span class="pull-left">Ds giao dịch</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a><a href="donhanglist.aspx" style="display:inline-block">
-                            <div class="panel-footer" style="width:130px;display:inline-block">
+                            <div class="panel-footer" style="width:110px;display:inline-block">
                                 <span class="pull-left">Ds đơn hàng</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
@@ -478,22 +487,42 @@ margin-bottom: 2px;
                                                 </div>
                                                 <!-- /.table-responsive -->
                                                 <div class="form-group">
-                                                    <br>
-                                                    <input type="button" name="ButtonHoanThanh" onclick="hoanthanhclick()" value="Hoàn thành" id="ButtonHoanThanh" style="height:50px;width:150px;">
+                                                    <br>Nhập mật khẩu/mã thẻ thành viên
+                                                   <input name="TextBoxNewPass"  type="password" id="TextBoxNewPass" class="form-control error"  style="width:50px;border-color: purple;display:inline-block">
+                                                    <input type="button" name="ButtonHoanThanh" onclick="hoanthanhclick()" value="Hoàn thành" id="ButtonHoanThanh" style="height:50px;width:150px;display:inline-block">
                                                        <script>
+                                                           $('#TextBoxNewPass').keypress(function (e) {
+                                                               if (e.which == 13) {
+                                                                   event.preventDefault();
+                                                                   // $("#ButtonLoginBarcode").trigger('click');
+                                                                   return false;
+
+                                                                   // enter pressed
+                                                                   // alert('x');
+                                                                   //$('#ButtonLoginBarcode').click();
+
+                                                                   //document.getElementById('ButtonLoginBarcode').click();
+                                                               }
+                                                           });
+
                                                            function hoanthanhclick()
                                                            {
                                                                if (!confirm("Bạn có chắc là muốn hoàn thành đơn hàng này!"))
                                                                {
                                                                    return;
                                                                }
+                                                               var mathe = $('#TextBoxNewPass').val();
                                                                //javascript:window.location='Ainfo.aspx?from=hoanthanh'
                                                               
-                                                                   $.get("ajax.aspx?from=kiemtratien&r=" + Math.random(), function (data, status) {
-                                                                       // alert("Data: " + data + "\nStatus: " + status);
+                                                               $.get("ajax.aspx?mathe=" + mathe + "&from=kiemtratien&r=" + Math.random(), function (data, status) {
+                                                                    // alert("Data: " + data + "\nStatus: " + status); return;
                                                                        if (data == "0")
                                                                        {
                                                                            alert("Tài khoản không đủ tiền!Vui lòng nạp thêm tiền.")
+                                                                           return;
+                                                                       }
+                                                                       if (data == "-1") {
+                                                                           alert("Mật khẩu hoặc barcode bị sai.")
                                                                            return;
                                                                        }
                                                                        //disablebuttonThemDV();
@@ -540,6 +569,22 @@ margin-bottom: 2px;
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/jquery.form-validator.js"></script>
     <script>
+
+
+        
+        $('#TextBoxmadonhang_guitra').keypress(function (e) {
+            if (e.which == 13) {
+                event.preventDefault();
+                // $("#ButtonLoginBarcode").trigger('click');
+                return false;
+
+                // enter pressed
+                // alert('x');
+                //$('#ButtonLoginBarcode').click();
+
+                //document.getElementById('ButtonLoginBarcode').click();
+            }
+        });
         (function ($, window) {
 
             var dev = '.dev'; //window.location.hash.indexOf('dev') > -1 ? '.dev' : '';

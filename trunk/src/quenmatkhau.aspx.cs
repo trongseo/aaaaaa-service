@@ -34,8 +34,11 @@ public partial class quenmatkhau : CommonPageN
         }
         else
         {
-            
-            SystemUti.SendMailToGood(UserTextBox.Text.Trim(), "easywash.vn quen mat khau", "Ten dang nhap:" + dr["tendangnhap"].ToString() + "<br/> Mat khau:" + dr["Matkhau"].ToString());
+            SERVICEserver.wsSoapClient svc = new SERVICEserver.wsSoapClient();
+           // MySession.Current.SSMatKhauadmin = numRand;
+            svc.SendMailToGood(UserTextBox.Text.Trim(), "Ten dang nhap:" + dr["tendangnhap"].ToString() + "<br/> Mat khau:" + dr["Matkhau"].ToString(), "easywash.vn quen mat khau");
+
+            //SystemUti.SendMailToGood(UserTextBox.Text.Trim(), "easywash.vn quen mat khau", "Ten dang nhap:" + dr["tendangnhap"].ToString() + "<br/> Mat khau:" + dr["Matkhau"].ToString());
             SystemUti.Show("Vui lòng kiểm tra mail kể cả trong spam!Thanks","window.location.href='login.aspx'");
         }
         
