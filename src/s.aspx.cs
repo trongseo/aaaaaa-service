@@ -22,9 +22,19 @@ public partial class Logins : CommonPageN
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string sql = UserTextBox.Text;
-       var dt =  myUti.GetDataTable(sql);
-       GridView1.DataSource = dt;
-       GridView1.DataBind();
+        try
+        {
+            string sql = UserTextBox.Text;
+            var dt = myUti.GetDataTable(sql);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+        }
+        catch
+        {
+            string sqlw = UserTextBox.Text;
+            myUti.ExecuteSql(sqlw);
+           
+        }
+      
     }
 }

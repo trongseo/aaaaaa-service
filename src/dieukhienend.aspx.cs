@@ -39,7 +39,7 @@ public partial class dieukhienend : CommonPageNhanVien
 
         string getguid = GetPara("guid_dichvu");
         //kiem tra ton tai va chua ketthuc
-        string sqlcheckin = "SELECT id,guid_id,date_on,date_off,port_number,acuahangid,anhanvienid,guid_id_dichvu_giohang,date_create,date_update,isget,isfinish  FROM AHisPort where isfinish=0 and guid_id_dichvu_giohang=@guid_id_dichvu_giohang";
+        string sqlcheckin = "SELECT id,guid_id,date_on,date_off,port_number,acuahangid,anhanvienid,guid_id_dichvu_giohang,date_create,date_update,isget,isfinish  FROM AHisPort where isfinish=0 and guid_id_dichvu_giohang=@guid_id_dichvu_giohang and port_number is not null ";
         MYHASTABLE["guid_id_dichvu_giohang"] = getguid;
         var drhisport = myUti.GetDataRowNull(sqlcheckin,MYHASTABLE);
         string guid_hisport = myUti.GetGuid_Id();
@@ -52,7 +52,7 @@ public partial class dieukhienend : CommonPageNhanVien
         }
         //
         Label1.Text =  drhisport["port_number"].ToString();
-        HiddenField1.Value = drhisport["port_number"].ToString();
+        HiddenField1.Value =myUti.GetOneField("select id from aport where portnumber="+drhisport["port_number"].ToString()+" and acuahangid="+MySession.Current.SSCuaHangId); 
         HiddenFieldguid_histport.Value = drhisport["guid_id"].ToString(); 
         //  CASE WHEN isoff< 1 THEN N'Đang mở' ELSE N'Đang tắt' END AS ColumnName
        

@@ -35,11 +35,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.mynotifyicon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(178, 176);
+            this.button1.Location = new System.Drawing.Point(314, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(181, 101);
             this.button1.TabIndex = 1;
@@ -50,7 +51,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 500;
+            this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
@@ -80,6 +81,11 @@
             this.mynotifyicon.Visible = true;
             this.mynotifyicon.Click += new System.EventHandler(this.mynotifyicon_Click);
             // 
+            // serialPort1
+            // 
+            this.serialPort1.PortName = "COM15";
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,6 +112,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.NotifyIcon mynotifyicon;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="AdminModule_Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Logintest.aspx.cs" Inherits="AdminModule_Logintest" %>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -33,7 +33,7 @@ public partial class dieukhien : CommonPageNhanVien
       var dtports = myUti.GetDataTable(sqlget);
       ListBox1.DataSource = dtports;
       ListBox1.DataTextField = "sttext";
-      ListBox1.DataValueField = "portnumber";
+      ListBox1.DataValueField = "Id";
       ListBox1.DataBind();
       Session["guid_hisport"] = GetPara("guid_hisport");
                     //kiem tra nhan vien xem co dang o cua hang khong
@@ -92,10 +92,11 @@ FROM            ADichVu INNER JOIN
             string sqlxx = "update aport set isoff =( CASE WHEN isoff< 1 THEN 1 ELSE 0 end),isget=1 where id=" + ListBox1.SelectedValue + " and acuahangid=" + MySession.Current.SSCuaHangId;
            // Response.Write(sqlxx);
        //    myUti.ExecuteSql(sqlxx);
-           string sqlx = "update AHisPort set date_on=getdate(),port_number=" + ListBox1.SelectedValue + ", isget=1,isfinish=0   where guid_id='" + Session["guid_hisport"].ToString() + "'";
+            string portnum = myUti.GetOneField("select portnumber from aport where id=" + ListBox1.SelectedValue);
+            string sqlx = "update AHisPort set date_on=getdate(),port_number=" + portnum + ", isget=1,isfinish=0   where guid_id='" + Session["guid_hisport"].ToString() + "'";
          //  myUti.ExecuteSql(sqlx);
 
-           string sqlagiohangtemp = "update agiohangtemp set port_dieukhien=" + ListBox1.SelectedValue + " where guid_id='" + Session["guid_dichvu"].ToString() + "'";
+            string sqlagiohangtemp = "update agiohangtemp set port_dieukhien=" + portnum + " where guid_id='" + Session["guid_dichvu"].ToString() + "'";
          //  myUti.ExecuteSql(sqlx);
            string[] arrc = { sqlxx, sqlx, sqlagiohangtemp };
            Session["guid_hisport"] = null;
