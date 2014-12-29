@@ -46,7 +46,7 @@ namespace devicecontrol
             }
             catch (EndpointNotFoundException es)
             {
-                LogWriter ls = new LogWriter("khong truy cap duoc web getDataTable:" + DateTime.Now.ToString("HH:mm:ss"));
+                LogWriter ls = new LogWriter("khong truy cap duoc web getDataTable:" + DateTime.Now.ToString("HH:mm:ss") + es.ToString() );
                 label1.Text = "khong truy cap duoc web:"+DateTime.Now.ToString("HH:mm:ss");
                 return null;
             }
@@ -100,13 +100,33 @@ namespace devicecontrol
             {
                 return true;
             }
-          label1.Text=  dtget.Rows[0]["portnumber"].ToString() + dtget.Rows[0]["isoff"].ToString(); ;
-          LogWriter lg = new LogWriter(label1.Text);
-            return true;
+            try
+            {
+                label1.Text = dtget.Rows[0]["portnumber"].ToString() + dtget.Rows[0]["isoff"].ToString(); ;
+                //LogWriter lg = new LogWriter(label1.Text);
+                string offon = dtget.Rows[0]["isoff"].ToString();
+                if (offon=="1")
+                {
+                    offon="0";
+                }else{
+                      offon="1";
+                }
+                serialPort1.Write(dtget.Rows[0]["portnumber"].ToString() + offon);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        
+            return false;
         }
+        string idcuahang = "";
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var dtget = getDataTable("Select * from APort where isget=1");
+
+            var dtget = getDataTable("Select * from APort where isget=1 and acuahangid=" + idcuahang);
             if (doaction(dtget))
             {
                 UpdateStatus(dtget);
@@ -124,6 +144,24 @@ namespace devicecontrol
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           string  m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            
+        
+           string[] lines = System.IO.File.ReadAllLines(m_exePath + "\\" + "idcuahang.txt");
+           idcuahang =lines[0];
+            try
+            {
+                if (!serialPort1.IsOpen)
+                {
+                    serialPort1.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogWriter lg = new LogWriter(ex.ToString());
+                MessageBox.Show("Không kết nối được với board mạch!" + ex.ToString());
+            }
+           
             mynotifyicon.Visible = true;
             mynotifyicon.ShowBalloonTip(500);
             this.Hide();
@@ -147,6 +185,11 @@ namespace devicecontrol
         private void mynotifyicon_Click(object sender, EventArgs e)
         {
             this.Show();
+        }
+
+        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+
         }
      
        
@@ -178,10 +221,8 @@ namespace devicecontrol
         {
             try
             {
-                txtWriter.Write("\r\nLog Entry : ");
-                txtWriter.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),
+              txtWriter.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),
                     DateTime.Now.ToLongDateString());
-                txtWriter.WriteLine("  :");
                 txtWriter.WriteLine("  :{0}", logMessage);
                 txtWriter.WriteLine("-------------------------------");
             }

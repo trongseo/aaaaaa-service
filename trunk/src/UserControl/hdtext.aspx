@@ -10,8 +10,7 @@
 
 
        
-        <meta name="description" content="Công ty dệt vớ Thế Nguyễn với kinh nghiệm 15 năm trong ngành. Phục vụ cho các cơ quan nhà nước, bộ quốc phòng, công ty tư nhân..." >
-<meta name="keywords" content="cong ty det ve the nguyen, công ty dệt vớ thế nguyễn" >   
+        <meta name="description" content="" >   
 
 <SCRIPT type=text/javascript>
     

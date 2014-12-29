@@ -65,13 +65,14 @@
                         for (int i = 0; i < dt.Rows.Count; i++)
                         {
                             System.Data.DataRow dr = dt.Rows[i];
+                            var iscolor = dr["port_dieukhien"].ToString() == "" ? "" : "background-color:red;";
                             if (i%2==1)
                             {
                                  odd = "even";
                             }
                             
                             %>
-  <tr class="gradeA <%=odd%>">
+  <tr class="gradeA <%=odd%>" style="<%=iscolor%>">
                                                                     <td class="sorting_1"><%
                             string giop = ((DateTime)dr["ngay"]).ToString("ddMMyy-HHmm");
                             if (giop.IndexOf("0000")>-1)
@@ -85,7 +86,7 @@
                                                                                           %></td>
                                                                     <td class=" "><%= getSPorDV(dr["title"], dr["isdichvu"] )%></td>
                                                                    
-                                                                    <td class="center "><%=dr["port_dieukhien"]==null?"":"Port on:"+dr["port_dieukhien"]%> 
+                                                                    <td class="center "><%=dr["port_dieukhien"].ToString() == ""?"":"Port on:"+dr["port_dieukhien"]%> 
 
                                                                         <%
                             string isdichvu = dr["isdichvu"].ToString();
