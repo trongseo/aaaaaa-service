@@ -503,7 +503,8 @@ margin-bottom: 2px;
 
                                                                    //document.getElementById('ButtonLoginBarcode').click();
                                                                }
-                                                           });
+                                                           });
+
 
                                                            function hoanthanhclick()
                                                            {
