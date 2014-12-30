@@ -148,7 +148,9 @@ namespace devicecontrol
             
         
            string[] lines = System.IO.File.ReadAllLines(m_exePath + "\\" + "idcuahang.txt");
-           idcuahang =lines[0];
+           idcuahang = lines[0];
+           string comid = lines[1];
+           serialPort1.PortName = comid;
             try
             {
                 if (!serialPort1.IsOpen)
