@@ -45,7 +45,7 @@
                     </div>
                     <div class="panel-body">
                         
-                            <fieldset> <div class="form-group">
+                            <fieldset> <div class="form-group" >
                                             <label>Cửa hàng</label>
                                             <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" Width="178px">
                                         </asp:DropDownList>

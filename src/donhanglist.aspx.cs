@@ -22,7 +22,7 @@ public partial class donhanglist : CommonPageNhanVien
         string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, (select portnumber from aport where id=AGioHangTemp.aportid) AS sttmay, soluong, giathanh, acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
                          soluong * giathanh AS thanhtien
 FROM            AGioHangTemp ";
-        sql += " where anhanvienid=" + MySession.Current.SSUserId + " order by date_create desc";
+        sql += " where adonhang_guid_id is not null and anhanvienid=" + MySession.Current.SSUserId + " order by date_create desc";
         dt = myUti.GetDataTable(sql, null);
 
 
@@ -30,6 +30,18 @@ FROM            AGioHangTemp ";
 
 
 
+    }
+    public string getGio(object oidspdv, object isdichvu)
+    {
+        string isdichvui = isdichvu.ToString();
+        if (isdichvui == "1")
+        {
+            return ((DateTime)oidspdv).ToString("HH:mm");
+        }
+        else
+        {
+            return "";
+        }
     }
     public string getSPorDV(object oidspdv, object isdichvu)
     {
@@ -67,9 +79,17 @@ FROM            ADichVu INNER JOIN
     }
     public string getMadonhang(object oidspdv)
     {
-
-        string guid_donhang = oidspdv.ToString();
-        return myUti.GetOneField("Select madonhang from ADonHang where guid_id='" + guid_donhang + "'");
+        try
+        {
+            string guid_donhang = oidspdv.ToString();
+            return myUti.GetOneField("Select madonhang from ADonHang where guid_id='" + guid_donhang + "'");
+        }
+        catch
+        {
+            return oidspdv.ToString();
+        }
+        return oidspdv.ToString();
+       
 
     }
 }

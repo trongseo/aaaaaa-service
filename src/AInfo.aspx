@@ -123,8 +123,8 @@ margin-bottom: 2px;
                                                 </div> <div class="col-lg-8" style="width:50%;">
                     <div class="panel panel-default">
                         <div class="form-group">
-                                                <label>Nhờ  nạp tiền</label><br />
-                                                <asp:TextBox ID="TextBoxSoTienNap" style="display:inline-block" autocomplete="off" placeholder="Số tiền" runat="server" Width="100px" CssClass="form-control"></asp:TextBox>   <asp:TextBox ID="TextBoxbarcodenhanvien"  autocomplete="off" TextMode="Password" style="display:inline-block" placeholder="Mã barcode" runat="server" Width="100px" CssClass="form-control"></asp:TextBox>  <asp:Button ID="ButtonNhanViennaptien" style="height: 50px; width: 250px;"  runat="server" Text="Nhân viên nạp tiền" OnClick="ButtonNhanViennaptien_Click" />
+                                                <label>Nạp tiền mặt tại cửa hàng</label><br />
+                                                <asp:TextBox ID="TextBoxSoTienNap" style="display:inline-block" autocomplete="off" placeholder="Số tiền" runat="server" Width="100px" CssClass="form-control"></asp:TextBox>   <asp:TextBox ID="TextBoxbarcodenhanvien"  autocomplete="off" TextMode="Password" style="display:inline-block" placeholder="" runat="server" Width="100px" CssClass="form-control"></asp:TextBox>  <asp:Button ID="ButtonNhanViennaptien" style="height: 50px; width: 250px;"  runat="server" Text="Nhân viên nạp tiền" OnClick="ButtonNhanViennaptien_Click" />
                                                 
                                             </div>
                          <div class="form-group">
@@ -321,7 +321,7 @@ margin-bottom: 2px;
                                                            dataType: 'json',
                                                             error: function (error) {
                                                                 //alert('Server validation failed due to: ' + error.statusText);
-                                                                alert('javascript:Server failed');
+                                                               // alert('javascript:Server failed');
                                                                
                                                             },
                                                             success: function (response) {
@@ -362,7 +362,7 @@ margin-bottom: 2px;
                                                             dataType: 'json',
                                                             error: function (error) {
                                                                 //alert('Server validation failed due to: ' + error.statusText);
-                                                                alert('javascript:Server failed');
+                                                               // alert('javascript:Server failed');
 
                                                             },
                                                             success: function (response) {
@@ -375,7 +375,7 @@ margin-bottom: 2px;
 
                                                     function saveDichVu() {
                                                         if ($('#form1').isValid() == false) {
-                                                            alert("Nhập liệu chưa chính xác!");
+                                                            //alert("Nhập liệu chưa chính xác!");
                                                             return;
                                                         }
                                                         var loaidvid = $('#DropDownListLoaiDV').val();
@@ -392,7 +392,7 @@ margin-bottom: 2px;
                                                             dataType: 'json',
                                                             error: function (error) {
                                                                 //alert('Server validation failed due to: ' + error.statusText);
-                                                                alert('javascript:Server failed');
+                                                               // alert('javascript:Server failed');
 
                                                             },
                                                             success: function (response) {
@@ -464,7 +464,7 @@ margin-bottom: 2px;
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr class="gradeA odd">
+                                                            <%--    <tr class="gradeA odd">
                                                                     <td class="sorting_1">Gecko</td>
                                                                     <td class=" ">Firefox 1.0</td>
                                                                     <td class=" ">Win 98+ / OSX.2+</td>
@@ -479,7 +479,7 @@ margin-bottom: 2px;
                                                                     <td class="center ">1.8</td>
                                                                     <td class="center ">A</td>
                                                                      <td class="center ">A</td>
-                                                                </tr>
+                                                                </tr>--%>
                                                                
                                                             </tbody>
                                                         </table>
@@ -490,46 +490,46 @@ margin-bottom: 2px;
                                                     <br>Nhập mật khẩu/mã thẻ thành viên
                                                    <input name="TextBoxNewPass"  type="password" id="TextBoxNewPass" class="form-control error"  style="width:50px;border-color: purple;display:inline-block">
                                                     <input type="button" name="ButtonHoanThanh" onclick="hoanthanhclick()" value="Hoàn thành" id="ButtonHoanThanh" style="height:50px;width:150px;display:inline-block">
-                                                       <script>
-                                                           $('#TextBoxNewPass').keypress(function (e) {
-                                                               if (e.which == 13) {
-                                                                   event.preventDefault();
-                                                                   // $("#ButtonLoginBarcode").trigger('click');
-                                                                   return false;
+                                                       
+                                                    <br />
+                                                   <span style="color:red"> Vui lòng nhập mật khẩu/quẹt thẻ thành viên trước khi hoàn thành </span>
+                                                     <script>
+                                                         $('#TextBoxNewPass').keypress(function (e) {
+                                                             if (e.which == 13) {
+                                                                 event.preventDefault();
+                                                                 // $("#ButtonLoginBarcode").trigger('click');
+                                                                 return false;
 
-                                                                   // enter pressed
-                                                                   // alert('x');
-                                                                   //$('#ButtonLoginBarcode').click();
+                                                                 // enter pressed
+                                                                 // alert('x');
+                                                                 //$('#ButtonLoginBarcode').click();
 
-                                                                   //document.getElementById('ButtonLoginBarcode').click();
-                                                               }
-                                                           });
+                                                                 //document.getElementById('ButtonLoginBarcode').click();
+                                                             }
+                                                         });
 
 
-                                                           function hoanthanhclick()
-                                                           {
-                                                               if (!confirm("Bạn có chắc là muốn hoàn thành đơn hàng này!"))
-                                                               {
-                                                                   return;
-                                                               }
-                                                               var mathe = $('#TextBoxNewPass').val();
-                                                               //javascript:window.location='Ainfo.aspx?from=hoanthanh'
-                                                              
-                                                               $.get("ajax.aspx?mathe=" + mathe + "&from=kiemtratien&r=" + Math.random(), function (data, status) {
-                                                                    // alert("Data: " + data + "\nStatus: " + status); return;
-                                                                       if (data == "0")
-                                                                       {
-                                                                           alert("Tài khoản không đủ tiền!Vui lòng nạp thêm tiền.")
-                                                                           return;
-                                                                       }
-                                                                       if (data == "-1") {
-                                                                           alert("Mật khẩu hoặc barcode bị sai.")
-                                                                           return;
-                                                                       }
-                                                                       //disablebuttonThemDV();
-                                                                       window.location = 'Ainfo.aspx?from=hoanthanh';
-                                                                   });
-                                                           }
+                                                         function hoanthanhclick() {
+                                                             if (!confirm("Bạn có chắc là muốn hoàn thành đơn hàng này!")) {
+                                                                 return;
+                                                             }
+                                                             var mathe = $('#TextBoxNewPass').val();
+                                                             //javascript:window.location='Ainfo.aspx?from=hoanthanh'
+
+                                                             $.get("ajax.aspx?mathe=" + mathe + "&from=kiemtratien&r=" + Math.random(), function (data, status) {
+                                                                 // alert("Data: " + data + "\nStatus: " + status); return;
+                                                                 if (data == "0") {
+                                                                     alert("Tài khoản không đủ tiền!Vui lòng nạp thêm tiền.")
+                                                                     return;
+                                                                 }
+                                                                 if (data == "-1") {
+                                                                     alert("Mật khẩu hoặc barcode bị sai.")
+                                                                     return;
+                                                                 }
+                                                                 //disablebuttonThemDV();
+                                                                 window.location = 'Ainfo.aspx?from=hoanthanh';
+                                                             });
+                                                         }
                                                        </script> 
                                                 </div>
                                             </div>

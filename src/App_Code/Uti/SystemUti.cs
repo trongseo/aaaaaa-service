@@ -133,6 +133,19 @@ public class SystemUti
         return context.Request.ServerVariables["REMOTE_ADDR"];
 
     }
+    public static bool checkNhanVienIncuahang()
+    {
+        System.Web.HttpContext context = System.Web.HttpContext.Current;
+        string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+        if (MySession.Current.SSAPhanCapId == Constants.PhanCap_nhanvien)
+        {
+            if (MySession.Current.SSCuaHangIp != GetUser_IP())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     /// <summary>
     /// 2012-12-12
     /// </summary>

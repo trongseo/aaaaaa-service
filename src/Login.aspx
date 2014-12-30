@@ -45,18 +45,18 @@
                     </div>
                     <div class="panel-body">
                         
-                            <fieldset> <div class="form-group">
+                            <fieldset> <div class="form-group" style="display:none">
                                             <label>Cửa hàng</label>
                                             <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" Width="178px">
                                         </asp:DropDownList>
                                         </div>
                                 <div class="form-group">
-                                    <asp:TextBox ID="UserTextBox" placeholder="Tên đăng nhập" CssClass="form-control" runat="server"  ></asp:TextBox>
+                                    <asp:TextBox ID="UserTextBox" Width="250" placeholder="Tên đăng nhập/Email/phone" CssClass="form-control" runat="server"  ></asp:TextBox>
                                     
                                 </div>
                                 <div class="form-group">
                                    
-                                     <asp:TextBox TextMode="Password" placeholder="Mật khẩu"  ID="PassTextBox" CssClass="form-control" runat="server"  ></asp:TextBox>
+                                     <asp:TextBox TextMode="Password" Width="250" placeholder="Mật khẩu"  ID="PassTextBox" CssClass="form-control" runat="server"  ></asp:TextBox>
                                 </div>
                                 <%--<div class="checkbox">
                                     <label>
@@ -65,24 +65,25 @@
                                 </div>--%>
                                 <!-- Change this to a button or input when using this as a form -->
                                   <div class="form-group form-inline">
-                               <asp:Button ID="SaveButton" Text="Đăng nhập"  CssClass="form-control"  runat="server" Height="50px" Width="94px" OnClick="SaveButton_Click" /> <a href="quenmatkhau.aspx" class="">Quên mật khẩu</a> </div>
+                               <asp:Button ID="SaveButton" Text="Đăng nhập"  CssClass="form-control"  runat="server" Height="50px" Width="94px" OnClick="SaveButton_Click" /> 
+                                
+                                      <a href="quenmatkhau.aspx" class="">Quên mật khẩu</a> </div> <asp:Label ID="Label1" runat="server" ForeColor="Red"  ></asp:Label> 
                                 <%--<a href="javascript:document.getElementById('SaveButton').click();" class="btn btn-lg btn-success btn-block">Đăng nhập</a>--%>
-
                                 <br />
 
                                  <div class="form-group form-inline">
                                    
-                            <asp:TextBox  TextMode="Password"  placeholder="Barcode"  Width="100px"  ID="TextBoxBarcode" CssClass="form-control" runat="server"  ></asp:TextBox>   <!-- Change this to a button or input when using this as a form -->
-                              <asp:Button   ID="ButtonLoginBarcode" Text="Đăng nhập barcode" CssClass="form-control" runat="server"  Height="50px" Width="194px"  OnClick="ButtonLoginBarcode_Click" />
+                            <asp:TextBox  TextMode="Password"  placeholder=""  Width="100px"  ID="TextBoxBarcode" CssClass="form-control" runat="server"  ></asp:TextBox>   <!-- Change this to a button or input when using this as a form -->
+                            <span style="display:none">  <asp:Button   ID="ButtonLoginBarcode" Text="Đăng nhập barcode" CssClass="form-control" runat="server"  Height="50px" Width="194px"  OnClick="ButtonLoginBarcode_Click" /></span>
                                      </div>
                              <hr />
                                  <div class="form-group">
                                      <input type="button" name="ButtonDangKyThanhVien" value="Đăng ký thành viên" id="ButtonDangKyThanhVien" onclick="window.location = 'ThanhVienDK.aspx'" style="height:50px;width:150px;">
-                             <input type="button" name="ButtonDangKyThanhVien1" value="Đăng ký barcode" id="ButtonDangKyThanhVien1" onclick="window.location='Registbarcode.aspx'" style="height:50px;width:150px;">
+                             <input type="button" name="ButtonDangKyThanhVien1" value="Đăng ký thành viên tại cửa hàng" id="ButtonDangKyThanhVien1" onclick="window.location='Registbarcode.aspx'" style="height:50px;width:150px;<%=stylecuahang%>">
                                 </div>
 
                             </fieldset>
-                       <asp:Label ID="Label1" runat="server"  ></asp:Label> 
+                      
                     </div>
                 </div>
             </div>
