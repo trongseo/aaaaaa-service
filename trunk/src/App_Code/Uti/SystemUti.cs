@@ -133,6 +133,11 @@ public class SystemUti
         return context.Request.ServerVariables["REMOTE_ADDR"];
 
     }
+    /// <summary>
+    /// 2012-12-12
+    /// </summary>
+    /// <param name="Date"></param>
+    /// <returns></returns>
     public static string ConverDDMMYYYYtoYYYYMMDD(object Date)
     {
         string date1 = Date.ToString();
