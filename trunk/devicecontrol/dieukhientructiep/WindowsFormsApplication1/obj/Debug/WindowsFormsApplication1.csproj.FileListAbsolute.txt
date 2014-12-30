@@ -6,3 +6,11 @@ D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\WindowsFormsApplication1\obj\
 D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 D:\soft\Arduino_DotNet_2_0\Arduino_SerialInterface\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+D:\project\SercieAuto\SVN\devicecontrol\dieukhientructiep\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+D:\project\SercieAuto\SVN\devicecontrol\dieukhientructiep\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+D:\project\SercieAuto\SVN\devicecontrol\dieukhientructiep\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+D:\project\SercieAuto\SVN\devicecontrol\dieukhientructiep\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+D:\project\SercieAuto\SVN\devicecontrol\dieukhientructiep\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+D:\project\SercieAuto\SVN\devicecontrol\dieukhientructiep\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+D:\project\SercieAuto\SVN\devicecontrol\dieukhientructiep\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+D:\project\SercieAuto\SVN\devicecontrol\dieukhientructiep\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
