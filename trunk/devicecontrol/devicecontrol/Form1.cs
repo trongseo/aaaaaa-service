@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.ServiceModel;
 using System.Text;
@@ -141,14 +142,33 @@ namespace devicecontrol
             }
            
         }
+        public string GetPublicIP()
+        {
+            String direction = "";
+            WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
+            using (WebResponse response = request.GetResponse())
+            using (StreamReader stream = new StreamReader(response.GetResponseStream()))
+            {
+                direction = stream.ReadToEnd();
+            }
 
+            //Search for the ip in the html
+            int first = direction.IndexOf("Address: ") + 9;
+            int last = direction.LastIndexOf("</body>");
+            direction = direction.Substring(first, last - first);
+
+            return direction;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+            label2.Text = GetPublicIP();
+           
            string  m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             
-        
+       
            string[] lines = System.IO.File.ReadAllLines(m_exePath + "\\" + "idcuahang.txt");
            idcuahang = lines[0];
+           ExecuteSQL("update acuahang set ip='" + label2.Text.Trim() + "' where id=" + idcuahang);
            string comid = lines[1];
            serialPort1.PortName = comid;
             try

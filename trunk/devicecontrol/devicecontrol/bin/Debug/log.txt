@@ -7222,3 +7222,47 @@ Parameter name: portName
    at System.IO.Ports.SerialPort.Open()
    at devicecontrol.Form1.Form1_Load(Object sender, EventArgs e) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 158
 -------------------------------
+10:35:05 PM Tuesday, December 30, 2014
+  :System.ArgumentException: The given port name does not start with COM/com or does not resolve to a valid serial port.
+Parameter name: portName
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at devicecontrol.Form1.Form1_Load(Object sender, EventArgs e) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 176
+-------------------------------
+10:41:10 PM Tuesday, December 30, 2014
+  :System.ArgumentException: The given port name does not start with COM/com or does not resolve to a valid serial port.
+Parameter name: portName
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at devicecontrol.Form1.Form1_Load(Object sender, EventArgs e) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 176
+-------------------------------
+10:46:14 PM Tuesday, December 30, 2014
+  :System.ArgumentException: The given port name does not start with COM/com or does not resolve to a valid serial port.
+Parameter name: portName
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at devicecontrol.Form1.Form1_Load(Object sender, EventArgs e) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 178
+-------------------------------
+10:51:21 PM Tuesday, December 30, 2014
+  :System.TimeoutException: The request channel timed out while waiting for a reply after 00:01:00. Increase the timeout value passed to the call to Request or increase the SendTimeout value on the Binding. The time allotted to this operation may have been a portion of a longer timeout. ---> System.TimeoutException: The HTTP request to 'http://easywash.vn/ws.asmx' has exceeded the allotted timeout of 00:01:00. The time allotted to this operation may have been a portion of a longer timeout. ---> System.Net.WebException: The request was aborted: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at devicecontrol.WebService.wsSoap.GET_DATA_SET(String sql, String keyx)
+   at devicecontrol.WebService.wsSoapClient.GET_DATA_SET(String sql, String keyx) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Service References\WebService\Reference.cs:line 72
+   at devicecontrol.Form1.getDataTable(String sql) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 41
+-------------------------------
