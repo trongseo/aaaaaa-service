@@ -30,6 +30,7 @@ public partial class Login : CommonPageN
         return context.Request.ServerVariables["REMOTE_ADDR"];
     
     }
+    public string stylecuahang = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack)
@@ -40,9 +41,13 @@ public partial class Login : CommonPageN
         string myip = GetUser_IP();
         Response.Write(myip);
         DataTable dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id ,ip from ACuaHang where ip='"+myip+"'");
-        if (dtc.Rows.Count==0)
+        if (dtc.Rows.Count == 0)
         {
             dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id from ACuaHang ");
+            stylecuahang = "display:none";
+        }
+        else { 
+            
         }
         DropDownList1.DataSource = dtc;
         DropDownList1.DataTextField = "title";
@@ -67,11 +72,15 @@ public partial class Login : CommonPageN
         System.Collections.Hashtable hs = new Hashtable();
         hs["Username"] = UserTextBox.Text.Trim();
         hs["HashedPassword"] = PassTextBox.Text;
-        DataTable dt = myUti.GetDataTable("Select * from Anhanvien where Tendangnhap=@Username and MatKhau=@HashedPassword", hs);
+        hs["sdt"] = UserTextBox.Text.Trim();
+        hs["email"] = UserTextBox.Text.Trim();
+        DataTable dt = myUti.GetDataTable("Select * from Anhanvien where ( SDT=@sdt or email=@email or Tendangnhap=@Username ) and MatKhau=@HashedPassword", hs);
 
         if (dt.Rows.Count == 0)
         {
             Label1.Visible = true;
+            Label1.Text = "Thông tin đăng nhập chưa chính xác.Vui lòng Đăng nhập bị sai!";
+            
         }
         else
         {
@@ -120,6 +129,8 @@ WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
         //kiem tra xem nhan vien co thuoc cua hang nay khong
         if ( dtcheck.Rows[0]["APhanCapId"].ToString()==Constants.PhanCap_nhanvien)
         {
+            
+
             string ACuaHangId = dtcheck.Rows[0]["ACuaHangId"].ToString();
             if (ACuaHangId != DropDownList1.SelectedValue)
             {

@@ -47,6 +47,15 @@ public partial class AInfo : CommonPageNhanVien
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack) return;
+        //if (SystemUti.checkNhanVienIncuahang() == false)
+        //{
+
+        //    SystemUti.ShowAndGo("Nhân viên chỉ được sử dụng web trong cửa hàng!", "Login.aspx");
+        //    // Response.Clear();
+        //    //Response.End();
+        //    return;
+        //}
+
         if (GetPara("from")=="hoanthanh")
         {
             ButtonHoanThanh();

@@ -3,8 +3,8 @@
 <%=MySession.Current.SSTenCuaHang %> EASYWASH.VN<br />
 ------------------------------------------------------------------------<br />
 <nbc:BarCodeControl id="BarCodeControl1" BarHeight="0.2" runat="server" 
-  Data="" Type="Code128" Dpi="100" Font="Verdana, 8pt"></nbc:BarCodeControl>
-
+  Data="" Type="Code128" Dpi="100" Font="Verdana, 8pt"></nbc:BarCodeControl><br />
+Tài khoản trước:<b><%= SystemUti.formatNumber( taikhoantruoc )%></b> Tài khoản còn:<b><%=SystemUti.formatNumber( taikhoansau ) %></b>
 <table >
                                                             <thead>
                                                                 <tr role="row" style="background-color:#337ab7;color:white">

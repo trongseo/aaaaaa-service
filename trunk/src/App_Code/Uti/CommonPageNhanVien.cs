@@ -78,7 +78,7 @@ public class CommonPageNhanVien : System.Web.UI.Page
             {
                 Response.Redirect("Login.aspx?from=logout&href="+Request.Url.ToString());
             }
-       
+           
        
         string pageName = MySession.Current.ScreenId;
         try
