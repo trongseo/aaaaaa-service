@@ -33,22 +33,37 @@ FROM            AGioHangTemp ";
     }
     public string getSPorDV(object oidspdv, object isdichvu)
     {
-        string idspdv = oidspdv.ToString();
-        string isdv = isdichvu.ToString();
-        if (isdv != "1")
-        {
-
-            return myUti.GetOneField("Select title from spweb where id=" + idspdv);
-        }
-        else
-        {
-            string sqlx = @"
+        string sqlx ="";
+      sqlx = @"
 SELECT        ADanhMucDV.Title + cast( ADichVu.SoPhut as varchar)+N' Phút'
 FROM            ADichVu INNER JOIN
                          ADanhMucDV ON ADichVu.ADanhMucDVId = ADanhMucDV.Id";
-            sqlx += " where ADichVu.id=" + idspdv;
-            return myUti.GetOneField(sqlx);
-        }
+        sqlx += " where ADichVu.id=" + oidspdv.ToString();
+        return sqlx;
+//        try
+//        {
+//            string idspdv = oidspdv.ToString();
+//            string isdv = isdichvu.ToString();
+//            if (isdv != "1")
+//            {
+
+//                return myUti.GetOneField("Select title from spweb where id=" + idspdv);
+//            }
+//            else
+//            {
+//                 sqlx = @"
+//SELECT        ADanhMucDV.Title + cast( ADichVu.SoPhut as varchar)+N' Phút'
+//FROM            ADichVu INNER JOIN
+//                         ADanhMucDV ON ADichVu.ADanhMucDVId = ADanhMucDV.Id";
+//                sqlx += " where ADichVu.id=" + idspdv;
+//                return myUti.GetOneField(sqlx);
+//            }
+//        }
+//        catch
+//        {
+//            return sqlx;
+//        }
+//        return "";
     }
     public string getMadonhang(object oidspdv)
     {
