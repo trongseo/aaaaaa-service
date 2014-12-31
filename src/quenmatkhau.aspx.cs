@@ -39,7 +39,7 @@ public partial class quenmatkhau : CommonPageN
             svc.SendMailToGood(UserTextBox.Text.Trim(), "Ten dang nhap:" + dr["tendangnhap"].ToString() + "<br/> Mat khau:" + dr["Matkhau"].ToString(), "easywash.vn quen mat khau");
 
             //SystemUti.SendMailToGood(UserTextBox.Text.Trim(), "easywash.vn quen mat khau", "Ten dang nhap:" + dr["tendangnhap"].ToString() + "<br/> Mat khau:" + dr["Matkhau"].ToString());
-            SystemUti.Show("Vui lòng kiểm tra mail kể cả trong spam!Thanks","window.location.href='login.aspx'");
+            SystemUti.Show("Mật khẩu đã được gửi về email của Quý khách, xin vui lòng kiểm tra email", "window.location.href='login.aspx'");
         }
         
     }

@@ -44,7 +44,7 @@ public partial class Login : CommonPageN
         if (dtc.Rows.Count == 0)
         {
             dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id from ACuaHang ");
-            stylecuahang = "display:none";
+           stylecuahang = "display:none";
         }
         else { 
             
@@ -88,6 +88,15 @@ public partial class Login : CommonPageN
             //kiem tra xem nhan vien co thuoc cua hang nay khong
             if (dt.Rows[0]["APhanCapId"].ToString() == Constants.PhanCap_nhanvien)
             {
+                if (SystemUti.checkNhanVienIncuahang() == false)
+                {
+
+                    SystemUti.ShowAndGo("Nhân viên chỉ được sử dụng web trong cửa hàng!", "Login.aspx");
+                    // Response.Clear();
+                    //Response.End();
+                    return;
+                }
+
                 string ACuaHangId = dt.Rows[0]["ACuaHangId"].ToString();
                 if (ACuaHangId != DropDownList1.SelectedValue)
                 {
@@ -101,6 +110,8 @@ public partial class Login : CommonPageN
              MySession.Current.SSUserFullName = dt.Rows[0]["HoTen"].ToString();
              MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
              MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
+             var ipcuahang = myUti.GetOneField("Select ip from ACuaHang where id='" + DropDownList1.SelectedValue + "'");
+             MySession.Current.SSCuaHangIp = ipcuahang;
              string guidid = myUti.GetGuid_Id();
              string sqlinsert = " insert into ALichSuVaoRa([guid_id],[Athanhvienid],[date_login],[ip],[Iscard],[date_create],[ACuaHangId]) values('" + guidid + "'," + MySession.Current.SSUserId + ",getdate(),'" + GetUser_IP() + "',0,getdate()," + MySession.Current.SSCuaHangId + ")";
              myUti.ExecuteSql(sqlinsert);
