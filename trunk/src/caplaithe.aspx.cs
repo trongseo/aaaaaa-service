@@ -71,10 +71,11 @@ WHERE        (ATheThanhVien.Islock = 0) AND ANhanVien.aphancapid <>4 and (ATheTh
         
         string ndnewid = MySession.Current.SSUserId;
            ////////////////// //////////////////
+        float SotienMuahang = 10000;
         // tru tien khach hang
-        if (tienTrongTK(MySession.Current.SSUserId) < 10000)
+        if (tienTrongTK(MySession.Current.SSUserId) < SotienMuahang)
         {
-            SystemUti.ShowAndGo("Số tiền trong tài khoảng của bạn < 10000 đồng.Vui lòng nạp thêm tiền!","Ainfo.aspx");
+            SystemUti.ShowAndGo("Số tiền trong tài khoảng của bạn < " + SotienMuahang + " đồng.Vui lòng nạp thêm tiền!", "Ainfo.aspx");
             return;
         }
 
@@ -88,23 +89,27 @@ WHERE        (ATheThanhVien.Islock = 0) AND ANhanVien.aphancapid <>4 and (ATheTh
         hsATheThanhVien["mathe"] = madangky;
         ArrayListSQL.Add(sql2);
         ArrayListSQLHashTable.Add(hsATheThanhVien);
-     
-       
+     //cap nhat tai khoan
+        string sqlCapNhatTaiKhoan = "UPDATE [ATaiKhoan] " +
+         " SET [Sotien] =Sotien - " + SotienMuahang +
+         " WHERE Athanhvienid=" + ndnewid;
+        ArrayListSQL.Add(sqlCapNhatTaiKhoan);
+        ArrayListSQLHashTable.Add(new Hashtable());
+        //them giao dich
+        string sqlinsertgiaodich = "INSERT INTO AGiaoDichNapTien(Ghichu,[guid_id],[Athanhvienid],[Sotien],[ACuaHangId],[LoaiGiaoDich]) values(@Ghichu,'" + guid + "'," + ndnewid + ",-" + SotienMuahang + "," + MySession.Current.SSCuaHangId + "," + Constants.GiaoDich_matthe + ")";
+        System.Collections.Hashtable hsgiaodich = new Hashtable();
+        hsgiaodich["Ghichu"] = "Phí làm thẻ mới:-" + SotienMuahang;
+        ArrayListSQL.Add(sqlinsertgiaodich);
+        ArrayListSQLHashTable.Add(hsgiaodich);
+      
 
-        string sqlsub = "(select id from athethanhvien where MaThe=@mathe)";
-        Hashtable hsmathe = new Hashtable();
-        hsmathe["mathe"] = madangky;
-        string sql2Anhanvien = "UPDATE [Anhanvien] " +
-        " SET [ATheThanhVienId] =" + sqlsub +
-        " WHERE guid_id='" + guidid + "'";
-
-        ArrayListSQL.Add(sql2Anhanvien);
-        ArrayListSQLHashTable.Add(hsmathe);
-        if (myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "barcodenew") == "0")
+      
+        if (myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "matbarcode") == "0")
         {
-            SystemUti.Show("Đăng ký thất bại!");
+            SystemUti.Show("Việc cấp thẻ lại thất bại!Chúng tôi xin lỗi vì việc này.");
             return;
         }
+
         Response.Redirect("Login.aspx");
 
 
