@@ -44,6 +44,40 @@ public partial class AInfo : CommonPageNhanVien
         return "";
     }
     public string nhanvienVaoca = "";
+    void kiemTraTheThanhVien()
+    {
+        HyperLinkThe.NavigateUrl = "BaoMatThe.aspx";
+        HyperLinkThe.Text = "Báo mất thẻ";
+
+        if (MySession.Current.SSAPhanCapId == Constants.PhanCap_Nguoidung)
+        {
+
+            HyperLinkThe.NavigateUrl = "BaoMatThe.aspx";
+            HyperLinkThe.Text = "Báo mất thẻ";
+
+            string sql = "select athethanhvienid from anhanvien where id=" + MySession.Current.SSUserId;
+            var drn = myUti.GetDataRowNull(sql);
+            if (drn[0].ToString()=="")
+            {
+                HyperLinkThe.NavigateUrl = "capthemoi.aspx";
+                HyperLinkThe.Text = "Lấy thẻ thành viên";
+            }
+            if (drn[0].ToString() != "")
+            {
+                string slx = "Select Islock from Athethanhvien where id=" + drn[0].ToString();
+              string islock =   myUti.GetOneField(slx);
+              if (islock=="1")
+              {
+                  HyperLinkThe.NavigateUrl = "caplaithe.aspx";
+                  HyperLinkThe.Text = "Cấp lại thẻ";
+              }
+               
+            }
+           
+        }
+       //chua cap lan nao, da cap,lam the moi
+
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack) return;
@@ -55,7 +89,7 @@ public partial class AInfo : CommonPageNhanVien
             return;
         }
         showVaoCaTanCa();
-
+        kiemTraTheThanhVien();
         TextBoxTenDangNhap.Text = MySession.Current.SSUserFullName;
         TextBoxTienTrongTK.Text = myUti.GetOneField("Select  REPLACE(CONVERT(varchar(20), (CAST(([SoTien]) AS money)), 1), '.00', '')  from ATaiKhoan where athanhvienid=" + MySession.Current.SSUserId);
         //dau tien vao man hinh nay se co 1 gio hang cho user do
