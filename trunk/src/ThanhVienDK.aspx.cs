@@ -203,7 +203,7 @@ public partial class ThanhVien : CommonPageN
             " WHERE id=" + myid;
             myUti.UpdateData(sql, hs);
             MySession.Current.SSUserFullName = TextBoxHoTen.Text;
-            SystemUti.ShowAndGo("Đã đăng ký thành công.", "Login.aspx");
+            SystemUti.ShowAndGo("Bạn đã đăng ký thành công tài khoản tại easywash.vn!Vui lòng đến cửa hàng để được cấp thể miễn phí.", "Login.aspx");
             
         
 

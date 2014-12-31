@@ -79,7 +79,7 @@
                              <hr />
                                  <div class="form-group">
                                      <input type="button" name="ButtonDangKyThanhVien" value="Đăng ký thành viên" id="ButtonDangKyThanhVien" onclick="window.location = 'ThanhVienDK.aspx'" style="height:50px;width:150px;">
-                             <input type="button" name="ButtonDangKyThanhVien1" value="Đăng ký thành viên tại cửa hàng" id="ButtonDangKyThanhVien1" onclick="window.location='Registbarcode.aspx'" style="height:50px;width:150px;<%=stylecuahang%>">
+                             <input type="button" name="ButtonDangKyThanhVien1" value="Đăng ký thẻ thành viên" id="ButtonDangKyThanhVien1" onclick="window.location='Registbarcode.aspx'" style="height:50px;width:160px;<%=stylecuahang%>">
                                 </div>
 
                             </fieldset>

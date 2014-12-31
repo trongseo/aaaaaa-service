@@ -137,11 +137,12 @@ public class SystemUti
     {
         System.Web.HttpContext context = System.Web.HttpContext.Current;
         string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+        //context.Response.Write(MySession.Current.SSCuaHangIp+"--"+ GetUser_IP());
         if (MySession.Current.SSAPhanCapId == Constants.PhanCap_nhanvien)
         {
             if (MySession.Current.SSCuaHangIp != GetUser_IP())
             {
-                return false;
+             return false;
             }
         }
         return true;
