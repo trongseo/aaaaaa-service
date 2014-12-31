@@ -62,11 +62,11 @@ public partial class AInfo : CommonPageNhanVien
                 HyperLinkThe.NavigateUrl = "capthemoi.aspx";
                 HyperLinkThe.Text = "Lấy thẻ thành viên";
             }
-            if (drn != null)
+            if (drn["athethanhvienid"].ToString() != "")
             {
                 string slx = "Select Islock from Athethanhvien where id=" + drn[0].ToString();
-              string islock =   myUti.GetOneField(slx);
-              if (islock=="1")
+              var drthe =   myUti.GetDataRowNull(slx);
+              if ( (drthe != null)&&(drthe["Islock"].ToString() == "1"))
               {
                   HyperLinkThe.NavigateUrl = "caplaithe.aspx";
                   HyperLinkThe.Text = "Cấp lại thẻ";
