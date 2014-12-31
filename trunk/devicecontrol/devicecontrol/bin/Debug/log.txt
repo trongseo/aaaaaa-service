@@ -7266,3 +7266,24 @@ Exception rethrown at [0]:
    at devicecontrol.WebService.wsSoapClient.GET_DATA_SET(String sql, String keyx) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Service References\WebService\Reference.cs:line 72
    at devicecontrol.Form1.getDataTable(String sql) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 41
 -------------------------------
+6:18:45 AM Wednesday, December 31, 2014
+  :System.ArgumentException: The given port name does not start with COM/com or does not resolve to a valid serial port.
+Parameter name: portName
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at devicecontrol.Form1.Form1_Load(Object sender, EventArgs e) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 178
+-------------------------------
+6:29:53 AM Wednesday, December 31, 2014
+  :System.ArgumentException: The given port name does not start with COM/com or does not resolve to a valid serial port.
+Parameter name: portName
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at devicecontrol.Form1.Form1_Load(Object sender, EventArgs e) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 178
+-------------------------------
+10:02:46 PM Wednesday, December 31, 2014
+  :System.ArgumentException: The given port name does not start with COM/com or does not resolve to a valid serial port.
+Parameter name: portName
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at devicecontrol.Form1.Form1_Load(Object sender, EventArgs e) in d:\project\SercieAuto\SVN\devicecontrol\devicecontrol\Form1.cs:line 178
+-------------------------------

@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-public partial class caplaithe : CommonPageNhanVien
+public partial class capthemoi : CommonPageNhanVien
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -71,20 +71,20 @@ WHERE        (ATheThanhVien.Islock = 0) AND ANhanVien.aphancapid <>4 and (ATheTh
         
         string ndnewid = MySession.Current.SSUserId;
            ////////////////// //////////////////
-        float SotienMuahang = 10000;
+        float SotienMuahang = 0;
         // tru tien khach hang
-        if (tienTrongTK(MySession.Current.SSUserId) < SotienMuahang)
-        {
-            SystemUti.ShowAndGo("Số tiền trong tài khoản của bạn < " + SotienMuahang + " đồng.Vui lòng nạp thêm tiền!", "Ainfo.aspx");
-            return;
-        }
+        //if (tienTrongTK(MySession.Current.SSUserId) < SotienMuahang)
+        //{
+        //    SystemUti.ShowAndGo("Số tiền trong tài khoản của bạn < " + SotienMuahang + " đồng.Vui lòng nạp thêm tiền!", "Ainfo.aspx");
+        //    return;
+        //}
 
         string ANhanVienId_NhanVienCap = dtcheck.Rows[0]["Id"].ToString();
         string guid = myUti.GetGuid_Id();
 
         /////////////////////////////tru tien khach hang,cap nhat the thanh vien
-        //cap nhat the moi
-        string sql2 = " update  ATheThanhVien set MaThe=@mathe,ANhanVienId=" + ndnewid + ",Islock=0, ANhanVienId_NhanVienCap=" + ANhanVienId_NhanVienCap + ",ACuaHangId=" + MySession.Current.SSCuaHangId + " where ANhanVienId=" + ndnewid;
+        //them the moi
+        string sql2 = " insert into ATheThanhVien(MaThe,ANhanVienId,Islock, ANhanVienId_NhanVienCap,ACuaHangId) values(@mathe," + ndnewid + ",0, " + ANhanVienId_NhanVienCap + "," + MySession.Current.SSCuaHangId + ") ";
         Hashtable hsATheThanhVien = new Hashtable();
         hsATheThanhVien["mathe"] = madangky;
         ArrayListSQL.Add(sql2);
@@ -98,15 +98,20 @@ WHERE        (ATheThanhVien.Islock = 0) AND ANhanVien.aphancapid <>4 and (ATheTh
         //them giao dich
         string sqlinsertgiaodich = "INSERT INTO AGiaoDichNapTien(Ghichu,[guid_id],[Athanhvienid],[Sotien],[ACuaHangId],[LoaiGiaoDich]) values(@Ghichu,'" + guid + "'," + ndnewid + ",-" + SotienMuahang + "," + MySession.Current.SSCuaHangId + "," + Constants.GiaoDich_matthe + ")";
         System.Collections.Hashtable hsgiaodich = new Hashtable();
-        hsgiaodich["Ghichu"] = "Phí làm thẻ mới:-" + SotienMuahang;
+        hsgiaodich["Ghichu"] = "Thu thẻ thành viên:" + SotienMuahang;
         ArrayListSQL.Add(sqlinsertgiaodich);
         ArrayListSQLHashTable.Add(hsgiaodich);
       
+        //cap nhat the thanh vien cho thanh vien
 
+        string sqlthanhvien = " update  anhanvien set Athethanhvienid=" + ndnewid + " where id="+ndnewid;
+        ArrayListSQL.Add(sqlthanhvien);
+        ArrayListSQLHashTable.Add(new Hashtable());
+      
       
         if (myUti.InsertTrans(ArrayListSQL, ArrayListSQLHashTable, "matbarcode") == "0")
         {
-            SystemUti.Show("Việc cấp thẻ lại thất bại!Chúng tôi xin lỗi vì việc này.");
+            SystemUti.Show("Việc cấp thẻ thất bại!Chúng tôi xin lỗi vì việc này.");
             return;
         }
 
