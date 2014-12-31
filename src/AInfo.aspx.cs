@@ -57,12 +57,12 @@ public partial class AInfo : CommonPageNhanVien
 
             string sql = "select athethanhvienid from anhanvien where id=" + MySession.Current.SSUserId;
             var drn = myUti.GetDataRowNull(sql);
-            if (drn[0].ToString()=="")
+            if (drn["athethanhvienid"].ToString()=="")
             {
                 HyperLinkThe.NavigateUrl = "capthemoi.aspx";
                 HyperLinkThe.Text = "Lấy thẻ thành viên";
             }
-            if (drn[0].ToString() != "")
+            if (drn != null)
             {
                 string slx = "Select Islock from Athethanhvien where id=" + drn[0].ToString();
               string islock =   myUti.GetOneField(slx);
