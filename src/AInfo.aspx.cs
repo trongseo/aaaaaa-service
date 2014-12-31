@@ -49,8 +49,8 @@ public partial class AInfo : CommonPageNhanVien
         HyperLinkThe.NavigateUrl = "BaoMatThe.aspx";
         HyperLinkThe.Text = "Báo mất thẻ";
 
-        if (MySession.Current.SSAPhanCapId == Constants.PhanCap_Nguoidung)
-        {
+      //  if (MySession.Current.SSAPhanCapId == Constants.PhanCap_Nguoidung)
+       // {
 
             HyperLinkThe.NavigateUrl = "BaoMatThe.aspx";
             HyperLinkThe.Text = "Báo mất thẻ";
@@ -74,7 +74,7 @@ public partial class AInfo : CommonPageNhanVien
                
             }
            
-        }
+      //  }
        //chua cap lan nao, da cap,lam the moi
 
     }

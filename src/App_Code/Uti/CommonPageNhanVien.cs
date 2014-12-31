@@ -59,6 +59,14 @@ public class CommonPageNhanVien : System.Web.UI.Page
         return tiencon;
 
     }
+    public float tienTrongTK(string userid)
+    {
+        var myUti1 = new MyUtilities();
+    
+        string tientk = myUti1.GetOneField("Select  SoTien from ATaiKhoan where athanhvienid=" + userid);
+        return float.Parse(tientk);
+
+    }
     public string GetPara(string paraName)
     {
         if (Request[paraName]!=null)
