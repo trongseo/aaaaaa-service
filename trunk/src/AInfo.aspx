@@ -67,9 +67,10 @@ margin-bottom: 2px;
                                             </div>
                                            
                                             <div class="panel-heading">
-                                                 <a href="BaoMatThe.aspx" style="display:inline-block">
+                                                 <a  style="display:inline-block">
                             <div class="panel-footer" style="width:110px;display:inline-block">
-                                <span class="pull-left">Báo mất thẻ</span>
+                               <%-- <span class="pull-left">Báo mất thẻ</span>--%>
+                                <asp:HyperLink ID="HyperLinkThe" runat="server">HyperLink</asp:HyperLink>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -192,7 +193,7 @@ margin-bottom: 2px;
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Khung thời gian :</label>
-                                                    <asp:DropDownList ID="DropDownListThoiGian"  data-validation="required" CssClass="form-control" runat="server">
+                                                    <asp:DropDownList ID="DropDownListThoiGian"   CssClass="form-control" runat="server">
                                                     </asp:DropDownList>
                                                 </div>
 
