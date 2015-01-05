@@ -51,11 +51,17 @@ public partial class AdminModule_Login : CommonPageN
              MySession.Current.SSCuaHangId = DropDownList1.SelectedValue;
              MySession.Current.SSTenCuaHang = DropDownList1.SelectedItem.Text;
               string numRand = SystemUti.RandomNumber(100, 999).ToString();
-              SERVICEserver.wsSoapClient svc = new SERVICEserver.wsSoapClient();
+             // SERVICEserver.wsSoapClient svc = new SERVICEserver.wsSoapClient();
               MySession.Current.SSMatKhauadmin = numRand;
-              svc.SendMailToGood("trongtayninh@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
-              svc.SendMailToGood("ngoc.rainbow5color@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
-              //SystemUti.SendMailToGood("trongtayninh@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+            //  svc.SendMailToGood("trongtayninh@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+            //  svc.SendMailToGood("ngoc.rainbow5color@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+
+              SystemUti.SendMailToGood1("vn.lethanhphong@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+
+              SystemUti.SendMailToGood1("ngoc.rainbow5color@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+
+              SystemUti.SendMailToGood1("trongtayninh@gmail.com", "mat khau:" + numRand, "Mat khau admin:" + numRand);
+
               Response.Redirect("Login1.aspx");
              //if (Request["href"] != null)
              //{

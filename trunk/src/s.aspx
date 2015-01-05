@@ -12,13 +12,13 @@
 
     <title>LOGIN</title>
 
-    <!-- Bootstrap Core CSS -->
+    <!-- Bootstradp Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <!-- Custom CSfdd55S -->
     <link href="css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->

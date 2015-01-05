@@ -190,7 +190,28 @@ public class SystemUti
             return random.Next(min, max);
         }
     }
+    public static string SendMailToGood1(string emailTo, string Content, string subject)
+    {
+        //create the mail message
+        MailMessage mail = new MailMessage();
 
+        //set the addresses
+        mail.From = new MailAddress("info@easywash.vn");
+        mail.To.Add(emailTo);
+
+        //set the content
+        mail.Subject = subject;
+        mail.Body = Content;
+
+        //send the message
+        SmtpClient smtp = new SmtpClient("127.0.0.1");
+
+        //to authenticate we set the username and password properites on the SmtpClient
+        smtp.Credentials = new NetworkCredential("info@easywash.vn", "zaq123!@#");
+        smtp.Send(mail);
+
+        return "1";
+    }
     public static bool SendMailToGood(string emailTo, string Content, string subject)
     {
 
