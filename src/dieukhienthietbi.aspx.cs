@@ -44,22 +44,31 @@ FROM            AGioHangTemp ";
     }
     public string getSPorDV(object oidspdv, object isdichvu)
     {
-        string idspdv = oidspdv.ToString();
-        string isdv = isdichvu.ToString();
-        if (isdv != "1")
+        try
         {
+            string idspdv = oidspdv.ToString();
+            string isdv = isdichvu.ToString();
+            if (isdv != "1")
+            {
 
-            return myUti.GetOneField("Select title from spweb where id=" + idspdv);
-        }
-        else
-        {
-            string sqlx = @"
+                return myUti.GetOneField("Select title from spweb where id=" + idspdv);
+            }
+            else
+            {
+                string sqlx = @"
 SELECT        ADanhMucDV.Title + cast( ADichVu.SoPhut as varchar)+N' Phút'
 FROM            ADichVu INNER JOIN
                          ADanhMucDV ON ADichVu.ADanhMucDVId = ADanhMucDV.Id";
-            sqlx += " where ADichVu.id=" + idspdv;
-            return myUti.GetOneField(sqlx);
+                sqlx += " where ADichVu.id=" + idspdv;
+                return myUti.GetOneField(sqlx);
+            }
         }
+        catch
+        {
+            return oidspdv.ToString() + "sp,isdv" + isdichvu.ToString();
+        }
+        return "";
+       
     }
     public string getMadonhang(object oidspdv)
     {

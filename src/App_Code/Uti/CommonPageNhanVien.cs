@@ -56,9 +56,26 @@ public class CommonPageNhanVien : System.Web.UI.Page
         string sumvale = myUti1.GetOneField(sql1);
         string tientk = myUti1.GetOneField("Select  SoTien from ATaiKhoan where athanhvienid=" + userid);
         float tiencon = float.Parse(tientk) - float.Parse(sumvale);
-        return tiencon;
+
+        string thauchis = myUti1.GetOneField("select thauchi from ANhanVien where Id=" + userid);
+        float thauchif = float.Parse(thauchis);
+        return tiencon + thauchif;
 
     }
+    public float layTienVaThauChi(string userid)
+    {
+        var myUti1 = new MyUtilities();
+        string thauchis = myUti1.GetOneField("select thauchi from ANhanVien where Id=" + userid);
+        float thauchif = float.Parse(thauchis);
+
+        string tientk = myUti1.GetOneField("Select  SoTien from ATaiKhoan where athanhvienid=" + userid);
+        float tiencon = float.Parse(tientk) + thauchif;
+
+       
+        return tiencon ;
+
+    }
+
     public float tienTrongTK(string userid)
     {
         var myUti1 = new MyUtilities();

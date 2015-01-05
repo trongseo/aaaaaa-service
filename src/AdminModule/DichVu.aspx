@@ -54,6 +54,7 @@
 
                                         <div class="form-group">
                                            <label> Số phút dịch vụ </label>&nbsp;<asp:TextBox ID="TextBoxSoPhut" runat="server"  CssClass="form-control"></asp:TextBox>&nbsp;
+                                            Mô tả:<asp:TextBox ID="TextBoxMota" runat="server"  CssClass="form-control"></asp:TextBox>
                                         </div>
                                          <div class="form-group">
                                             <label> Gía tiền</label>

@@ -127,7 +127,7 @@ WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
              {
                  guid = myUti.GetGuid_Id();
                  //insert vao
-                 string sqli = " insert into AGioHangTemp(soluong,guid_id,anhanvienid,isdichvu,guid_giohang) values(0,'" + guid + "'," + MySession.Current.SSUserId + ",0,'" + guid_giohang + "') ";
+                 string sqli = " insert into AGioHangTemp(idsp,soluong,guid_id,anhanvienid,isdichvu,guid_giohang) values(" + idsp + ",0,'" + guid + "'," + MySession.Current.SSUserId + ",0,'" + guid_giohang + "') ";
                  myUti.ExecuteSql(sqli, null);
              }
              string loaisp = GetPara("DropDownListLoaiSP");
@@ -160,10 +160,10 @@ WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
         {
             string loaidvid = GetPara("loaidvid");
             string results = "";
-            string sqlex = "Select  Id, cast(SoPhut as varchar) + ' Giá:'+  REPLACE(CONVERT(varchar(20), (CAST(([PriceSale]) AS money)), 1), '.00', '') as Title from ADichVu where ADanhMucDVId=" + loaidvid + " and Acuahangid=" + MySession.Current.SSCuaHangId;
+            string sqlex = "Select  Id,  tendv +' ' + cast(SoPhut as varchar) + ' Giá:'+  REPLACE(CONVERT(varchar(20), (CAST(([PriceSale]) AS money)), 1), '.00', '') as Title from ADichVu where ADanhMucDVId=" + loaidvid + " and Acuahangid=" + MySession.Current.SSCuaHangId;
             if (loaidvid == "0")
             {
-                sqlex = "Select  Id,cast(SoPhut as varchar) + ' Giá:'+  REPLACE(CONVERT(varchar(20), (CAST(([PriceSale]) AS money)), 1), '.00', '') as Title from ADichVu where  Acuahangid=" + MySession.Current.SSCuaHangId;
+                sqlex = "Select  Id, tendv +' ' + cast(SoPhut as varchar) + ' Giá:'+  REPLACE(CONVERT(varchar(20), (CAST(([PriceSale]) AS money)), 1), '.00', '') as Title from ADichVu where  Acuahangid=" + MySession.Current.SSCuaHangId;
             }
             var dt = myUti.GetDataTable(sqlex);
             List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();

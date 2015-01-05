@@ -153,7 +153,7 @@ public partial class AdminModule_GroupList : CommonPageFree
 
         }
         delete_id += "0";
-        myUti.ExecuteSQL("Delete CateType where Id in(" + delete_id + ")");
+       //////////// myUti.ExecuteSQL("Delete CateType where Id in(" + delete_id + ")");
         Response.Redirect("GroupList.aspx");
     }
     protected void btn_Add_Click(object sender, EventArgs e)

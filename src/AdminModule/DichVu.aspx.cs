@@ -69,9 +69,11 @@ public partial class AdminModule_DichVu : CommonPageFree
         }
 
         System.Collections.Hashtable hs = new Hashtable();
+        hs["TenDV"] = TextBoxMota.Text.Trim();
         sql = "UPDATE [ADichVu] " +
         " SET [SoPhut] =" + TextBoxSoPhut.Text.Trim() +
          " ,[PriceSale] = " + TextBoxGiatien.Text.Trim() +
+            " ,[TenDV] =@TenDV " +
           " ,[ADanhMucDVId] = " + DropDownList1.SelectedValue.Trim() +
             " ,[ACuaHangId] = " + MySession.Current.SSCuaHangId +
         " WHERE id=" + myid;

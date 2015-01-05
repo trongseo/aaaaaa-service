@@ -56,6 +56,7 @@
                                     <thead>
                                         <tr>
                                             <th>Xóa</th>
+                                             <th>Mô tả </th>
                                             <th>Số phút </th>
                                             <th >Loại dịch vụ </th>
                                             <th>Giá </th>
@@ -81,6 +82,7 @@
 
                                           <tr class="<%=odd%> gradeX">
                                             <td> <input type="checkbox" name="checkbox_<%=dr["Id"]%>" id="checkbox_<%=dr["Id"]%>"/></td>
+                                                <td>  <a href="DichVu.aspx?Id=<%=dr["Id"]%>"><%=dr["TenDV"] %> [SỬA]</a></td>
                                             <td>  <a href="DichVu.aspx?Id=<%=dr["Id"]%>"><%=dr["SoPhut"] %> [SỬA]</a></td>
                                             <td > <%= getLoaiDV(dr["ADanhMucDVId"]) %> </td>
                                             <td class="center"> <%=dr["PriceSale"] %> </td>

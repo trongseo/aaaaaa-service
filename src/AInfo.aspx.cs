@@ -373,13 +373,22 @@ WHERE        (ATheThanhVien.Islock = 0) AND ANhanVien.aphancapid <>4 and (ATheTh
             return;
         }
 
-
+      
         ArrayList ArrayListSQL = new ArrayList();
        
         ArrayList ArrayListSQLHashTable = new ArrayList();
       
         //checkkk
         string Sotien = TextBoxSoTienNap.Text;
+
+        float ftiencon = layTienVaThauChi(dtcheck.Rows[0]["Id"].ToString());
+
+        if (ftiencon >= float.Parse( Sotien))
+        {
+            SystemUti.Show("Nhân viên đã hết tiền để thực hiện giao dịch này!");
+            return;
+        }
+
         string loginid = MySession.Current.SSUserId;
         //update lich su tien,update vao tai khoan
         string guid = myUti.GetGuid_Id();
