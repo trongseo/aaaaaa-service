@@ -196,7 +196,7 @@ public class SystemUti
         MailMessage mail = new MailMessage();
 
         //set the addresses
-        mail.From = new MailAddress("info@easywash.vn");
+        mail.From = new MailAddress("info@easywash.com.vn");
         mail.To.Add(emailTo);
 
         //set the content
@@ -207,7 +207,7 @@ public class SystemUti
         SmtpClient smtp = new SmtpClient("127.0.0.1");
 
         //to authenticate we set the username and password properites on the SmtpClient
-        smtp.Credentials = new NetworkCredential("info@easywash.vn", "zaq123!@#");
+        smtp.Credentials = new NetworkCredential("info@easywash.com.vn", "zaq123!@#");
         smtp.Send(mail);
 
         return "1";
