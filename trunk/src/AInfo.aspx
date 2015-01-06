@@ -21,6 +21,7 @@ margin-bottom: 2px;
         }
         .form-group {
             margin-bottom: 5px;
+font-size:21px;
         }
 
     </style>
