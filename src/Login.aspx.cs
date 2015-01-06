@@ -39,7 +39,7 @@ public partial class Login : CommonPageN
         }
         Session.Clear();
         string myip = GetUser_IP();
-        Response.Write(myip);
+       // Response.Write(myip);
         DataTable dtc = myUti.GetDataTable("Select TenCuaHang AS title,id AS id ,ip from ACuaHang where ip='"+myip+"'");
         if (dtc.Rows.Count == 0)
         {
