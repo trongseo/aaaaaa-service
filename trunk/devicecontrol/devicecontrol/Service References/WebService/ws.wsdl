@@ -230,10 +230,10 @@
   </wsdl:binding>
   <wsdl:service name="ws">
     <wsdl:port name="wsSoap" binding="tns:wsSoap">
-      <soap:address location="http://easywash.vn/ws.asmx" />
+      <soap:address location="http://easywash.com.vn/ws.asmx" />
     </wsdl:port>
     <wsdl:port name="wsSoap12" binding="tns:wsSoap12">
-      <soap12:address location="http://easywash.vn/ws.asmx" />
+      <soap12:address location="http://easywash.com.vn/ws.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

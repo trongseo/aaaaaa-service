@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://easywash.vn/ws.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://easywash.com.vn/ws.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ws1.disco" MetadataType="Disco" ID="fe0e55f2-4337-460c-a472-407d8d828c0f" SourceId="1" SourceUrl="http://easywash.vn/ws.asmx?disco" />
-    <MetadataFile FileName="ws1.wsdl" MetadataType="Wsdl" ID="faf05232-972d-443b-afd3-513ed116c339" SourceId="1" SourceUrl="http://easywash.vn/ws.asmx?wsdl" />
+    <MetadataFile FileName="ws.disco" MetadataType="Disco" ID="d03c49ce-f589-4cf7-b996-a0ca5dd7242e" SourceId="1" SourceUrl="http://easywash.com.vn/ws.asmx?disco" />
+    <MetadataFile FileName="ws.wsdl" MetadataType="Wsdl" ID="6cba971f-42c1-4e74-82c4-eaca82b9c3e9" SourceId="1" SourceUrl="http://easywash.com.vn/ws.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

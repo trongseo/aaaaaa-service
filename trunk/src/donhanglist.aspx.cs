@@ -17,18 +17,16 @@ public partial class donhanglist : CommonPageNhanVien
     protected void Page_Load(object sender, EventArgs e)
     {
 
-
-
         string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, (select portnumber from aport where id=AGioHangTemp.aportid) AS sttmay, soluong, giathanh, acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
                          soluong * giathanh AS thanhtien
 FROM            AGioHangTemp ";
+        if (MySession.Current.SSAPhanCapId==Constants.PhanCap_nhanvien)
+        {
+              sql += " where adonhang_guid_id is not null  order by date_create desc";
+        }else
         sql += " where adonhang_guid_id is not null and anhanvienid=" + MySession.Current.SSUserId + " order by date_create desc";
+
         dt = myUti.GetDataTable(sql, null);
-
-
-
-
-
 
     }
     public string getGio(object oidspdv, object isdichvu)
@@ -77,6 +75,23 @@ FROM            ADichVu INNER JOIN
         }
         return "";
     }
+
+    public string getnhanvieninfo(object oidnhanvien)
+    {
+        try
+        {
+            string idnhanvien = oidnhanvien.ToString();
+            return myUti.GetOneField("select TenDangNhap +'/'+SDT+'/' + email as fullin from anhanvien where id='" + idnhanvien + "'");
+        }
+        catch
+        {
+            return oidnhanvien.ToString();
+        }
+        return oidnhanvien.ToString();
+
+
+    }
+
     public string getMadonhang(object oidspdv)
     {
         try

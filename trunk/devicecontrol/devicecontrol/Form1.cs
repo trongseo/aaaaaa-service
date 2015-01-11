@@ -84,54 +84,107 @@ namespace devicecontrol
             }
             string sql = "";
             string idin = "0";
+            string idoff = "0";
+            string idistimeout = "0";
+            string idAHisPort = "'0'";
             foreach (DataRow item in dt.Rows)
             {
                 idin += "," + item["Id"].ToString();
+                string offon = item["isoff"].ToString();
+                string istimeout = item["istimeout"].ToString();  
+                if (offon == "1")
+                {
+                    idoff += "," + item["Id"].ToString();
+                }
+                if (istimeout == "1")
+                {
+                    idistimeout += "," + item["Id"].ToString();
+                    idAHisPort += ",'" + item["guid_hisport"].ToString()+"'";
+                }
+                
+                
+               
             }
-            sql = " update APort set isget=0 where id in(" + idin + ")";
+            sql = " update APort set isget=0  where id in(" + idin + ")";
             ExecuteSQL(sql);
+
+            sql = " update APort set isget=0 ,guid_hisport='',end_time=null,start_time=null where id in(" + idoff + ")";
+            
+            ExecuteSQL(sql);
+
+            sql = " update APort set isget=0 ,end_time=null,guid_hisport='',start_time=null where id in(" + idistimeout + ")";
+            
+            ExecuteSQL(sql);
+
+            string sqlx = "update AHisPort set date_off=getdate(),isget=1,isfinish=1   where guid_id in(" + idAHisPort + ")";
+            ExecuteSQL(sqlx);
+          
+            
+
         }
         bool doaction(DataTable dtget)
         {
-            if (dtget==null)
+            return true;
+            //if (dtget==null)
+            //{
+            //    return true;
+            //}
+            //if (dtget.Rows.Count==0)
+            //{
+            //    return true;
+            //}
+            //try
+            //{
+            //    label1.Text = dtget.Rows[0]["portnumber"].ToString() + dtget.Rows[0]["isoff"].ToString(); ;
+            //    //LogWriter lg = new LogWriter(label1.Text);
+            //    string offon = dtget.Rows[0]["isoff"].ToString();
+            //    if (offon=="1")
+            //    {
+            //        offon="0";
+            //    }else{
+            //          offon="1";
+            //    }
+            //    serialPort1.WriteLine(dtget.Rows[0]["portnumber"].ToString() + offon);
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    LogWriter ld = new LogWriter(ex.ToString());
+            //    return false;
+            //}
+        
+            //return false;
+        }
+        string idcuahang = "";
+      static   bool fls = false;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (fls)
             {
-                return true;
-            }
-            if (dtget.Rows.Count==0)
-            {
-                return true;
+                return;
             }
             try
             {
-                label1.Text = dtget.Rows[0]["portnumber"].ToString() + dtget.Rows[0]["isoff"].ToString(); ;
-                //LogWriter lg = new LogWriter(label1.Text);
-                string offon = dtget.Rows[0]["isoff"].ToString();
-                if (offon=="1")
+                lock (this)
                 {
-                    offon="0";
-                }else{
-                      offon="1";
+                    if (!fls)
+                    {
+                        fls = true;
+
+                        var dtget = getDataTable("select *, 1 as istimeout  from aport where end_time <getdate() and start_time is not null union Select *, 0 as istimeout  from APort where isget=1 and acuahangid=" + idcuahang);
+                        if (doaction(dtget))
+                        {
+                            UpdateStatus(dtget);
+                        }
+                    }
                 }
-                serialPort1.Write(dtget.Rows[0]["portnumber"].ToString() + offon);
-                return true;
-            }
-            catch (Exception)
-            {
 
-                return false;
             }
-        
-            return false;
-        }
-        string idcuahang = "";
-        private void timer1_Tick(object sender, EventArgs e)
-        {
+            finally {
+                fls = false;
+            }
 
-            var dtget = getDataTable("Select * from APort where isget=1 and acuahangid=" + idcuahang);
-            if (doaction(dtget))
-            {
-                UpdateStatus(dtget);
-            }
+          
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

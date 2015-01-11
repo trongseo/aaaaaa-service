@@ -15,13 +15,17 @@
         .panel-footer {
             padding:1px 1px;
         }
+        /*chinh font cho combobox ;*/
+        .csscombo {
+            font-size:18px;
+        }
         .well {
                padding: 1px;
 margin-bottom: 2px;
         }
         .form-group {
             margin-bottom: 5px;
-font-size:21px;
+/*font-size:21px;*/
         }
 
     </style>
@@ -189,12 +193,12 @@ font-size:21px;
 
                                             <div class="panel-body">
                                                 <div class="form-group">
-                                                    <label>Chọn dịch vụ:</label><asp:DropDownList ID="DropDownListLoaiDV"  onchange="ListLoaiDV(this)"  CssClass="form-control" runat="server">
+                                                    <label>Chọn dịch vụ:</label><asp:DropDownList ID="DropDownListLoaiDV"  onchange="ListLoaiDV(this)"  CssClass="form-control csscombo" runat="server">
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Khung thời gian :</label>
-                                                    <asp:DropDownList ID="DropDownListThoiGian"   CssClass="form-control" runat="server">
+                                                    <asp:DropDownList ID="DropDownListThoiGian"   CssClass="form-control csscombo" runat="server">
                                                     </asp:DropDownList>
                                                 </div>
 
@@ -205,7 +209,7 @@ font-size:21px;
 <script >rome(TextBoxNgayDV, options = { "inputFormat": "DD-MM-YYYY HH:mm", });</script>
                                                 </div>
                                                
-                                                <div class="form-group">
+                                                <div class="form-group" style="display:none">
                                                     <label>Chọn máy:</label>
                                                     <asp:DropDownList ID="DropDownListAport" data-validation="required" CssClass="form-control" runat="server">
                                                     </asp:DropDownList>
@@ -409,12 +413,12 @@ font-size:21px;
                                                    
 </script>
                                                 <div class="form-group">
-                                                    <label>Dịch vụ - Sản phẩm:</label><asp:DropDownList ID="DropDownListLoaiSP" onchange="SPchange(this)"  CssClass="form-control" runat="server">
+                                                    <label>Dịch vụ - Sản phẩm:</label><asp:DropDownList ID="DropDownListLoaiSP" onchange="SPchange(this)"  CssClass="form-control csscombo"  runat="server">
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Loại:</label>
-                                                    <asp:DropDownList ID="DropDownListSP" CssClass="form-control" runat="server">
+                                                    <asp:DropDownList ID="DropDownListSP" CssClass="form-control csscombo" runat="server">
                                                     </asp:DropDownList>
                                                 </div>
 
@@ -489,12 +493,12 @@ font-size:21px;
                                                 </div>
                                                 <!-- /.table-responsive -->
                                                 <div class="form-group">
-                                                    <br>Nhập mật khẩu/mã thẻ thành viên
-                                                   <input name="TextBoxNewPass"  type="password" id="TextBoxNewPass" class="form-control error"  style="width:50px;border-color: purple;display:inline-block">
+                                                    <br><%--Nhập mật khẩu/mã thẻ thành viên--%>
+                                                   <input name="TextBoxNewPass" placeholder="Vui lòng nhập mật khẩu/quẹt thẻ thành viên trước khi hoàn thành " type="password" id="TextBoxNewPass" class="form-control error"  style="width:450px;border-color: purple;display:inline-block">
                                                     <input type="button" name="ButtonHoanThanh" onclick="hoanthanhclick()" value="Hoàn thành" id="ButtonHoanThanh" style="height:50px;width:150px;display:inline-block">
                                                        
                                                     <br />
-                                                   <span style="color:red"> Vui lòng nhập mật khẩu/quẹt thẻ thành viên trước khi hoàn thành </span>
+                                                   <span style="color:red;display:none"> Vui lòng nhập mật khẩu/quẹt thẻ thành viên trước khi hoàn thành </span>
                                                      <script>
                                                          $('#TextBoxNewPass').keypress(function (e) {
                                                              if (e.which == 13) {

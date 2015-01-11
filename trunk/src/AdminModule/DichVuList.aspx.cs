@@ -168,7 +168,7 @@ public partial class AdminModule_DichVuList : CommonPageFree
 
         }
         delete_id += "0";
-        /////myUti.DeleteData("Delete ADichVu where Id in(" + delete_id + ")");
+      myUti.DeleteData("Delete ADichVu where Id in(" + delete_id + ")");
         Response.Redirect("DichVuList.aspx");
     }
     protected void btn_Add_Click(object sender, EventArgs e)

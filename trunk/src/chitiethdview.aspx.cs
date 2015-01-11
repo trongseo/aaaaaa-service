@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class chitiethd : CommonPageNhanVien
+public partial class chitiethdview : CommonPageNhanVien
 {
     public DataTable dt = new DataTable();
     public string taikhoantruoc = "";
@@ -23,7 +23,7 @@ public partial class chitiethd : CommonPageNhanVien
             string sql = @" SELECT        guid_id, ngay, gio, loai, idsp as title, isdichvu, aportid AS sttmay, soluong, giathanh, acuahangid, anhanvienid, adonhang_guid_id, date_create, guid_giohang, 
                          soluong * giathanh AS thanhtien
 FROM            AGioHangTemp ";
-            sql += " where anhanvienid="+ MySession.Current.SSUserId +" and guid_giohang='" + guid_giohang + "' order by ngay";
+            sql += " where guid_giohang='" + guid_giohang + "' order by ngay";
             dt= myUti.GetDataTable(sql,null);
             BarCodeControl1.Data = myUti.GetOneField("Select madonhang from adonhang where guid_id='"+guid_giohang+"'");
 
@@ -41,8 +41,7 @@ FROM            AGioHangTemp ";
          //   data: 'DropDownListLoaiSP=' + loaisp +'&DropDownListSP=' + idsp +'TextBoxNgaySP=' + ngadv ,
 
           //  Response.Write(guid_giohang);
-        //  SystemUti.Show("Vui lòng đến cửa hàng để sử dụng dịch vụ!Xin cám ơn quý khách.");
-            Session.Clear();
+          //  Session.Clear();
             return;
        
 

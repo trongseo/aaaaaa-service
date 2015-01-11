@@ -73,8 +73,8 @@
                             %>
 
                                           <tr class="<%=odd%> gradeX">
-                                            <td><%=i+1 %>  </td>
-                                            <td>  <%=dr["SoTien"] %></td>
+                                            <td><%=i+1 %> </td>
+                                            <td>  <%=dr["SoTien"] %>  <a href="chitiethdview.aspx?guid_id=<%=dr["Adonhang_guid_id"] %>"> Xem chi tiet</a></td>
                                             <td ><%=dr["GhiChu"] %></td>
                                             <%--<td class="center"> <%= getLoaiThanhVien(dr["APhanCapId"]) %> </td>
                                             <td class="center" > <%=dr["TenDangNhap"]%> - <%=dr["Email"]%></td>

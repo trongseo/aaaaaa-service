@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -27,7 +28,7 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
 
-            serialPort1.Write(textBox1.Text);
+            serialPort1.WriteLine(textBox1.Text);
         }
         string idcuahang = "1";
         private void Form1_Load(object sender, EventArgs e)
@@ -49,13 +50,31 @@ namespace WindowsFormsApplication1
         private void buttonMo_Click(object sender, EventArgs e)
         {
             string sele = comboBox1.SelectedItem.ToString();
-            serialPort1.Write(sele+"1");
+            serialPort1.WriteLine(sele + "1");
         }
 
         private void buttonTat_Click(object sender, EventArgs e)
         {
             string sele = comboBox1.SelectedItem.ToString();
-            serialPort1.Write(sele + "0");
+            serialPort1.WriteLine(sele + "0");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                    serialPort1.WriteLine(comboBox1.Items[i] + "1");
+                    Thread.Sleep(10);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                serialPort1.WriteLine(comboBox1.Items[i] + "0");
+                Thread.Sleep(10);
+            }
         }
     }
 }

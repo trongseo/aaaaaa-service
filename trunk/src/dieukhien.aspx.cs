@@ -89,7 +89,9 @@ FROM            ADichVu INNER JOIN
 
         if (ListBox1.SelectedValue != "")
         {
-            string sqlxx = "update aport set isoff =( CASE WHEN isoff< 1 THEN 1 ELSE 0 end),isget=1 where id=" + ListBox1.SelectedValue + " and acuahangid=" + MySession.Current.SSCuaHangId;
+           string sophut = myUti.GetOneField(" select sophut from adichvu where id=(select idsp from AGioHangTemp where guid_id='" + Session["guid_dichvu"].ToString() + "' )");
+
+           string sqlxx = "update aport set start_time=getdate(),end_time=DATEADD(minute," + sophut + ",GETDATE()), isoff =( CASE WHEN isoff< 1 THEN 1 ELSE 0 end),isget=1,guid_hisport='" + Session["guid_hisport"].ToString() + "' where id=" + ListBox1.SelectedValue + " and acuahangid=" + MySession.Current.SSCuaHangId;
            // Response.Write(sqlxx);
        //    myUti.ExecuteSql(sqlxx);
             string portnum = myUti.GetOneField("select portnumber from aport where id=" + ListBox1.SelectedValue);

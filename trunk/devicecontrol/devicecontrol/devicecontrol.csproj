@@ -83,7 +83,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\WebService\ws1.wsdl" />
+    <None Include="Service References\WebService\ws.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -104,7 +104,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebService\ws1.disco" />
+    <None Include="Service References\WebService\ws.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

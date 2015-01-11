@@ -42,6 +42,7 @@ public partial class AdminModule_DichVu : CommonPageFree
             TextBoxSoPhut.Text = dr["SoPhut"].ToString();
             TextBoxGiatien.Text = dr["PriceSale"].ToString();
             DropDownList1.SelectedValue = dr["ADanhMucDVId"].ToString();
+            TextBoxMota.Text = dr["TenDV"].ToString();
 
 
           
