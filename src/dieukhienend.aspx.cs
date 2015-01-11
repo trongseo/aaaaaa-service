@@ -39,16 +39,24 @@ public partial class dieukhienend : CommonPageNhanVien
 
         string getguid = GetPara("guid_dichvu");
         //kiem tra ton tai va chua ketthuc
-        string sqlcheckin = "SELECT id,guid_id,date_on,date_off,port_number,acuahangid,anhanvienid,guid_id_dichvu_giohang,date_create,date_update,isget,isfinish  FROM AHisPort where isfinish=0 and guid_id_dichvu_giohang=@guid_id_dichvu_giohang and port_number is not null ";
+        string sqlcheckin = "SELECT id,guid_id,date_on,date_off,port_number,acuahangid,anhanvienid,guid_id_dichvu_giohang,date_create,date_update,isget,isfinish  FROM AHisPort where  guid_id_dichvu_giohang=@guid_id_dichvu_giohang and port_number is not null ";
         MYHASTABLE["guid_id_dichvu_giohang"] = getguid;
         var drhisport = myUti.GetDataRowNull(sqlcheckin,MYHASTABLE);
         string guid_hisport = myUti.GetGuid_Id();
-        if (drhisport==null)
+        if (drhisport == null)
         {
-            string sqlinserthisport = " INSERT INTO AHisPort(guid_id,acuahangid,anhanvienid,guid_id_dichvu_giohang,isfinish) VALUES('" + guid_hisport + "',"+MySession.Current.SSCuaHangId+","+MySession.Current.SSUserId+",'" + getguid + "',0);";
+            string sqlinserthisport = " INSERT INTO AHisPort(guid_id,acuahangid,anhanvienid,guid_id_dichvu_giohang,isfinish) VALUES('" + guid_hisport + "'," + MySession.Current.SSCuaHangId + "," + MySession.Current.SSUserId + ",'" + getguid + "',0);";
             myUti.ExecuteSql(sqlinserthisport);
             Response.Redirect("dieukhien.aspx?guid_hisport=" + guid_hisport + "&guid_dichvu=" + getguid);
             return;
+        }
+        else
+        {
+            if (drhisport["isfinish"].ToString() == "1")
+            {
+                SystemUti.ShowAndGo("Máy này đã tự động tắt vì hết giờ!", "dieukhienthietbi.aspx");
+                return;
+            }
         }
         //
         Label1.Text =  drhisport["port_number"].ToString();
@@ -94,12 +102,12 @@ FROM            ADichVu INNER JOIN
     protected void Button1_Click(object sender, EventArgs e)
     {
 
-        
-            string sqlxx = "update aport set isoff =1,isget=1 where id=" + HiddenField1.Value + " and acuahangid=" + MySession.Current.SSCuaHangId;
+
+        string sqlxx = "update aport set isoff =1,isget=1 where isget=0 and  isoff=0 and id=" + HiddenField1.Value + " and acuahangid=" + MySession.Current.SSCuaHangId;
            // Response.Write(sqlxx);
            myUti.ExecuteSql(sqlxx);
 
-           string sqlx = "update AHisPort set date_off=getdate(),isget=1,isfinish=1   where guid_id='" + HiddenFieldguid_histport.Value + "'";
+           string sqlx = "update AHisPort set date_off=getdate(),isget=1,isfinish=1   where isfinish=0 and guid_id='" + HiddenFieldguid_histport.Value + "'";
            myUti.ExecuteSql(sqlx);   
         Response.Redirect("dieukhienthietbi.aspx?mess=Đã điều khiển chuyển trạng thái!");
            

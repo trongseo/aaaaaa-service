@@ -37,6 +37,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.buttonMo = new System.Windows.Forms.Button();
             this.buttonTat = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -95,12 +97,12 @@
             "11",
             "12",
             "13",
-            "A0",
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"});
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19"});
             this.comboBox1.Location = new System.Drawing.Point(333, 78);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -126,11 +128,33 @@
             this.buttonTat.UseVisualStyleBackColor = true;
             this.buttonTat.Click += new System.EventHandler(this.buttonTat_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(217, 234);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(180, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Mo tat ca";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(210, 282);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(137, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Dong tat ca";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 412);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonTat);
             this.Controls.Add(this.buttonMo);
             this.Controls.Add(this.comboBox1);
@@ -156,6 +180,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button buttonMo;
         private System.Windows.Forms.Button buttonTat;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

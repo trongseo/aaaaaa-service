@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="HvfmVaUInVFdxuHOe3mSCBl2mxI=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="2pfo43/5WUmDzeafbDWzVhBpCnY=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="wsSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="wsSoap" contract="WebService.wsSoap" bindingType="basicHttpBinding" address="http://easywash.vn/ws.asmx" bindingConfiguration="wsSoap">
+    <endpoint name="wsSoap" contract="WebService.wsSoap" bindingType="basicHttpBinding" address="http://easywash.com.vn/ws.asmx" bindingConfiguration="wsSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://easywash.vn/ws.asmx</serializedValue>
+          <serializedValue>http://easywash.com.vn/ws.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

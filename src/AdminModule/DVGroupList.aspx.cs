@@ -153,7 +153,7 @@ public partial class AdminModule_DVGroupList : CommonPageFree
 
         }
         delete_id += "0";
-       /////////////// myUti.ExecuteSQL("Delete ADanhMucDV where Id in(" + delete_id + ")");
+     myUti.ExecuteSQL("Delete ADanhMucDV where Id in(" + delete_id + ")");
         Response.Redirect("DVGroupList.aspx");
     }
     protected void btn_Add_Click(object sender, EventArgs e)

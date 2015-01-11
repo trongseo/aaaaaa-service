@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                   
-                                    <div class="form-group">
+                                    <div class="form-group" style='display:none'>
                                             <label>Cửa hàng</label>
                                             <asp:DropDownList ID="DropDownListCuaHang" CssClass="form-control" runat="server" Width="178px">
                                         </asp:DropDownList>

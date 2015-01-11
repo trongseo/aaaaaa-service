@@ -157,7 +157,7 @@ public partial class AdminModule_ItemList : CommonPageFree
 
         }
         delete_id += "0";
-       ///////// myUti.DeleteData("Delete SPWeb where Id in(" + delete_id + ")");
+       myUti.DeleteData("Delete SPWeb where Id in(" + delete_id + ")");
         Response.Redirect("ItemList.aspx");
     }
     protected void btn_Add_Click(object sender, EventArgs e)

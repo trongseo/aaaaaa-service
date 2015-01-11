@@ -46,7 +46,7 @@
                                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="table-responsive" style="width:800px" >
+                            <div class="table-responsive" style="width:1000px" >
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                                             <thead>
                                                                 <tr role="row" style="background-color:#337ab7;color:white">
@@ -56,6 +56,7 @@
                                                                     <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 154px;">Số lượng*đơn giá</th>
                                                                     <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Thành tiền</th>
                                                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Mã đơn hàng</th>    
+                                                                      <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Tên/username/email/sdt</th>    
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -83,7 +84,8 @@
                                                                     <td class="center "><%=dr["sttmay"]%></td>
                                                                     <td class="center "><%=dr["soluong"]%>*<%= SystemUti.formatNumber( dr["giathanh"])%></td>
                                                                      <td class="center "><%=SystemUti.formatNumber( dr["thanhtien"])%></td> 
-                                                                   <td class="center "><%= getMadonhang( dr["adonhang_guid_id"] )%></td> 
+                                                                   <td class="center "><a href="chitiethdview.aspx?guid_id=<%=dr["guid_giohang"]%>"> <%= getMadonhang( dr["adonhang_guid_id"] )%> xem và in </a></td> 
+       <td class="center "><%= getnhanvieninfo( dr["anhanvienid"] )%></td> 
                                                                 </tr>
                                         
 

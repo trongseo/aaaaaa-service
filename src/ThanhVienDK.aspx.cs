@@ -198,14 +198,14 @@ public partial class ThanhVien : CommonPageN
                     " ,[DiaChi] =@DiaChi" +
                    
                       " ,[GioiTinh] =" + isgioitinh +
-               " ,[APhanCapId] =" + DropDownListAPhanCapId.SelectedValue +
-                 " ,[ALoaiThanhVienId] =" + DropDownListALoaiThanhVienId.SelectedValue +
+               " ,[APhanCapId] =4"  +
+                 " ,[ALoaiThanhVienId] =7" +
             " WHERE id=" + myid;
             myUti.UpdateData(sql, hs);
             MySession.Current.SSUserFullName = TextBoxHoTen.Text;
             SystemUti.ShowAndGo("Bạn đã đăng ký thành công tài khoản tại easywash.vn!Vui lòng đến cửa hàng để được cấp thể miễn phí.", "Login.aspx");
-            
-        
+        // DropDownListALoaiThanhVienId.SelectedValue +
+        //+ DropDownListAPhanCapId.SelectedValue
 
     }
 
