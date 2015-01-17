@@ -194,6 +194,7 @@ WHERE        (ATheThanhVien.Islock = 0) AND (ATheThanhVien.MaThe =@MaThe)";
             {
                 sqlex = "Select  Id,Title + ' Giá:'+  REPLACE(CONVERT(varchar(20), (CAST(([PriceSale]) AS money)), 1), '.00', '') as Title from spweb where  Acuahangid=" + MySession.Current.SSCuaHangId;
             }
+            sqlex += " order by stt desc";
             var dt = myUti.GetDataTable(sqlex);
             List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
             foreach (DataRow dr in dt.Rows)

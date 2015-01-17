@@ -55,7 +55,7 @@ public partial class dieukhien : CommonPageNhanVien
 FROM            AGioHangTemp ";
         sql += " where guid_id='" + getguid + "' ";
         DRView = myUti.GetDataTable(sql, null).Rows[0];
-        
+        Session["guid_madonhang"] = DRView["adonhang_guid_id"].ToString();
     }
     public DataRow DRView;
     public string getSPorDV(object oidspdv, object isdichvu)
@@ -99,10 +99,13 @@ FROM            ADichVu INNER JOIN
          //  myUti.ExecuteSql(sqlx);
 
             string sqlagiohangtemp = "update agiohangtemp set port_dieukhien=" + portnum + " where guid_id='" + Session["guid_dichvu"].ToString() + "'";
+                string sqlADonHang = "update ADonHang set is_cancel=-1,is_finish=0 where guid_id='" + Session["guid_madonhang"].ToString() + "'";
+             
          //  myUti.ExecuteSql(sqlx);
-           string[] arrc = { sqlxx, sqlx, sqlagiohangtemp };
+                string[] arrc = { sqlxx, sqlx, sqlagiohangtemp, sqlADonHang };
            Session["guid_hisport"] = null;
            Session["guid_dichvu"] = null;
+           Session["guid_madonhang"] = null;
            if (myUti.InsertTrans(arrc, "sqltrans") == "0")
            {
                SystemUti.ShowAndGo("Thất bại!!!", "dieukhienthietbi.aspx");

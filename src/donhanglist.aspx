@@ -57,6 +57,8 @@
                                                                     <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Thành tiền</th>
                                                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Mã đơn hàng</th>    
                                                                       <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Tên/username/email/sdt</th>    
+                                                                    <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Kết thúc/Hủy</th>    
+                                                                    
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -86,6 +88,10 @@
                                                                      <td class="center "><%=SystemUti.formatNumber( dr["thanhtien"])%></td> 
                                                                    <td class="center "><a href="chitiethdview.aspx?guid_id=<%=dr["guid_giohang"]%>"> <%= getMadonhang( dr["adonhang_guid_id"] )%> xem và in </a></td> 
        <td class="center "><%= getnhanvieninfo( dr["anhanvienid"] )%></td> 
+      <td class="center ">
+          <input type="button" onclick="<%=dr["guid_id"]%>" value="Kết thúc" class="form-control" style="height:50px;width:94px;display:inline-block" />
+
+          <input type="button" onclick="window.location='chitiethdhuy.aspx?guid_id=<%=dr["guid_giohang"]%>'" value="Hủy" class="form-control" style="height:50px;width:94px;display:inline-block" /></td> 
                                                                 </tr>
                                         
 

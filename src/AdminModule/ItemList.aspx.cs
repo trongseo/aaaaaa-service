@@ -73,7 +73,7 @@ public partial class AdminModule_ItemList : CommonPageFree
         //Session["drop"] = DropDownList1.SelectedValue;
 
         string tblname = "SPWeb";
-        string order_by = "Id";
+        string order_by = " Id";
         string sqlx = " WITH Ordered1 AS " +
         " (SELECT *, ROW_NUMBER() OVER (order by " + order_by + ") as RowNumber " +
         " FROM " + tblname + "  " + where_ + ")" +
@@ -166,7 +166,40 @@ public partial class AdminModule_ItemList : CommonPageFree
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
+        string[] allk = Request.Form.AllKeys;
+        string myid = "";
 
+        for (int i = 0; i < allk.Length; i++)
+        {
+           
+
+
+            if (allk[i].ToString().IndexOf("stt_") > -1)
+            {
+                myid = allk[i].Split("_".ToCharArray())[1];
+                string vmy = Request.Form["stt_" + myid].ToString();
+
+                try
+                {
+                    int sl = int.Parse(vmy);
+                    if (sl <= 0)
+                    {
+                        SystemUti.Show("Số thứ tự >0", "location.href='ItemList.aspx'");
+                        return;
+                    }
+                    vmy = sl.ToString();
+                    myUti.UpdateData(" Update spweb set stt=" + vmy + " where Id =" + myid, null);
+
+                }
+                catch
+                {
+                    SystemUti.Show("Số thứ tự >0", "location.href='ItemList.aspx' "); ;
+                    return;
+                }
+            }
+
+        }
+        Response.Redirect("ItemList.aspx");
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {

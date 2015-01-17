@@ -61,6 +61,7 @@
                                             <th style="display:none">Platform(s)</th>
                                             <th>Giá</th>
                                             <th >Số lượng</th>
+                                               <th>STT</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,6 +87,8 @@
                                             <td style="display:none">  </td>
                                             <td class="center"><%=dr["PriceSale"]%></td>
                                             <td class="center" ><%=dr["Quantity"]%></td>
+                                  <td class="center"><input type="text" id="stt_<%=dr["Id"]%>" value="<%=dr["stt"]%>" name="stt_<%=dr["Id"]%>"/></td>
+                                       
                                         </tr>
 
 	
@@ -103,7 +106,7 @@
                                
                                 <asp:Button ID="Button1" runat="server" CssClass="btn btn-default" OnClick="btn_Delete_Click" Text="Xóa" Width="66px" />
                                
-                                <asp:Button ID="Button2" Visible="false" CssClass="btn btn-default" runat="server" OnClick="Button2_Click" Text="Cập nhật" />
+                                <asp:Button ID="Button2"  CssClass="btn btn-default" runat="server" OnClick="Button2_Click" Text="Cập nhật" />
                                
                             </div>
                         </div>
