@@ -124,36 +124,38 @@ namespace devicecontrol
         }
         bool doaction(DataTable dtget)
         {
-            return true;
-            //if (dtget==null)
-            //{
-            //    return true;
-            //}
-            //if (dtget.Rows.Count==0)
-            //{
-            //    return true;
-            //}
-            //try
-            //{
-            //    label1.Text = dtget.Rows[0]["portnumber"].ToString() + dtget.Rows[0]["isoff"].ToString(); ;
-            //    //LogWriter lg = new LogWriter(label1.Text);
-            //    string offon = dtget.Rows[0]["isoff"].ToString();
-            //    if (offon=="1")
-            //    {
-            //        offon="0";
-            //    }else{
-            //          offon="1";
-            //    }
-            //    serialPort1.WriteLine(dtget.Rows[0]["portnumber"].ToString() + offon);
-            //    return true;
-            //}
-            //catch (Exception ex)
-            //{
-            //    LogWriter ld = new LogWriter(ex.ToString());
-            //    return false;
-            //}
-        
-            //return false;
+
+            if (dtget == null)
+            {
+                return true;
+            }
+            if (dtget.Rows.Count == 0)
+            {
+                return true;
+            }
+            try
+            {
+                label1.Text = dtget.Rows[0]["portnumber"].ToString() + dtget.Rows[0]["isoff"].ToString(); ;
+                //LogWriter lg = new LogWriter(label1.Text);
+                string offon = dtget.Rows[0]["isoff"].ToString();
+                if (offon == "1")
+                {
+                    offon = "0";
+                }
+                else
+                {
+                    offon = "1";
+                }
+                serialPort1.WriteLine(dtget.Rows[0]["portnumber"].ToString() + offon);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogWriter ld = new LogWriter(ex.ToString());
+                return false;
+            }
+
+            return false;
         }
         string idcuahang = "";
       static   bool fls = false;

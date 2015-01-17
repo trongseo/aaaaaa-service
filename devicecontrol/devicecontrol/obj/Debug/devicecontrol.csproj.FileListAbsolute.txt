@@ -7,3 +7,12 @@ D:\project\SercieAuto\SVN\devicecontrol\devicecontrol\obj\Debug\devicecontrol.Pr
 D:\project\SercieAuto\SVN\devicecontrol\devicecontrol\obj\Debug\devicecontrol.csproj.GenerateResource.Cache
 D:\project\SercieAuto\SVN\devicecontrol\devicecontrol\obj\Debug\devicecontrol.exe
 D:\project\SercieAuto\SVN\devicecontrol\devicecontrol\obj\Debug\devicecontrol.pdb
+D:\project\mysvn\devicecontrol\devicecontrol\bin\Debug\devicecontrol.exe.config
+D:\project\mysvn\devicecontrol\devicecontrol\obj\Debug\devicecontrol.exe
+D:\project\mysvn\devicecontrol\devicecontrol\obj\Debug\devicecontrol.pdb
+D:\project\mysvn\devicecontrol\devicecontrol\bin\Debug\devicecontrol.exe
+D:\project\mysvn\devicecontrol\devicecontrol\bin\Debug\devicecontrol.pdb
+D:\project\mysvn\devicecontrol\devicecontrol\obj\Debug\devicecontrol.csprojResolveAssemblyReference.cache
+D:\project\mysvn\devicecontrol\devicecontrol\obj\Debug\devicecontrol.Form1.resources
+D:\project\mysvn\devicecontrol\devicecontrol\obj\Debug\devicecontrol.Properties.Resources.resources
+D:\project\mysvn\devicecontrol\devicecontrol\obj\Debug\devicecontrol.csproj.GenerateResource.Cache
