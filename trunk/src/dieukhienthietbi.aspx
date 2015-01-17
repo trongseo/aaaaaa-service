@@ -56,6 +56,7 @@
                                                                     <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 154px;">Số lượng*đơn giá</th>
                                                                     <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Thành tiền</th>
                                                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Mã đơn hàng</th>    
+                                                                     
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -92,12 +93,8 @@
                             string isdichvu = dr["isdichvu"].ToString();
                             if (isdichvu=="1")
                             {
-                                %><input type="button" name="btndieukhien" onclick="window.location = 'dieukhienend.aspx?guid_dichvu=<%=dr["guid_id"]%>'" value="Điều khiển" id="btndieukhien" class="form-control" style="height:50px;width:94px;display:inline-block" />
+                                %><input type="button" name="btndieukhien" onclick="window.location ='dieukhienend.aspx?guid_dichvu=<%=dr["guid_id"]%>'" value="Điều khiển" id="btndieukhien" class="form-control" style="height:50px;width:94px;display:inline-block" />
                                                                         <%}  %>
-                                                                        
-
-
-
 
 
 
@@ -105,6 +102,7 @@
                                                                     <td class="center "><%=dr["soluong"]%>*<%= SystemUti.formatNumber( dr["giathanh"])%></td>
                                                                      <td class="center "><%=SystemUti.formatNumber( dr["thanhtien"])%></td> 
                                                                    <td class="center "><%= getMadonhang( dr["adonhang_guid_id"] )%></td> 
+      
                                                                 </tr>
                                         
 

@@ -107,4 +107,24 @@ FROM            ADichVu INNER JOIN
        
 
     }
+    public string getLinkCancel(object oidspdv)
+    {
+        try
+        {
+            string guid_donhang = oidspdv.ToString();
+            string iscancel= myUti.GetOneField("Select is_cancel from ADonHang where guid_id='" + guid_donhang + "'");
+            if (iscancel=="-1")
+            {
+                return "";
+            }
+            return "<a href='chitiethdhuy.aspx?guid_id=" + guid_donhang + "'>Hủy</a>";
+        }
+        catch
+        {
+            return oidspdv.ToString();
+        }
+        return oidspdv.ToString();
+
+
+    }
 }

@@ -72,10 +72,10 @@ margin-bottom: 2px;
                                             </div>
                                            
                                             <div class="panel-heading">
-                                                 <a  style="display:inline-block">
+ <a  style="display:inline-block" href="<%=hlink %>" >
+                                                     
                             <div class="panel-footer" style="width:110px;display:inline-block">
-                               <%-- <span class="pull-left">Báo mất thẻ</span>--%>
-                                <asp:HyperLink ID="HyperLinkThe" runat="server">HyperLink</asp:HyperLink>
+                           <span class="pull-left">  <asp:Literal ID="llhtext" runat="server"></asp:Literal></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>

@@ -44,23 +44,26 @@ public partial class AInfo : CommonPageNhanVien
         return "";
     }
     public string nhanvienVaoca = "";
+
+    public string hlink  = "";
+    
     void kiemTraTheThanhVien()
     {
-        HyperLinkThe.NavigateUrl = "BaoMatThe.aspx";
-        HyperLinkThe.Text = "Báo mất thẻ";
+       string NavigateUrl = "BaoMatThe.aspx";
+       string HyperLinkThe = "Báo mất thẻ";
 
       //  if (MySession.Current.SSAPhanCapId == Constants.PhanCap_Nguoidung)
        // {
 
-            HyperLinkThe.NavigateUrl = "BaoMatThe.aspx";
-            HyperLinkThe.Text = "Báo mất thẻ";
+            NavigateUrl = "BaoMatThe.aspx";
+            HyperLinkThe = "Báo mất thẻ";
 
             string sql = "select athethanhvienid from anhanvien where id=" + MySession.Current.SSUserId;
             var drn = myUti.GetDataRowNull(sql);
             if (drn["athethanhvienid"].ToString()=="")
             {
-                HyperLinkThe.NavigateUrl = "capthemoi.aspx";
-                HyperLinkThe.Text = "Lấy thẻ thành viên";
+                NavigateUrl = "capthemoi.aspx";
+                HyperLinkThe = "Lấy thẻ thành viên";
             }
             if (drn["athethanhvienid"].ToString() != "")
             {
@@ -68,12 +71,13 @@ public partial class AInfo : CommonPageNhanVien
               var drthe =   myUti.GetDataRowNull(slx);
               if ( (drthe != null)&&(drthe["Islock"].ToString() == "1"))
               {
-                  HyperLinkThe.NavigateUrl = "caplaithe.aspx";
-                  HyperLinkThe.Text = "Cấp lại thẻ";
+                  NavigateUrl = "caplaithe.aspx";
+                  HyperLinkThe = "Cấp lại thẻ";
               }
                
             }
-           
+            hlink = NavigateUrl;
+            llhtext.Text = HyperLinkThe;
       //  }
        //chua cap lan nao, da cap,lam the moi
 
